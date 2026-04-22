@@ -1,11 +1,11 @@
 {
   "date": "2026-04-22",
   "date_display": "Wednesday · Apr 22, 2026",
-  "version": "morning-brief v3.1",
-  "generated_at": "2026-04-22T21:00:00+08:00",
+  "version": "morning-brief v3.2",
+  "generated_at": "2026-04-22T21:45:00+08:00",
   "greeting": "Good morning, Wenxuan.",
-  "tldr": "**v3.1 shipped — 24/7 workflow is live.** Apple hub + [Papers](./section.html?kind=papers) / [Learning](./section.html?kind=learning) / [Projects](./section.html?kind=projects) / [Experiments](./section.html?kind=experiments) / [Feedback](./feedback.html). Three launchd crons installed on your laptop (morning 07:00, daytime 12:00 & 17:00 weekdays, night 22:00). GitHub Actions fallback at 07:15. D001–D009 locked. Review the hub, tap feedback, ping me.",
-  "tldr_short": "v3.1 shipped end-to-end. Apple hub, 4 inner sections, /feedback, cron infra (launchd + GHA), all 9 decisions locked.",
+  "tldr": "**Night-builder shipped first draft PR.** [Crumbs PR #1](https://github.com/Taylorblue123/crumbs/pull/1) — social meta tags + branded 1200×630 OG image. Build green. One review item waiting in [/feedback](./feedback.html) — merge, request changes, or close.",
+  "tldr_short": "Crumbs PR #1 (draft): social meta + OG image. Build green. Waiting on your review.",
   "sections": [
     {
       "type": "focus-cards",
@@ -425,43 +425,62 @@
           "status": "info",
           "title": "Next: replace mode stubs with real agent runs",
           "detail": "Current `run-mode.sh` logs a heartbeat per mode. Next iteration wires each mode to a proper agent prompt (morning: author the brief JSON; daytime: pick 1 evaluator and write its `/learning/` page; night: open a draft PR on Crumbs). Posting a reflection + Q&A in tomorrow's brief."
+        },
+        {
+          "time": "21:15",
+          "status": "shipped",
+          "title": "Night-builder started on Crumbs v2",
+          "detail": "Inspected repo; earlier notes (typography flat, mobile <360px broken) were guesses. Real gap: **zero OG/Twitter meta tags** — links unfurl blank in Feishu/Twitter/WeChat. Scoped PR to social meta + OG image only. Skipped speculative icon/favicon/manifest — flagged for your review.",
+          "links": []
+        },
+        {
+          "time": "21:30",
+          "status": "shipped",
+          "title": "Built 1200×630 branded OG image",
+          "detail": "Ink bg + Fraunces yellow wordmark + pink *you* accent + pink chip + URL. Rendered via headless Chrome, vision-reviewed for clipping/contrast, shippable.",
+          "links": []
+        },
+        {
+          "time": "21:40",
+          "status": "shipped",
+          "title": "Draft PR #1 opened",
+          "detail": "`polish/social-meta-tags` → `v2-identity-card`. Full OG/Twitter/WeChat/theme-color meta set. `npm run build` green (354 KB js, 13 KB css, 179ms). **Not merged** — draft, waiting for you.",
+          "links": [
+            {
+              "label": "PR #1",
+              "url": "https://github.com/Taylorblue123/crumbs/pull/1"
+            },
+            {
+              "label": "branch",
+              "url": "https://github.com/Taylorblue123/crumbs/tree/polish/social-meta-tags"
+            },
+            {
+              "label": "OG image",
+              "url": "https://github.com/Taylorblue123/crumbs/blob/polish/social-meta-tags/app/public/og-image.png"
+            }
+          ]
+        },
+        {
+          "time": "21:45",
+          "status": "in-progress",
+          "title": "Queued next work while you review",
+          "detail": "Planned: personal-site `/now` page (scope: single route, 1–2 paragraphs of current focus, links to Crumbs + morning-brief). Will start after this morning-brief push lands."
         }
       ]
     },
     {
       "type": "review-points",
       "icon": "🔍",
-      "title": "Open questions — tap to answer",
-      "meta": "cap 3, min 1 (per D003)",
+      "title": "Awaiting your call",
+      "meta": "1 item · night-builder output",
       "items": [
         {
-          "question": "Does the Apple theme feel right on first open?",
-          "context": "Auto-follows OS by default; `◑ theme` button in the header flips it and persists. Try both modes and tell me if either needs tuning.",
+          "question": "Review: Crumbs PR #1 — social meta tags + OG image",
+          "context": "Draft PR on Taylorblue123/crumbs. Adds full OG/Twitter/WeChat meta + branded 1200×630 OG image. No component changes, no logic churn. Build green.",
           "options": [
-            "looks good",
-            "dark too flat",
-            "light too bright",
-            "needs more contrast"
-          ]
-        },
-        {
-          "question": "Which inner section should get depth first?",
-          "context": "v3 seeded one page per section. Daytime learning runs will grow `/learning`. Which else deserves the most love this week?",
-          "options": [
-            "/papers — more paper deep-dives",
-            "/learning — MAE knowledge map",
-            "/projects — Crumbs v2 polish",
-            "/experiments — overnight results"
-          ]
-        },
-        {
-          "question": "OK for the night builder to start Crumbs polish tonight?",
-          "context": "If yes, tonight's 22:00 run will check out `v2-identity-card`, open a draft PR titled `polish: share-card typography + mobile fixes`, and stop for your review. CSS-only, no logic churn.",
-          "options": [
-            "yes, start tonight",
-            "wait one night",
-            "plan first, build tomorrow",
-            "skip Crumbs, try personal-site"
+            "merge as-is",
+            "request changes",
+            "close — redo different scope"
           ]
         }
       ]

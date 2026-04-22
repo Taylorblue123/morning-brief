@@ -5,11 +5,12 @@
       "slug": "crumbs-v2",
       "date": "2026-04-22",
       "title": "Crumbs v2 · identity card",
-      "subtitle": "MBTI-roast → shareable identity card on Railway.",
+      "subtitle": "Draft PR #1 adds social meta tags + OG image. Awaiting your review.",
       "icon": "🍞",
       "stats": [
-        "72% done",
-        "ready-to-polish"
+        "78% done",
+        "PR #1 draft",
+        "awaiting review"
       ]
     },
     {

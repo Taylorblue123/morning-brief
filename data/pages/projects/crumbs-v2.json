@@ -7,8 +7,8 @@
   "meta": [
     "Railway",
     "Next.js",
-    "Repo: Taylorblue123/crumbs",
-    "branch: v2-identity-card"
+    "branch: polish/social-meta-tags",
+    "PR #1 draft"
   ],
   "updated": "2026-04-22",
   "blocks": [
@@ -16,6 +16,11 @@
       "type": "callout",
       "label": "Current state",
       "text": "The generator works, the share card looks OK, but the UI needs one good polish pass before a public share-link. NEXT: **polish share-card UI** — typography, social-preview meta tags, animated reveal."
+    },
+    {
+      "type": "callout",
+      "label": "Draft PR open",
+      "text": "**[#1 polish: social meta tags](https://github.com/Taylorblue123/crumbs/pull/1)** · branch `polish/social-meta-tags`. Build green. Adds OG + Twitter + WeChat meta + a 1200×630 OG image. Awaiting your review before merge."
     },
     {
       "type": "prose",

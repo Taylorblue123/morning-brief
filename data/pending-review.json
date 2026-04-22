@@ -1,1 +1,15 @@
-{"items": []}
+{
+  "items": [
+    {
+      "id": "R001",
+      "topic": "crumbs-pr",
+      "question": "Review draft PR: polish/social-meta-tags",
+      "context": "Night-builder opened PR #1 on Taylorblue123/crumbs. Adds OG + Twitter + WeChat meta + 1200x630 OG image. Build is green. Not merged. See https://github.com/Taylorblue123/crumbs/pull/1",
+      "options": [
+        "merge as-is",
+        "request changes",
+        "close — redo with different scope"
+      ]
+    }
+  ]
+}
