@@ -1,0 +1,16 @@
+{
+  "kind": "learning",
+  "items": [
+    {
+      "slug": "mae-eval-paradigm",
+      "date": "2026-04-22",
+      "title": "MAE Evaluation Paradigm — overview",
+      "subtitle": "Jun's eval-driven development philosophy + the 29 evaluators in two classes.",
+      "icon": "☀️",
+      "stats": [
+        "status: stub",
+        "evaluators: 8/29 understood"
+      ]
+    }
+  ]
+}

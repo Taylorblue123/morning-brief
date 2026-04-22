@@ -1,0 +1,23 @@
+{
+  "kind": "projects",
+  "slug": "personal-site",
+  "eyebrow": "Side project · idle",
+  "title": "Personal website",
+  "subtitle": "Marketing-free personal site hosted in BedRock.",
+  "meta": [
+    "BedRock",
+    "Astro?",
+    "idle since 2026-03"
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "label": "Status",
+      "text": "Idle. Needs a `/now` page as the minimum next step. Everything else is speculative."
+    },
+    {
+      "type": "prose",
+      "markdown": "## Minimum-viable-me page\n\n- `/` → 3-line intro + photo\n- `/now` → current focus, updated weekly\n- `/projects` → links to Crumbs, Gestgo, morning-brief\n- `/writing` → empty for now\n"
+    }
+  ]
+}

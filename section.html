@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Section · Morning Brief</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🗂%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/style.css">
+<script>(function(){const s=localStorage.getItem("morningbrief.theme");if(s)document.documentElement.setAttribute("data-theme",s);})();</script>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <a class="date-line" href="./index.html" style="text-decoration:none">← morning brief</a>
+    <div class="stamp"><button class="theme-toggle" onclick="(function(){const c=document.documentElement.getAttribute('data-theme');const os=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';const n=c?(c==='dark'?'light':'dark'):(os==='dark'?'light':'dark');document.documentElement.setAttribute('data-theme',n);localStorage.setItem('morningbrief.theme',n);})()">◑ theme</button></div>
+  </div>
+  <h1 id="title">Section</h1>
+  <div id="subtitle" style="font-size:17px;color:var(--text-3);margin-bottom:32px;"></div>
+  <div id="list" class="drilldown-grid"><div class="loading">loading…</div></div>
+</div>
+<script>
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+const KINDS = {
+  papers:      { title: "Papers",      sub: "Academic reading — full briefs with code, figures, and interactive visualizations.", icon: "📄" },
+  learning:    { title: "Learning",    sub: "MAE onboarding knowledge map — one note per internal doc or evaluator.", icon: "☀️" },
+  projects:    { title: "Side projects", sub: "Live status for Crumbs, personal site, Gestgo, and whatever else I'm nudging along at night.", icon: "🚀" },
+  experiments: { title: "Experiments", sub: "Overnight results with full writeups — code, plots, conclusions.", icon: "🧪" }
+};
+
+async function loadIndex(kind) {
+  const url = `./data/pages/${kind}/index.json?t=${Date.now()}`;
+  const r = await fetch(url, { cache: "no-store" });
+  if (!r.ok) throw new Error(`HTTP ${r.status}`);
+  return r.json();
+}
+
+async function main() {
+  const kind = new URLSearchParams(location.search).get("kind");
+  const meta = KINDS[kind];
+  if (!meta) {
+    document.getElementById("title").textContent = "Unknown section";
+    document.getElementById("list").innerHTML = `<div class="error">Unknown kind: ${esc(kind)}</div>`;
+    return;
+  }
+  document.title = `${meta.title} · Morning Brief`;
+  document.getElementById("title").innerHTML = `${meta.icon} ${esc(meta.title)}`;
+  document.getElementById("subtitle").textContent = meta.sub;
+  try {
+    const idx = await loadIndex(kind);
+    const items = (idx.items || []).sort((a,b) => (b.date || "").localeCompare(a.date || ""));
+    const list = document.getElementById("list");
+    if (items.length === 0) {
+      list.innerHTML = `<div class="loading">Nothing here yet. The agent will fill this in as it goes.</div>`;
+      return;
+    }
+    list.innerHTML = items.map(it => `
+      <a class="drilldown-card" href="./page.html?path=${esc(kind)}/${esc(it.slug)}">
+        <span class="drilldown-icon">${esc(it.icon || meta.icon)}</span>
+        <div class="drilldown-title">${esc(it.title)}</div>
+        <div class="drilldown-sub">${esc(it.subtitle || "")}</div>
+        ${it.stats && it.stats.length ? `<div class="drilldown-stats">${it.stats.map(s => `<span>${esc(s)}</span>`).join("")}</div>` : ""}
+        <div class="drilldown-cta">Open →</div>
+      </a>
+    `).join("");
+  } catch (e) {
+    document.getElementById("list").innerHTML = `<div class="error">Could not load ${esc(kind)} index: ${esc(e.message)}</div>`;
+  }
+}
+main();
+</script>
+</body>
+</html>

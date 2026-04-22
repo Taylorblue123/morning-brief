@@ -1,6 +1,12 @@
 {
   "briefs": [
     {
+      "date": "pending-review",
+      "date_display": "",
+      "tldr": "",
+      "tldr_short": ""
+    },
+    {
       "date": "decisions",
       "date_display": "",
       "tldr": "",
@@ -9,8 +15,8 @@
     {
       "date": "2026-04-22",
       "date_display": "Wednesday · Apr 22, 2026",
-      "tldr": "Proposals now live on the site — no GitHub login needed. [Read the **v3 proposal**](./proposal.html?doc=v3-apple-multipage-24-7) from your phone. Decisions D001–D003 saved. **6 decisions below** (Q1–Q6) to unlock the build.",
-      "tldr_short": "Proposals now deployed at /proposal.html — readable anywhere. v3 plan + 6 decisions pending."
+      "tldr": "**v3 shipped today.** Apple-minimal redesign with auto-OS theme + toggle. Four inner-page sections live: [Papers](./section.html?kind=papers), [Learning](./section.html?kind=learning), [Projects](./section.html?kind=projects), [Experiments](./section.html?kind=experiments). New [Feedback](./feedback.html) page. Decisions D004–D009 locked in. Cron infra lands next.",
+      "tldr_short": "v3 shipped. Apple theme, 4 inner sections, /feedback. Next: cron infra for 24/7 workflow."
     }
   ]
 }

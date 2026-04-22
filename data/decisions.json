@@ -27,6 +27,60 @@
       "choice": "cap-3-min-1",
       "detail": "Every brief has between 1 and 3 review items. If nothing real is pending, surface a low-stakes check-in question rather than leaving empty.",
       "source": "Wenxuan feedback 2026-04-22"
+    },
+    {
+      "id": "D004",
+      "date": "2026-04-22",
+      "topic": "dashboard-theme",
+      "question": "Default theme?",
+      "choice": "auto-os + toggle",
+      "detail": "Auto-follow OS preference with a manual toggle button in header. Persist user override in localStorage.",
+      "source": "Wenxuan Q1"
+    },
+    {
+      "id": "D005",
+      "date": "2026-04-22",
+      "topic": "inner-pages-v1",
+      "question": "Which inner pages ship first?",
+      "choice": "a+b+c+d",
+      "detail": "Ship /papers/*, /learning/*, /projects/*, /experiments/* TODAY. /feedback also goes in as Q2 already needs it.",
+      "source": "Wenxuan Q2"
+    },
+    {
+      "id": "D006",
+      "date": "2026-04-22",
+      "topic": "daytime-cadence",
+      "question": "Daytime learning cadence?",
+      "choice": "twice-daily + idle-trigger",
+      "detail": "Cron at 12:00 and 17:00 on weekdays. Additionally: when agent finishes a task and has spare cycles (no pending user/implementation work), trigger a learning run.",
+      "source": "Wenxuan Q3"
+    },
+    {
+      "id": "D007",
+      "date": "2026-04-22",
+      "topic": "night-builder-autonomy",
+      "question": "Night builder autonomy?",
+      "choice": "draft-prs-freely",
+      "detail": "Open draft PRs freely on side-project repos. Ask before merging. Never force-push to main.",
+      "source": "Wenxuan Q4"
+    },
+    {
+      "id": "D008",
+      "date": "2026-04-22",
+      "topic": "cron-location",
+      "question": "Cron location?",
+      "choice": "laptop-primary + cloud-supplementary",
+      "detail": "Primary: macOS launchd on Wenxuan's laptop. Supplementary: GitHub Actions for always-on tasks (morning brief fallback, night-builder when laptop asleep).",
+      "source": "Wenxuan Q5"
+    },
+    {
+      "id": "D009",
+      "date": "2026-04-22",
+      "topic": "token-budget",
+      "question": "Daily token budget?",
+      "choice": "no-hard-cap-for-now",
+      "detail": "No fixed daily cap. On rate-limit hit, pause the mode and surface in next brief as review-point. Log tokens per run in agent-journal.jsonl for visibility.",
+      "source": "Wenxuan Q6"
     }
   ],
   "pending_review": []

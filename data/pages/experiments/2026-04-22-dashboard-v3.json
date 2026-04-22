@@ -1,0 +1,29 @@
+{
+  "kind": "experiments",
+  "slug": "2026-04-22-dashboard-v3",
+  "eyebrow": "Experiment · 2026-04-22",
+  "title": "Dashboard v3 — Apple redesign + inner pages",
+  "subtitle": "Migrate from Linear-dark single-page to an Apple-minimal hub with four inner-page sections, shared data-driven renderer, and auto/toggle theming. Shipped same-day on user's request.",
+  "meta": [
+    "shipped",
+    "v3.0",
+    "~5 hours end-to-end"
+  ],
+  "updated": "2026-04-22",
+  "blocks": [
+    {
+      "type": "callout",
+      "label": "Result",
+      "text": "All four inner-page types live. Hub redesigned. Theme auto-follows OS with a toggle. Feedback page shipped. Cron infra next."
+    },
+    {
+      "type": "prose",
+      "markdown": "## What changed\n\n- **Design tokens**: Linear dark → Apple light-first with dark variant. Single blue accent (`#0071e3` / `#2997ff`), SF Pro, pill CTAs, card-based elevation.\n- **Theming**: auto-follows `prefers-color-scheme`; manual override via header toggle persists in localStorage.\n- **Inner-page framework**: one `page.html` + `page-render.js` that reads `data/pages/<kind>/<slug>.json`. Block types: `prose`, `code`, `callout`, `quote`, `embed`, `checklist`, `gallery`, `html`.\n- **Section index pages**: one `section.html` that renders `data/pages/<kind>/index.json`.\n- **Feedback page**: reads `decisions.json` + `pending-review.json`, lets Wenxuan tap answers, copy as chat reply.\n- **Hub additions**: `drilldown-cards` section type — each card links to an inner section.\n\n## Architecture diagram\n\n```\n/                                (hub, data/latest.json)\n├── /section.html?kind=papers    (papers index)\n│   └── /page.html?path=papers/<slug>\n├── /section.html?kind=learning  (MAE knowledge map)\n│   └── /page.html?path=learning/<slug>\n├── /section.html?kind=projects  (side projects)\n│   └── /page.html?path=projects/<slug>\n├── /section.html?kind=experiments\n│   └── /page.html?path=experiments/<slug>\n├── /proposal.html               (proposals index + reader)\n├── /feedback.html               (decisions, pending, quick note)\n└── /archive.html                (past briefs)\n```\n\n## What I skipped in v3.0\n\n- Server-side form submission for `/feedback` (current flow: pick → copy → paste in Feishu). Needs GitHub Actions + commit-back. Will land in v3.1 with cron infra.\n- Chart block with live p5.js viz. Stubbed as `html` block — real p5 integration next.\n- Proper light-mode contrast check on every section (done for main sections; inner-page markdown tables unchecked).\n\n## Files touched (new or rewritten)\n\n- `assets/style.css` — rewritten for Apple tokens, both themes\n- `assets/render.js` — theme bootstrap + `drilldown-cards` type\n- `assets/page-render.js` — **new**, generic inner-page renderer\n- `page.html` — **new**, single inner-page shell\n- `section.html` — **new**, single section-index shell\n- `feedback.html` — **new**\n- `data/pages/{papers,learning,projects,experiments}/` — **new**, one index + seed pages each"
+    },
+    {
+      "type": "quote",
+      "text": "Apple shell, drill-down depth, auto theme, one feedback surface. Data stays king.",
+      "cite": "Design constraint, 2026-04-22"
+    }
+  ]
+}

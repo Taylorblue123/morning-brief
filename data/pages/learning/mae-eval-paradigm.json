@@ -1,0 +1,42 @@
+{
+  "kind": "learning",
+  "slug": "mae-eval-paradigm",
+  "eyebrow": "MAE onboarding · evaluation",
+  "title": "MAE Evaluation Paradigm — overview",
+  "subtitle": "The agent's running notes on Jun Li's eval-driven development approach and the 29 evaluators that score MAE trajectories.",
+  "meta": [
+    "status: stub",
+    "last reviewed 2026-04-22",
+    "needs: evaluator deep-dives"
+  ],
+  "updated": "2026-04-22",
+  "blocks": [
+    {
+      "type": "callout",
+      "label": "Read this before",
+      "text": "Any eval PR, any 1:1 with Jun, any discussion where MAE pass rate is mentioned."
+    },
+    {
+      "type": "prose",
+      "markdown": "## The paradigm (Jun's framing)\n\n> **Evaluation-Driven Development.** Eval defines the problem; AI executes the full loop. If you can't measure it, you can't have an opinion about it.\n\nThe agent side of MAE is a multi-agent editing loop (plan → edit → verify). The **eval** side is the feedback signal that tells us whether the loop did a good job. In practice, every new capability lands as:\n\n1. **New evaluators first** — define the failure modes you want to catch.\n2. **New cases** — concrete trajectories that exercise the evaluators.\n3. **Model/prompt/architecture changes** — driven by measured regressions, not vibes.\n\n## The two classes of evaluator\n\n| Class | Count | Implementation | Good at | Blind spots |\n|---|---|---|---|---|\n| **Rule-based** | 17 | Deterministic checks against trajectory structure (tool calls, file diffs, state transitions) | Hard correctness, low variance, cheap | Anything subjective |\n| **LLM-judge** | 10 | An LLM scores with a rubric | Subjective quality (coherence, intent match) | High variance, cost, rubric drift |\n| **+ 2 hybrid** | 2 | Rule-gated LLM scoring — rule narrows the scope, LLM decides within | Targeted subjective checks | Complex to debug |\n\n## How a case flows through eval\n\n1. Case is pulled from the frontend (`eval/history`)\n2. MAE runs the trajectory locally — produces a structured log\n3. Each evaluator scores the log independently\n4. Rule-based results are summed; LLM-judge results are averaged across N samples\n5. Pass/fail threshold is per-evaluator, set during onboarding by the eval team\n\n## Open questions I'm still chasing\n\n- Which of the 29 have been most flappy in the last month? (ask Jackson)\n- What's the rubric for the LLM-judge evaluators — is it shared across all 10, or one-per? (read doc XCjldA9EUoPPpExu9AVuhw2MsLe)\n- Is there a single canonical \"failure-mode taxonomy\" doc, or is it spread across the 29 evaluator specs?\n\n## Evaluator map — to be filled in as I read\n\n*The agent will extend this as each evaluator is studied during daytime learning runs.*\n"
+    },
+    {
+      "type": "checklist",
+      "id": "evaluator-reading-queue",
+      "items": [
+        "Read MAE eval wiki (DCSmdhgRIozoTRxFD31uFIDIsXb)",
+        "Read MAE dev paradigm wiki (XCjldA9EUoPPpExu9AVuhw2MsLe)",
+        "Map each of the 17 rule-based evaluators to a category",
+        "Map each of the 10 LLM-judge evaluators to a rubric dimension",
+        "Run one case end-to-end locally",
+        "Draft the failure-mode taxonomy doc (if missing)",
+        "Shadow Jackson on one eval PR review"
+      ]
+    },
+    {
+      "type": "callout",
+      "label": "Next daytime-learning run will",
+      "text": "Pick ONE evaluator from the rule-based 17 and create a dedicated page `/learning/evaluator-<name>` with its spec, known failure cases, and example trajectories."
+    }
+  ]
+}

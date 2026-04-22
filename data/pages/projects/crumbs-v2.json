@@ -1,0 +1,39 @@
+{
+  "kind": "projects",
+  "slug": "crumbs-v2",
+  "eyebrow": "Side project · active",
+  "title": "Crumbs v2 · identity card",
+  "subtitle": "Shareable identity-card UI for the MBTI-roast video project. Closest to ship of the three side projects.",
+  "meta": [
+    "Railway",
+    "Next.js",
+    "Repo: Taylorblue123/crumbs",
+    "branch: v2-identity-card"
+  ],
+  "updated": "2026-04-22",
+  "blocks": [
+    {
+      "type": "callout",
+      "label": "Current state",
+      "text": "The generator works, the share card looks OK, but the UI needs one good polish pass before a public share-link. NEXT: **polish share-card UI** — typography, social-preview meta tags, animated reveal."
+    },
+    {
+      "type": "prose",
+      "markdown": "## Roadmap\n\n- [x] MBTI-roast video generator\n- [x] Identity-card skeleton (v2 branch)\n- [ ] Share-card UI polish\n- [ ] OpenGraph / Twitter meta tags for shared links\n- [ ] Analytics hook (just counts, no PII)\n- [ ] Launch post (draft on personal site)\n\n## Known issues\n\n- Typography hierarchy on the card is flat — everything is 16px\n- No loading state when video is still generating\n- Mobile layout breaks at 360px\n\n## What the night-builder should attempt\n\nWhen autonomy kicks in, the night builder will:\n1. Check out `v2-identity-card` branch\n2. Open a draft PR titled `polish: share-card typography + mobile fixes`\n3. Make CSS-only changes (no logic churn)\n4. Leave a comment with before/after screenshots\n5. Stop — wait for Wenxuan to review + merge\n"
+    },
+    {
+      "type": "checklist",
+      "id": "crumbs-next",
+      "items": [
+        "Polish typography hierarchy on share card",
+        "Add OG/Twitter meta tags",
+        "Fix mobile layout < 360px",
+        "Draft launch post"
+      ]
+    },
+    {
+      "type": "html",
+      "html": "<div style=\"margin-top:14px;\"><a class=\"paper-link\" href=\"https://github.com/Taylorblue123/crumbs\" target=\"_blank\" rel=\"noopener\">GitHub repo →</a></div>"
+    }
+  ]
+}

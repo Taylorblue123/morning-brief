@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feedback · Morning Brief</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🔍%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/style.css">
+<script>(function(){const s=localStorage.getItem("morningbrief.theme");if(s)document.documentElement.setAttribute("data-theme",s);})();</script>
+<style>
+  .fb-hero { max-width: 820px; margin: 0 auto 32px; }
+  .fb-tabs { display: flex; gap: 8px; margin-bottom: 24px; max-width: 820px; margin-left: auto; margin-right: auto; }
+  .fb-tab { flex: 1; text-align: center; padding: 10px 14px; border: 1px solid var(--border); border-radius: var(--radius-pill); font-size: 13px; font-weight: 510; color: var(--text-3); cursor: pointer; background: var(--bg-alt); transition: all 0.15s; }
+  .fb-tab.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .fb-body { max-width: 820px; margin: 0 auto; }
+  .fb-section { display: none; }
+  .fb-section.active { display: block; }
+  .decision-card { background: var(--bg-alt); border: 1px solid var(--border-subtle); border-radius: var(--radius-card); padding: 18px 20px; margin: 10px 0; }
+  .decision-id { font-family: var(--font-mono); font-size: 11px; color: var(--accent); font-weight: 700; letter-spacing: 0.06em; }
+  .decision-topic { font-family: var(--font-display); font-size: 16px; font-weight: 600; color: var(--text); margin: 4px 0; letter-spacing: -0.015em; }
+  .decision-q { font-size: 13px; color: var(--text-3); font-style: italic; }
+  .decision-choice { margin-top: 10px; padding: 10px 12px; background: var(--accent-soft); border-left: 3px solid var(--accent); border-radius: var(--radius-small); }
+  .decision-choice-label { font-size: 10px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2px; font-family: var(--font-mono); }
+  .decision-choice-text { font-size: 14px; color: var(--text); font-weight: 510; }
+  .decision-detail { font-size: 13px; color: var(--text-2); margin-top: 6px; line-height: 1.5; }
+  .decision-source { margin-top: 8px; font-size: 11px; color: var(--text-4); font-family: var(--font-mono); }
+  .pending-card { background: color-mix(in srgb, var(--rose) 5%, var(--bg-alt)); border: 1px solid color-mix(in srgb, var(--rose) 20%, var(--border-subtle)); border-left: 3px solid var(--rose); border-radius: var(--radius-card); padding: 18px 20px; margin: 10px 0; }
+  .pending-q { font-family: var(--font-display); font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+  .pending-ctx { font-size: 13px; color: var(--text-3); line-height: 1.5; margin-bottom: 12px; }
+  .pending-opts { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pending-opt { padding: 6px 14px; border-radius: var(--radius-pill); border: 1px solid color-mix(in srgb, var(--rose) 22%, var(--border)); background: transparent; color: var(--text-2); font-size: 12px; cursor: pointer; transition: all 0.15s; font-family: var(--font-body); }
+  .pending-opt:hover { background: var(--rose); color: #fff; border-color: var(--rose); }
+  .pending-opt.selected { background: var(--rose); color: #fff; border-color: var(--rose); }
+  .quick-note {
+    width: 100%; background: var(--bg-alt); border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-card); padding: 14px 16px; font-family: var(--font-body);
+    font-size: 14px; color: var(--text); margin-top: 12px; resize: vertical; min-height: 90px;
+  }
+  .quick-note:focus { outline: 2px solid var(--accent); outline-offset: -2px; border-color: transparent; }
+  .fb-submit-bar {
+    display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+    margin-top: 18px; padding: 16px 18px;
+    background: var(--bg-alt); border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-card);
+  }
+  .fb-btn { padding: 8px 20px; border-radius: var(--radius-pill); border: 1px solid var(--accent); background: var(--accent); color: #fff; font-family: var(--font-body); font-size: 14px; font-weight: 510; cursor: pointer; transition: all 0.15s; }
+  .fb-btn:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+  .fb-btn.ghost { background: transparent; color: var(--accent); }
+  .fb-btn.ghost:hover { background: var(--accent); color: #fff; }
+  .fb-hint { font-size: 12px; color: var(--text-3); }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <a class="date-line" href="./index.html" style="text-decoration:none">← morning brief</a>
+    <div class="stamp"><button class="theme-toggle" onclick="(function(){const c=document.documentElement.getAttribute('data-theme');const os=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';const n=c?(c==='dark'?'light':'dark'):(os==='dark'?'light':'dark');document.documentElement.setAttribute('data-theme',n);localStorage.setItem('morningbrief.theme',n);})()">◑ theme</button></div>
+  </div>
+
+  <div class="fb-hero">
+    <h1>🔍 Feedback</h1>
+    <div style="font-size:17px;color:var(--text-3);margin-top:8px;line-height:1.5;">
+      Every answer you give lives in <code>decisions.json</code> and compounds. The agent never re-asks.
+    </div>
+  </div>
+
+  <div class="fb-tabs">
+    <div class="fb-tab active" data-tab="pending">⏳ pending</div>
+    <div class="fb-tab" data-tab="decisions">✅ decisions</div>
+    <div class="fb-tab" data-tab="note">✍️ quick note</div>
+  </div>
+
+  <div class="fb-body">
+    <div id="tab-pending" class="fb-section active">
+      <div id="pending-list"><div class="loading">loading…</div></div>
+    </div>
+
+    <div id="tab-decisions" class="fb-section">
+      <div id="decisions-list"><div class="loading">loading…</div></div>
+    </div>
+
+    <div id="tab-note" class="fb-section">
+      <div class="decision-card">
+        <div class="decision-topic">Send a quick note to tomorrow's brief</div>
+        <div class="decision-q">Any idea, correction, or feature ask. The agent will pick this up on the next run.</div>
+        <textarea id="quick-note" class="quick-note" placeholder="e.g. prefer green bars over amber · add a weather block · Gestgo needs a landing page"></textarea>
+        <div class="fb-submit-bar">
+          <button class="fb-btn" id="copy-reply">Copy as chat reply</button>
+          <button class="fb-btn ghost" id="clear-all">Clear all picks</button>
+          <span class="fb-hint">Paste in Feishu and send — no login/server needed.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+const PICKS_KEY = "morningbrief.picks";
+
+function loadPicks() { try { return JSON.parse(localStorage.getItem(PICKS_KEY) || "{}"); } catch(e) { return {}; } }
+function savePicks(p) { localStorage.setItem(PICKS_KEY, JSON.stringify(p)); }
+
+async function fetchJSON(url) {
+  const r = await fetch(url + `?t=${Date.now()}`, { cache: "no-store" });
+  if (!r.ok) throw new Error(`HTTP ${r.status}`);
+  return r.json();
+}
+
+async function renderPending() {
+  const el = document.getElementById("pending-list");
+  try {
+    const d = await fetchJSON("./data/pending-review.json");
+    const items = d.items || [];
+    if (items.length === 0) {
+      el.innerHTML = `<div class="loading" style="padding:40px 20px;">No pending questions. Nothing to decide.</div>`;
+      return;
+    }
+    const picks = loadPicks();
+    el.innerHTML = items.map(it => `
+      <div class="pending-card" data-qid="${esc(it.id)}">
+        <div class="decision-id">${esc(it.id)} · ${esc(it.topic || "")}</div>
+        <div class="pending-q">${esc(it.question)}</div>
+        ${it.context ? `<div class="pending-ctx">${esc(it.context)}</div>` : ""}
+        <div class="pending-opts">
+          ${(it.options || []).map(o => `<button class="pending-opt ${picks[it.id] === o ? "selected" : ""}" data-opt="${esc(o)}">${esc(o)}</button>`).join("")}
+        </div>
+      </div>
+    `).join("");
+    el.querySelectorAll(".pending-opt").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const card = btn.closest(".pending-card");
+        const qid = card.dataset.qid;
+        card.querySelectorAll(".pending-opt").forEach(b => b.classList.remove("selected"));
+        btn.classList.add("selected");
+        const picks = loadPicks();
+        picks[qid] = btn.dataset.opt;
+        savePicks(picks);
+      });
+    });
+  } catch (e) {
+    el.innerHTML = `<div class="error">Could not load pending: ${esc(e.message)}</div>`;
+  }
+}
+
+async function renderDecisions() {
+  const el = document.getElementById("decisions-list");
+  try {
+    const d = await fetchJSON("./data/decisions.json");
+    const items = (d.decisions || []).slice().reverse();
+    el.innerHTML = items.map(x => `
+      <div class="decision-card">
+        <div class="decision-id">${esc(x.id)} · ${esc(x.date)} · ${esc(x.topic)}</div>
+        <div class="decision-topic">${esc(x.question)}</div>
+        <div class="decision-choice">
+          <div class="decision-choice-label">Choice</div>
+          <div class="decision-choice-text">${esc(x.choice)}</div>
+          ${x.detail ? `<div class="decision-detail">${esc(x.detail)}</div>` : ""}
+        </div>
+        ${x.source ? `<div class="decision-source">${esc(x.source)}</div>` : ""}
+      </div>
+    `).join("");
+  } catch (e) {
+    el.innerHTML = `<div class="error">Could not load decisions: ${esc(e.message)}</div>`;
+  }
+}
+
+// Tabs
+document.querySelectorAll(".fb-tab").forEach(t => {
+  t.addEventListener("click", () => {
+    document.querySelectorAll(".fb-tab").forEach(x => x.classList.remove("active"));
+    document.querySelectorAll(".fb-section").forEach(x => x.classList.remove("active"));
+    t.classList.add("active");
+    document.getElementById(`tab-${t.dataset.tab}`).classList.add("active");
+  });
+});
+
+// Copy reply button
+document.getElementById("copy-reply").addEventListener("click", async () => {
+  const picks = loadPicks();
+  const note = document.getElementById("quick-note").value.trim();
+  const lines = [];
+  if (Object.keys(picks).length) {
+    lines.push("Feedback:");
+    Object.entries(picks).forEach(([id, choice]) => lines.push(`- ${id}: ${choice}`));
+  }
+  if (note) { lines.push(""); lines.push("Note: " + note); }
+  if (!lines.length) { alert("Pick some answers or write a note first."); return; }
+  const text = lines.join("\n");
+  try { await navigator.clipboard.writeText(text); alert("Copied — paste into Feishu"); }
+  catch (e) { prompt("Copy this manually:", text); }
+});
+
+document.getElementById("clear-all").addEventListener("click", () => {
+  if (confirm("Clear all picks and note?")) {
+    localStorage.removeItem(PICKS_KEY);
+    document.getElementById("quick-note").value = "";
+    renderPending();
+  }
+});
+
+renderPending();
+renderDecisions();
+</script>
+</body>
+</html>

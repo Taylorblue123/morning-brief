@@ -7,12 +7,16 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🌅%3C/text%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./assets/style.css">
+<script>(function(){const s=localStorage.getItem("morningbrief.theme");if(s==="light"||s==="dark")document.documentElement.setAttribute("data-theme",s);})();</script>
 </head>
 <body>
 <div class="container">
   <div class="header">
     <div class="date-line">Archive</div>
-    <div class="stamp"><a href="./index.html">← latest</a></div>
+    <div class="stamp">
+      <a href="./index.html">← latest</a>
+      <button class="theme-toggle" onclick="(function(){const c=document.documentElement.getAttribute('data-theme');const os=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';const n=c?(c==='dark'?'light':'dark'):(os==='dark'?'light':'dark');document.documentElement.setAttribute('data-theme',n);localStorage.setItem('morningbrief.theme',n);})()">◑ theme</button>
+    </div>
   </div>
   <h1>All briefs</h1>
   <div id="list"><div class="loading">loading…</div></div>

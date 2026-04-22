@@ -1,0 +1,22 @@
+{
+  "kind": "projects",
+  "slug": "gestgo",
+  "eyebrow": "Side project · concept",
+  "title": "Gestgo",
+  "subtitle": "Food + discovery companion. Still a concept — no code yet.",
+  "meta": [
+    "concept only",
+    "no repo yet"
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "label": "Status",
+      "text": "Pre-code. Needs a one-pager before anything else."
+    },
+    {
+      "type": "prose",
+      "markdown": "## One-pager outline\n\n- **Who** — foodies who want to remember what they tried, not just rate it\n- **Why now** — every existing food app is either reviews (Yelp) or social (Beli); nothing for personal taste-memory\n- **MVP** — capture: photo + two-tap mood; retrieval: 'show me the last 5 spicy dinners'\n- **Differentiator** — taste-memory, not crowd-wisdom\n- **Next** — ship the concept doc, then a Figma frame"
+    }
+  ]
+}

@@ -1,11 +1,11 @@
 {
   "date": "2026-04-22",
   "date_display": "Wednesday · Apr 22, 2026",
-  "version": "morning-brief v2.3",
-  "generated_at": "2026-04-22T19:15:00+08:00",
+  "version": "morning-brief v3.0",
+  "generated_at": "2026-04-22T20:30:00+08:00",
   "greeting": "Good morning, Wenxuan.",
-  "tldr": "Proposals now live on the site — no GitHub login needed. [Read the **v3 proposal**](./proposal.html?doc=v3-apple-multipage-24-7) from your phone. Decisions D001–D003 saved. **6 decisions below** (Q1–Q6) to unlock the build.",
-  "tldr_short": "Proposals now deployed at /proposal.html — readable anywhere. v3 plan + 6 decisions pending.",
+  "tldr": "**v3 shipped today.** Apple-minimal redesign with auto-OS theme + toggle. Four inner-page sections live: [Papers](./section.html?kind=papers), [Learning](./section.html?kind=learning), [Projects](./section.html?kind=projects), [Experiments](./section.html?kind=experiments). New [Feedback](./feedback.html) page. Decisions D004–D009 locked in. Cron infra lands next.",
+  "tldr_short": "v3 shipped. Apple theme, 4 inner sections, /feedback. Next: cron infra for 24/7 workflow.",
   "sections": [
     {
       "type": "focus-cards",
@@ -27,6 +27,58 @@
           "title": "Touch one side project",
           "desc": "Crumbs v2 identity-card is closest to ship. Even 30 min of polish counts.",
           "tag": "side · momentum"
+        }
+      ]
+    },
+    {
+      "type": "drilldown-cards",
+      "icon": "🧭",
+      "title": "Dive deeper",
+      "meta": "hub → inner pages",
+      "items": [
+        {
+          "href": "./section.html?kind=papers",
+          "icon": "📄",
+          "title": "Papers",
+          "subtitle": "Deep briefs with code, figures, and next-step checklists.",
+          "stats": [
+            "1 live",
+            "*new today*"
+          ],
+          "cta": "Read papers →"
+        },
+        {
+          "href": "./section.html?kind=learning",
+          "icon": "☀️",
+          "title": "Learning · MAE",
+          "subtitle": "Knowledge map of the eval paradigm + 29 evaluators. Daytime agent fills this in.",
+          "stats": [
+            "1 note",
+            "8/29 evaluators"
+          ],
+          "cta": "Open knowledge map →"
+        },
+        {
+          "href": "./section.html?kind=projects",
+          "icon": "🚀",
+          "title": "Side projects",
+          "subtitle": "Live status for Crumbs, personal site, Gestgo. Night builder opens draft PRs here.",
+          "stats": [
+            "3 projects",
+            "Crumbs 72%"
+          ],
+          "cta": "See projects →"
+        },
+        {
+          "href": "./section.html?kind=experiments",
+          "icon": "🧪",
+          "title": "Experiments",
+          "subtitle": "Overnight results with full writeups — code, plots, conclusion.",
+          "stats": [
+            "1 experiment",
+            "dashboard v3"
+          ],
+          "cta": "See experiments →"
         }
       ]
     },
@@ -202,7 +254,7 @@
       "type": "overnight-log",
       "icon": "🌙",
       "title": "Overnight iteration log — dashboard",
-      "meta": "v1 → v2.3",
+      "meta": "v1 → v3.0",
       "items": [
         {
           "time": "09:49",
@@ -283,6 +335,72 @@
               "url": "https://taylorblue123.github.io/morning-brief/proposal.html?doc=v3-apple-multipage-24-7"
             }
           ]
+        },
+        {
+          "time": "19:30",
+          "status": "shipped",
+          "title": "Locked D004–D009 in decisions.json",
+          "detail": "Your answers to Q1–Q6 are now typed decisions. Theme = **auto-OS + toggle**. Inner pages v1 = **papers + learning + projects + experiments**. Daytime = **12:00 & 17:00 + idle-trigger**. Night builder = **draft PRs freely**. Crons = **laptop primary, cloud supplementary**. Budget = **no hard cap, ask on rate-limit**.",
+          "links": [
+            {
+              "label": "decisions.json →",
+              "url": "./feedback.html"
+            }
+          ]
+        },
+        {
+          "time": "20:00",
+          "status": "shipped",
+          "title": "v3 design system (Apple tokens, auto-theme)",
+          "detail": "Rewrote `assets/style.css` with Apple light-first tokens + dark variant. Header toggle persists to localStorage. Single blue accent `#0071e3` / `#2997ff`. SF Pro family. Pill CTAs 980px. All existing section types re-skinned without schema changes."
+        },
+        {
+          "time": "20:15",
+          "status": "shipped",
+          "title": "Inner-page framework (page.html + page-render.js)",
+          "detail": "One generic shell reads `data/pages/<kind>/<slug>.json`. Block types: **prose, code, callout, quote, embed, checklist, gallery, html**. Checklists persist state to localStorage. Section-index page (`section.html?kind=…`) for listing.",
+          "links": [
+            {
+              "label": "papers →",
+              "url": "./section.html?kind=papers"
+            },
+            {
+              "label": "learning →",
+              "url": "./section.html?kind=learning"
+            },
+            {
+              "label": "projects →",
+              "url": "./section.html?kind=projects"
+            },
+            {
+              "label": "experiments →",
+              "url": "./section.html?kind=experiments"
+            }
+          ]
+        },
+        {
+          "time": "20:25",
+          "status": "shipped",
+          "title": "4 inner pages seeded with real content",
+          "detail": "`/papers/…-orogat-multiagent-llm` (full paper brief + code snippet + reading checklist). `/learning/mae-eval-paradigm` (paradigm overview + evaluator backlog). `/projects/{crumbs-v2, personal-site, gestgo}` (status + roadmap + next actions). `/experiments/…-dashboard-v3` (this experiment's writeup)."
+        },
+        {
+          "time": "20:28",
+          "status": "shipped",
+          "title": "/feedback page live",
+          "detail": "Three tabs: **pending** (tap to pick answers), **decisions** (full ADR history), **quick note** (free-form, copy as chat reply). All state in localStorage for now — server-side commit-back ships with cron infra.",
+          "links": [
+            {
+              "label": "open feedback →",
+              "url": "./feedback.html"
+            }
+          ]
+        },
+        {
+          "time": "20:30",
+          "status": "in-progress",
+          "title": "v3.1 — cron infra (launchd + GitHub Actions)",
+          "detail": "Next: morning brief cron (07:00), daytime learning runs (12:00 + 17:00 + idle), night builder (22:00). Plus Actions fallback for always-on. ETA: same-day continuation."
         }
       ]
     },

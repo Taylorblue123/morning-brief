@@ -1,0 +1,38 @@
+{
+  "kind": "projects",
+  "items": [
+    {
+      "slug": "crumbs-v2",
+      "date": "2026-04-22",
+      "title": "Crumbs v2 · identity card",
+      "subtitle": "MBTI-roast → shareable identity card on Railway.",
+      "icon": "🍞",
+      "stats": [
+        "72% done",
+        "ready-to-polish"
+      ]
+    },
+    {
+      "slug": "personal-site",
+      "date": "2026-04-22",
+      "title": "Personal website (BedRock)",
+      "subtitle": "Static site + /now page + project index.",
+      "icon": "🌐",
+      "stats": [
+        "35% done",
+        "idle"
+      ]
+    },
+    {
+      "slug": "gestgo",
+      "date": "2026-04-22",
+      "title": "Gestgo",
+      "subtitle": "Food + discovery companion app. Concept phase, no code yet.",
+      "icon": "🍜",
+      "stats": [
+        "10% done",
+        "concept"
+      ]
+    }
+  ]
+}

@@ -2,6 +2,24 @@
 // Loads data/latest.json (or data/YYYY-MM-DD.json via ?date=...) and renders components by section type.
 // New section types only need a new render function registered in RENDERERS.
 
+// ---- Theme (Apple-style: auto-follow OS + user override) ----
+(function initTheme() {
+  const KEY = "morningbrief.theme";
+  const stored = localStorage.getItem(KEY);
+  if (stored === "light" || stored === "dark") {
+    document.documentElement.setAttribute("data-theme", stored);
+  }
+  window.__toggleTheme = () => {
+    const cur = document.documentElement.getAttribute("data-theme");
+    const osPref = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    const next = cur ? (cur === "dark" ? "light" : "dark") : (osPref === "dark" ? "light" : "dark");
+    document.documentElement.setAttribute("data-theme", next);
+    localStorage.setItem(KEY, next);
+    const btn = document.querySelector(".theme-toggle");
+    if (btn) btn.textContent = next === "dark" ? "◐ light" : "◑ dark";
+  };
+})();
+
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
 
 function renderInline(text) {
@@ -204,9 +222,29 @@ const RENDERERS = {
             <div class="log-body">
               <div class="log-title">${it.status ? `<span class="log-status log-${esc(it.status)}">${esc(it.status)}</span>` : ""}${renderInline(it.title)}</div>
               ${it.detail ? `<div class="log-detail">${renderInline(it.detail)}</div>` : ""}
-              ${it.links && it.links.length ? `<div class="log-links">${it.links.map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join(" · ")}</div>` : ""}
+              ${it.links && it.links.length ? `<div class="log-links">${it.links.map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join("")}</div>` : ""}
             </div>
           </div>
+        `).join("")}
+      </div>
+    </div>`,
+
+  "drilldown-cards": (s) => `
+    <div class="section">
+      <div class="section-head">
+        <span class="section-icon">${s.icon || "🧭"}</span>
+        <span class="section-title">${esc(s.title || "Dive deeper")}</span>
+        ${s.meta ? `<span class="section-meta">${esc(s.meta)}</span>` : ""}
+      </div>
+      <div class="drilldown-grid">
+        ${(s.items || []).map(it => `
+          <a class="drilldown-card" href="${esc(it.href)}">
+            <span class="drilldown-icon">${esc(it.icon || "📎")}</span>
+            <div class="drilldown-title">${esc(it.title)}</div>
+            <div class="drilldown-sub">${renderInline(it.subtitle || "")}</div>
+            ${it.stats && it.stats.length ? `<div class="drilldown-stats">${it.stats.map(st => `<span>${renderInline(st)}</span>`).join("")}</div>` : ""}
+            <div class="drilldown-cta">${esc(it.cta || "Open →")}</div>
+          </a>
         `).join("")}
       </div>
     </div>`,
@@ -253,8 +291,9 @@ async function loadBrief() {
         <div class="stamp">
           ${esc(b.version || "morning-brief v1")}
           <a href="./proposal.html">proposals</a>
+          <a href="./feedback.html">feedback</a>
           <a href="./archive.html">archive</a>
-          <a href="https://github.com/Taylorblue123/morning-brief" target="_blank" rel="noopener">source</a>
+          <button class="theme-toggle" onclick="window.__toggleTheme()">◑ theme</button>
         </div>
       </div>
       <h1>${esc(b.greeting || "Good morning.")}</h1>

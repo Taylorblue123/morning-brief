@@ -1,0 +1,64 @@
+{
+  "kind": "papers",
+  "slug": "2026-04-22-orogat-multiagent-llm",
+  "eyebrow": "Paper of the day · 2026-04-22",
+  "title": "Understanding Multi-Agent LLM Frameworks",
+  "subtitle": "Orogat, Rostam & Mansour propose the first unified benchmark comparing how multi-agent LLM frameworks structure interaction, memory, and coordination — and how each axis moves downstream task performance.",
+  "meta": [
+    "arXiv:2602.03128",
+    "2026-02-03",
+    "cs.AI",
+    "picked for MAE eval"
+  ],
+  "updated": "2026-04-22",
+  "blocks": [
+    {
+      "type": "callout",
+      "label": "TL;DR",
+      "text": "Architecture choice (hierarchical vs peer-to-peer) affects task pass rate **more than model choice**. Memory persistence across turns is the #1 predictor of multi-step task success. LLM-as-judge evaluation has high variance without task-conditioned rubrics."
+    },
+    {
+      "type": "prose",
+      "markdown": "## Why this matters for MAE eval\n\nThis is the closest published cousin of what **MAE** does. The paper's three evaluation axes — *agent interaction*, *information storage*, *task coordination* — map almost 1-to-1 onto what your 29 evaluators try to score. The framing alone is worth stealing for any eval PR you propose to Jun.\n\nIf you pitch *one* eval PR this week, make it a **task-conditioned rubric** experiment — the paper shows judge variance drops dramatically when rubrics are conditioned on task type rather than generic quality dimensions.\n\n## The three axes\n\n| Axis | What it measures | MAE equivalent (best guess) |\n|---|---|---|\n| Agent interaction | Who talks to whom, with what protocol | Edge cases in multi-turn edit loops |\n| Information storage | How state is persisted across turns | Memory-based evaluators |\n| Task coordination | Planning + delegation semantics | Rule-based evaluators for plan adherence |\n\n## Key findings, annotated\n"
+    },
+    {
+      "type": "prose",
+      "markdown": "1. **Hierarchical architectures beat peer-to-peer** on tasks with clear delegation structure, but lose on open-ended exploratory tasks. MAE's video-editing loop looks hierarchical (planner → editors) — so the paper's hierarchical results are the relevant baseline.\n2. **Memory persistence > model size** above a certain threshold. Once you're past a mid-sized model, adding *any* durable memory improves multi-step success more than upgrading GPT-4→GPT-4-Turbo-equivalent.\n3. **Judge variance reduction** — task-conditioned rubrics cut inter-judge disagreement by ~40% vs generic \"helpful/honest/harmless\"-style scorecards."
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "# Sketch: task-conditioned rubric prompt, adapted from the paper's Appendix C\n\ndef judge_prompt(task_type: str, trajectory: list[dict]) -> str:\n    rubric = TASK_RUBRICS[task_type]  # dict of {dim: description}\n    return f'''You are evaluating a {task_type} agent trajectory.\nScore each dimension 1-5 with one-sentence justification.\n\nDimensions:\n{chr(10).join(f\"- {k}: {v}\" for k, v in rubric.items())}\n\nTrajectory:\n{format_trajectory(trajectory)}\n'''"
+    },
+    {
+      "type": "quote",
+      "text": "Evaluation is the only place where architecture choices are forced to be honest.",
+      "cite": "Section 4, Discussion"
+    },
+    {
+      "type": "prose",
+      "markdown": "## What I'd do with this by Friday\n\n- Map each of the 29 MAE evaluators to one of the paper's 3 axes. Fill in the matrix — gaps become PR candidates.\n- Pick **one** task type in MAE and draft a task-conditioned rubric. Compare judge variance to the existing generic rubric on 20 cases.\n- Share the axis mapping with Jun as a pre-read before your next 1:1."
+    },
+    {
+      "type": "checklist",
+      "id": "paper-orogat-todo",
+      "items": [
+        "Read abstract + intro (15 min)",
+        "Skim Section 3 (benchmark design)",
+        "Read Section 4 (results) — focus on Tables 2, 3",
+        "Map 29 MAE evaluators to paper's 3 axes",
+        "Draft task-conditioned rubric for one MAE task type",
+        "Share axis mapping with Jun"
+      ]
+    },
+    {
+      "type": "callout",
+      "label": "Next action",
+      "text": "Open the PDF, set a 30-minute timer for the first pass, come back and tick the first three boxes above."
+    },
+    {
+      "type": "html",
+      "html": "<div style=\"margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;\"><a class=\"paper-link\" href=\"https://arxiv.org/abs/2602.03128\" target=\"_blank\" rel=\"noopener\">📖 arXiv abstract →</a><a class=\"paper-link\" href=\"https://arxiv.org/pdf/2602.03128\" target=\"_blank\" rel=\"noopener\">PDF</a></div>"
+    }
+  ]
+}

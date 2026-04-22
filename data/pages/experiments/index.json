@@ -1,0 +1,17 @@
+{
+  "kind": "experiments",
+  "items": [
+    {
+      "slug": "2026-04-22-dashboard-v3",
+      "date": "2026-04-22",
+      "title": "Dashboard v3 — Apple redesign + inner pages",
+      "subtitle": "First full migration from Linear-dark single-page to Apple-minimal hub + drill-downs.",
+      "icon": "🧪",
+      "stats": [
+        "shipped",
+        "5 section renderers",
+        "4 inner pages"
+      ]
+    }
+  ]
+}

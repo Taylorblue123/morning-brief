@@ -1,0 +1,17 @@
+{
+  "kind": "papers",
+  "items": [
+    {
+      "slug": "2026-04-22-orogat-multiagent-llm",
+      "date": "2026-04-22",
+      "title": "Understanding Multi-Agent LLM Frameworks",
+      "subtitle": "Orogat et al. (2026) — unified benchmark of multi-agent LLM architectures.",
+      "icon": "📄",
+      "stats": [
+        "arXiv:2602.03128",
+        "cs.AI",
+        "fit: MAE eval"
+      ]
+    }
+  ]
+}
