@@ -1,0 +1,54 @@
+{
+  "kind": "projects",
+  "slug": "gestgo-one-pager",
+  "eyebrow": "Gestgo (Gusto) · concept one-pager",
+  "title": "Gestgo — the 90-second 'what to eat' companion",
+  "subtitle": "Positioning doc for the food-discovery side project. Current status: backend runs, no real frontend yet. This is the 'elevator pitch you wish you had' one-pager for conversations with potential collaborators or investors.",
+  "meta": [
+    "status: draft v1",
+    "based on: Gusto-MVP/onboarding + docs/PRD.md + docs/SPEC.md",
+    "last reviewed 2026-04-22",
+    "review needed: voice, naming (Gestgo vs Gusto), scope"
+  ],
+  "updated": "2026-04-22",
+  "blocks": [
+    {
+      "type": "callout",
+      "label": "The 5-second pitch",
+      "text": "Gestgo helps you decide what to eat in under 90 seconds — by behaving like a friend who already knows your taste, not a restaurant search engine."
+    },
+    {
+      "type": "prose",
+      "markdown": "## The problem\n\nChoosing what to eat at a new restaurant is a small but recurring decision fatigue. For international students and young professionals, the standard tools (Yelp, Google Maps, Meituan) all do the same thing: dump 200 options and make *you* decide. By the time you've decoded three menus, the urge is gone.\n\nThe friction isn't information access. It's *decision support*.\n\n## The insight\n\nThe best food experiences are already curated — by a friend who knows you. 'Get the tonkotsu here, you'll love it.' That's one sentence, zero decisions.\n\nGestgo is trying to be that friend at scale.\n\n## What it does\n\n1. **Onboards in under 2 minutes** via a visual taste test (swipe 10 food photos, LLM generates a taste profile)\n2. **At decision time**, asks *one* contextual question ('craving something light or heavy?') and shows *one* recommendation card\n3. **Remembers** every pick + skip + feedback moment as part of your persistent taste graph\n4. **Grows more confident over time** — after 5 outings, it doesn't need to ask; it just suggests\n\n## Why now\n\n- LLMs can generate context-aware menu interpretations without needing proprietary restaurant data\n- Mobile camera + vision models turn a menu photo into structured data in <3s\n- Users are increasingly burned out on 'here are 200 options' apps (TikTok's food discovery has conditioned them to expect *curation*)"
+    },
+    {
+      "type": "prose",
+      "markdown": "## What makes it different\n\n| Existing tool | What they do | What they don't do |\n|---|---|---|\n| Yelp / Google Maps | Show every option, reviews, photos | Never decide for you |\n| Tabelog / Meituan | Regional expertise + reviews | Same problem, denser |\n| Tinder-for-restaurants apps | Let you swipe through cards | Don't remember why you picked; no follow-through |\n| **Gestgo** | One card at a time; context-aware; accumulating taste model | *(this is the bet)* |\n\n**The UX thesis — 'Orb Hub + 3 Moments':**\n\n- **Orb** is the single visual anchor — a breathing circle that represents Gestgo. Conversation mode (orb center, talking) + Display mode (orb shrinks to top-dot, content takes over).\n- **3 moments** per outing: *before* (what should I get), *during* (the story of this restaurant), *after* (how was it).\n- Every session starts and ends at Orb Home — a hub with floating memory bubbles of past meals.\n\nThis isn't a restaurant search app. It's a *companion pattern*.\n\n## Status today (2026-04-22)\n\n- **Backend:** FastAPI + OpenAI, working MVP for recommendation + dish info\n- **Frontend:** A 2476-line single HTML file — visual prototype, not productionized\n- **Phase 2 plan:** Next.js PWA + Supabase + Claude API, full Orb UX\n- **Dataset:** Google Places + LLM + Web Search for dish data (better than any menu API because it's real-time)\n\n## What a v1 launch would prove\n\n1. Users can complete onboarding (<2 min) without dropping off — **retention target: 70%**\n2. The 'one card at a time' UX feels *better* than swiping 20 restaurants — **qualitative + time-to-decision metric**\n3. The second-session experience is faster than the first — **proves the taste model actually learns**"
+    },
+    {
+      "type": "prose",
+      "markdown": "## Moat candidates\n\n| Moat | Strength | Why |\n|---|---|---|\n| **Taste model depth** (per user) | Strong | Every interaction strengthens it; migration cost grows over time |\n| **Orb UX pattern** | Moderate | Distinctive but copyable by anyone willing to ship it |\n| **Curation taste** (brand voice) | Strong if nailed | Hard to replicate; this is where the founder's personal taste becomes a feature |\n| **Data flywheel** | Weak at current scale | Needs 10k+ active users before network effects materialize |\n\n**Working thesis:** the taste model + founder curation voice is the real moat. The Orb UX is the *discovery* surface that makes the taste model collectable in the first place.\n\n## The 3 biggest open questions\n\n1. **Naming.** Gusto has stronger phonetic + gustatory association; 'Gestgo' reads as a contraction. **Decision needed:** pick one, kill the other.\n2. **Platform.** PWA (ships fast, shareable URL) vs native (better camera + haptics for Orb). Current plan says PWA; worth re-examining.\n3. **Monetization.** Free with affiliate links to reservations? Subscription? Restaurant partnerships? Not blocking v1 but shapes v2 architecture."
+    },
+    {
+      "type": "prose",
+      "markdown": "## What I'd ship next (in priority order)\n\n1. **Name & brand decision** (1 day) — lock Gusto vs Gestgo before writing more code\n2. **Next.js + Supabase scaffold** with Orb Home as the only screen (~1 week)\n3. **Visual taste test onboarding** (Moment 0, ~3 days)\n4. **Before Moment** (one restaurant card + one dish card) — the 'what to eat' core loop (~1 week)\n5. **Ten friendly users testing the full before-during-after loop over 2 weeks** — structured feedback\n6. **Iterate or pivot** based on whether the 'second outing is faster' hypothesis holds\n\nTotal: ~4-6 weeks to answer whether this is worth continuing.\n\n## Related side-project alignment\n\nGestgo + the self-evolving-persona research (see `/experiments/self-evolving-persona`) share the same core primitive: **a durable user model that evolves from behavior, not questionnaires.** A shared personal-context layer across all of Wenxuan's apps would be the biggest compounding bet — Crumbs knows your MBTI, BedRock knows your work, Gestgo knows your taste. They could all feed one persona core."
+    },
+    {
+      "type": "callout",
+      "label": "Decision I need from Wenxuan",
+      "text": "This one-pager is a draft — voice/tone/accuracy are my best guesses based on the docs dump. Please read it with a red pen: what's off, what's missing, what's misattributed. Once it's accurate, we can use it as the canonical pitch for conversations."
+    },
+    {
+      "type": "checklist",
+      "id": "gestgo-followup",
+      "items": [
+        "Wenxuan reviews one-pager for voice/accuracy",
+        "Lock 'Gusto' vs 'Gestgo' name decision",
+        "Decide PWA vs native",
+        "Pick monetization thesis for roadmap framing (not v1 blocker)",
+        "Draft a 60-second demo video script once v1 ships",
+        "Capture founder-voice examples (Wenxuan's actual food recommendations to friends) as training data for the brand voice"
+      ]
+    }
+  ]
+}
