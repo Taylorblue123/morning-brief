@@ -1,10 +1,16 @@
 {
   "briefs": [
     {
+      "date": "decisions",
+      "date_display": "",
+      "tldr": "",
+      "tldr_short": ""
+    },
+    {
       "date": "2026-04-22",
       "date_display": "Wednesday · Apr 22, 2026",
-      "tldr": "Dashboard now ships with a **paper of the day**, **3 industry trends**, **review points**, and **overnight iteration log**. Most important read today: the multi-agent LLM benchmark paper — directly relevant to MAE eval. Industry is shouting about agentic infra (Google TPU v8, SpaceX→Cursor, async agents).",
-      "tldr_short": "New sections: paper, 3 trends, review points, overnight log. Paper of the day matches MAE eval focus."
+      "tldr": "Feedback locked in (**D001–D003** in decisions.json). Drafted **v3 proposal**: Apple-minimal redesign + multi-page drill-downs + 24/7 agent workflow (morning / daytime / night / on-demand) + compounding feedback loop. **6 decisions below** — reply with IDs and I'll ship in ~5 days.",
+      "tldr_short": "Preferences saved (D001–D003). v3 proposal: Apple-minimal + multi-page + 24/7 workflow. 6 decisions to make."
     }
   ]
 }

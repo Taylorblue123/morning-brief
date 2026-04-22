@@ -1,0 +1,33 @@
+{
+  "_comment": "ADR-style decision log. Agent reads this at start of every run so Wenxuan never has to repeat a preference. One entry per decision with question, choice, rationale, timestamp.",
+  "decisions": [
+    {
+      "id": "D001",
+      "date": "2026-04-22",
+      "topic": "paper-picker",
+      "question": "How should the agent pick the paper of the day?",
+      "choice": "mix-one-of-each",
+      "detail": "Serve 2 papers when possible: one newer (≤7 days) for freshness + one fit-to-MAE for depth. When only one slot, alternate day-by-day.",
+      "source": "Wenxuan feedback 2026-04-22"
+    },
+    {
+      "id": "D002",
+      "date": "2026-04-22",
+      "topic": "trends-sources",
+      "question": "Which sources for the daily 3 trends?",
+      "choice": "HN + Reddit + ProductHunt",
+      "detail": "Rotate: HN front page top, r/LocalLLaMA + r/singularity hot, Product Hunt daily. Pick 3 best across all sources, not 1 from each (signal > balance).",
+      "source": "Wenxuan feedback 2026-04-22"
+    },
+    {
+      "id": "D003",
+      "date": "2026-04-22",
+      "topic": "review-points-cadence",
+      "question": "How often to include review-points section?",
+      "choice": "cap-3-min-1",
+      "detail": "Every brief has between 1 and 3 review items. If nothing real is pending, surface a low-stakes check-in question rather than leaving empty.",
+      "source": "Wenxuan feedback 2026-04-22"
+    }
+  ],
+  "pending_review": []
+}
