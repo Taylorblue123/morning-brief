@@ -15,8 +15,8 @@
     {
       "date": "2026-04-22",
       "date_display": "Wednesday · Apr 22, 2026",
-      "tldr": "**v3 shipped today.** Apple-minimal redesign with auto-OS theme + toggle. Four inner-page sections live: [Papers](./section.html?kind=papers), [Learning](./section.html?kind=learning), [Projects](./section.html?kind=projects), [Experiments](./section.html?kind=experiments). New [Feedback](./feedback.html) page. Decisions D004–D009 locked in. Cron infra lands next.",
-      "tldr_short": "v3 shipped. Apple theme, 4 inner sections, /feedback. Next: cron infra for 24/7 workflow."
+      "tldr": "**v3.1 shipped — 24/7 workflow is live.** Apple hub + [Papers](./section.html?kind=papers) / [Learning](./section.html?kind=learning) / [Projects](./section.html?kind=projects) / [Experiments](./section.html?kind=experiments) / [Feedback](./feedback.html). Three launchd crons installed on your laptop (morning 07:00, daytime 12:00 & 17:00 weekdays, night 22:00). GitHub Actions fallback at 07:15. D001–D009 locked. Review the hub, tap feedback, ping me.",
+      "tldr_short": "v3.1 shipped end-to-end. Apple hub, 4 inner sections, /feedback, cron infra (launchd + GHA), all 9 decisions locked."
     }
   ]
 }

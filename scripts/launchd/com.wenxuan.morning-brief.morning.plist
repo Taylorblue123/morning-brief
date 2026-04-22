@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.wenxuan.morning-brief.morning</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>PLACEHOLDER_REPO/scripts/run-mode.sh</string>
+  </array>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>MODE</key><string>morning</string>
+    <key>REPO_DIR</key><string>PLACEHOLDER_REPO</string>
+    <key>PATH</key><string>/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin</string>
+  </dict>
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key><integer>7</integer>
+    <key>Minute</key><integer>0</integer>
+  </dict>
+  <key>StandardOutPath</key>
+  <string>PLACEHOLDER_REPO/.logs/launchd-morning.out</string>
+  <key>StandardErrorPath</key>
+  <string>PLACEHOLDER_REPO/.logs/launchd-morning.err</string>
+  <key>RunAtLoad</key>
+  <false/>
+</dict>
+</plist>
