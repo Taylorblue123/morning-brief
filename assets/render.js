@@ -118,6 +118,25 @@ const RENDERERS = {
     </div>`,
 };
 
+async function fetchWithRetry(url, attempts = 3) {
+  let lastErr;
+  for (let i = 0; i < attempts; i++) {
+    try {
+      const bust = `${url.includes("?") ? "&" : "?"}t=${Date.now()}`;
+      const ctrl = new AbortController();
+      const to = setTimeout(() => ctrl.abort(), 8000);
+      const res = await fetch(url + bust, { cache: "no-store", signal: ctrl.signal });
+      clearTimeout(to);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return await res.json();
+    } catch (e) {
+      lastErr = e;
+      if (i < attempts - 1) await new Promise(r => setTimeout(r, 1500 * (i + 1)));
+    }
+  }
+  throw lastErr;
+}
+
 async function loadBrief() {
   const root = document.getElementById("root");
   const params = new URLSearchParams(window.location.search);
@@ -125,9 +144,7 @@ async function loadBrief() {
   const url = date ? `./data/${date}.json` : "./data/latest.json";
 
   try {
-    const res = await fetch(url, { cache: "no-cache" });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const b = await res.json();
+    const b = await fetchWithRetry(url, 3);
 
     const generated = b.generated_at ? new Date(b.generated_at).toLocaleString() : "";
     const sectionsHtml = (b.sections || []).map(s => {
@@ -154,8 +171,22 @@ async function loadBrief() {
       </div>`;
     document.title = `Morning Brief — ${b.date || ""}`;
   } catch (e) {
-    root.innerHTML = `<div class="error">Could not load brief: ${esc(e.message)}.<br>Try again in a minute (GitHub Pages may still be publishing).</div>`;
+    root.innerHTML = `<div class="error">
+      Could not load brief: ${esc(e.message || e)}.<br><br>
+      <button onclick="location.reload()" style="
+        background: rgba(113,112,255,0.1); color: #f7f8f8;
+        border: 1px solid rgba(113,112,255,0.3); padding: 8px 16px;
+        border-radius: 6px; font: 510 14px 'Inter', sans-serif; cursor: pointer;
+      ">↻ Retry</button>
+      <div style="margin-top:20px;font-size:11px;color:#72767d;">
+        If this persists, the CDN may be updating. Try again in ~30s or
+        <a href="./data/latest.json" style="color:#7170ff;">open the raw JSON</a>.
+      </div>
+    </div>`;
   }
 }
+
+// Auto-retry once on network hiccup when the page regains focus.
+window.addEventListener("online", () => location.reload());
 
 loadBrief();
