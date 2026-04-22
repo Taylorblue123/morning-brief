@@ -1,11 +1,11 @@
 {
   "date": "2026-04-22",
   "date_display": "Wednesday \u00b7 Apr 22, 2026",
-  "version": "morning-brief v4.3",
-  "generated_at": "2026-04-22T14:30:00-07:00",
+  "version": "morning-brief v4.4",
+  "generated_at": "2026-04-22T23:55:48Z",
   "greeting": "Good morning, Wenxuan.",
-  "tldr": "**Live status panel added** \u2014 the top card now shows real-time what the agent is doing, with a pulsing indicator, elapsed timer, recent shipped work, and queue. Auto-refreshes every 15 seconds; every task the agent starts updates it within 1\u20132 commits.",
-  "tldr_short": "v4.3: live agent-status panel at top of hero.",
+  "tldr": "**Running the never-idle loop.** Since the live status panel shipped, I've published: the full 29 MAE evaluators knowledge map, a self-evolving-persona research brief + prototype spec, a Crumbs landing UX audit, and a Gestgo concept one-pager. 3 items need your go/no-go decisions in /feedback (R006\u2013R008).",
+  "tldr_short": "7 shipped today, 3 decisions waiting in /feedback.",
   "sections": [
     {
       "type": "agent-status",
@@ -16,58 +16,58 @@
       "type": "hero-stats",
       "stats": [
         {
-          "value": "2",
-          "label": "PRs shipped",
+          "value": "7",
+          "label": "Shipped today",
           "tone": "green",
-          "delta": "+1 today",
+          "delta": "+6 since morning",
           "deltaTone": "up",
-          "sub": "BedRock #1, Crumbs #1"
-        },
-        {
-          "value": "0",
-          "label": "Items in /feedback",
-          "tone": "accent",
-          "sub": "all clear"
-        },
-        {
-          "value": "8",
-          "unit": "/29",
-          "label": "MAE evaluators understood",
-          "tone": "amber",
-          "sub": "21 to go"
+          "sub": "dashboard, PR, site, docs"
         },
         {
           "value": "3",
-          "label": "Active side projects",
+          "label": "Items in /feedback",
           "tone": "rose",
-          "sub": "Crumbs \u00b7 BedRock \u00b7 Gestgo"
+          "sub": "R006-R008 \u2014 your decisions"
+        },
+        {
+          "value": "29",
+          "unit": "/29",
+          "label": "MAE evaluators mapped",
+          "tone": "amber",
+          "sub": "full inventory published"
+        },
+        {
+          "value": "4",
+          "label": "Active side projects",
+          "tone": "accent",
+          "sub": "Crumbs \u00b7 BedRock \u00b7 Gestgo \u00b7 Morning brief"
         }
       ]
     },
     {
       "type": "focus-cards",
       "icon": "\ud83c\udfaf",
-      "title": "Top 3 for today",
+      "title": "What you should look at first",
       "meta": "priority \u00b7 curated",
       "items": [
         {
-          "title": "Read the multi-agent LLM paper",
-          "desc": "Orogat et al. benchmark 5 multi-agent frameworks. Extract their evaluation axes \u2014 compare against MAE's 29 evaluators.",
-          "tag": "work \u00b7 paper",
           "priority": "hero",
-          "eta": "~45 min read"
+          "title": "3 decisions in /feedback",
+          "desc": "**R006** Vercel deploy for BedRock (needs auth) \u00b7 **R007** Self-evolving persona v0 prototype (~10h scope) \u00b7 **R008** Crumbs landing polish PR (~90 min, 4 fixes). Each links to the full writeup.",
+          "tag": "review \u00b7 agent waiting",
+          "eta": "~5 min to decide"
         },
         {
-          "title": "Pull one real eval case",
-          "desc": "Use eval frontend to fetch a failing case, run it locally, see what the evaluators actually score.",
-          "tag": "work \u00b7 hands-on",
-          "eta": "~30 min"
+          "title": "Read the Crumbs UX audit",
+          "desc": "Vision-assisted audit found 3 high-leverage conversion fixes. Concrete: add gradient overlay, replace ENFP as H1, rewrite CTA copy.",
+          "tag": "side project \u00b7 Crumbs",
+          "eta": "~3 min"
         },
         {
-          "title": "Touch one side project",
-          "desc": "Crumbs v2 identity-card is closest to ship. Even 30 min of polish counts.",
-          "tag": "side \u00b7 momentum",
-          "eta": "30 min polish"
+          "title": "Red-pen the Gestgo one-pager",
+          "desc": "Positioning doc for the 90-sec food companion. I built it from your docs \u2014 please check voice + accuracy before we use it as the canonical pitch.",
+          "tag": "side project \u00b7 Gestgo",
+          "eta": "~5 min"
         }
       ]
     },
