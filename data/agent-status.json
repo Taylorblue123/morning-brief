@@ -1,9 +1,9 @@
 {
-  "status": "shipped",
-  "headline": "Gestgo concept one-pager drafted",
-  "detail": "Positioning doc distilled from Gusto-MVP docs: problem, insight, UX thesis, status, moat, open questions, next 6 weeks. Needs your red-pen review.",
-  "started_at": "2026-04-22T23:55:20Z",
-  "updated_at": "2026-04-22T23:55:20Z",
+  "status": "working",
+  "headline": "Refreshed dashboard hero to reflect today's real shipped work",
+  "detail": "KPI strip + focus cards now show 7 shipped today, 3 decisions waiting. Ready for next task.",
+  "started_at": "2026-04-22T23:55:52Z",
+  "updated_at": "2026-04-22T23:55:52Z",
   "task_id": "live-status-panel",
   "context": {
     "repo": "morning-brief",
