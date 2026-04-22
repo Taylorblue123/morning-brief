@@ -1,9 +1,9 @@
 {
-  "status": "researching",
-  "headline": "Building MAE evaluators knowledge map",
-  "detail": "Reading research/mae-feishu-full.md to extract the full 17 rule + 10 judge evaluator list and their source locations in lib/evaluation/evaluators/",
-  "started_at": "2026-04-22T23:46:50Z",
-  "updated_at": "2026-04-22T23:46:50Z",
+  "status": "shipped",
+  "headline": "MAE evaluators knowledge-map page published",
+  "detail": "Full 29-evaluator inventory (17 rule + 10 judge + 2 infra) at /section.html?kind=learning with rubrics, coverage matrix, and open questions.",
+  "started_at": "2026-04-22T23:49:06Z",
+  "updated_at": "2026-04-22T23:49:06Z",
   "task_id": "live-status-panel",
   "context": {
     "repo": "morning-brief",
