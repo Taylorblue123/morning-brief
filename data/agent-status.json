@@ -1,9 +1,9 @@
 {
-  "status": "building",
-  "headline": "Deploying BedRock Astro site to Vercel",
-  "detail": "CLI deploy from ~/BedRock/site \u2014 no domain change, just getting preview URL wired so merged PR #1 produces a live artifact.",
-  "started_at": "2026-04-22T23:49:25Z",
-  "updated_at": "2026-04-22T23:49:25Z",
+  "status": "researching",
+  "headline": "BedRock Vercel deploy blocked on auth \u2014 moving on",
+  "detail": "Logged R006 in /feedback for when you're back. Pivoting to self-evolving persona research (your side idea).",
+  "started_at": "2026-04-22T23:49:40Z",
+  "updated_at": "2026-04-22T23:49:40Z",
   "task_id": "live-status-panel",
   "context": {
     "repo": "morning-brief",
