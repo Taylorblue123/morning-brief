@@ -11,6 +11,18 @@
         "c — I'll run vercel myself",
         "skip, keep on surge.sh for now"
       ]
+    },
+    {
+      "id": "R007",
+      "topic": "self-evolving-persona-v0",
+      "question": "Prototype the self-evolving persona system (v0, ~10h)?",
+      "context": "Full research brief + architecture + buildable scope at https://taylorblue123.github.io/morning-brief/page.html?path=experiments/self-evolving-persona — summary: episodic event log → nightly distillation cron → persona core (semantic claims with provenance) → /persona viewer page. Answers your 'tedious briefing' pain directly. v0 = local-only, chat + commits + journal sources only (no file-system traces for privacy).",
+      "options": [
+        "yes, build v0 this weekend",
+        "yes, but narrower scope",
+        "design doc only, revisit later",
+        "not worth it"
+      ]
     }
   ]
 }

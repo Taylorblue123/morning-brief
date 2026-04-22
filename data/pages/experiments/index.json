@@ -2,11 +2,22 @@
   "kind": "experiments",
   "items": [
     {
+      "slug": "self-evolving-persona",
+      "date": "2026-04-22",
+      "title": "Self-evolving persona \u2014 research + prototype spec",
+      "subtitle": "Research brief + buildable v0 scope for a personal agent that evolves its self-model from observations.",
+      "icon": "\ud83e\uddec",
+      "stats": [
+        "v1 spec",
+        "~10h prototype"
+      ]
+    },
+    {
       "slug": "2026-04-22-dashboard-v3",
       "date": "2026-04-22",
-      "title": "Dashboard v3 — Apple redesign + inner pages",
+      "title": "Dashboard v3 \u2014 Apple redesign + inner pages",
       "subtitle": "First full migration from Linear-dark single-page to Apple-minimal hub + drill-downs.",
-      "icon": "🧪",
+      "icon": "\ud83e\uddea",
       "stats": [
         "shipped",
         "5 section renderers",

@@ -1,0 +1,62 @@
+{
+  "kind": "experiments",
+  "slug": "self-evolving-persona",
+  "eyebrow": "side idea · research + prototype spec",
+  "title": "Self-evolving personal-agent persona — research brief + prototype spec",
+  "subtitle": "Wenxuan's open question: 'I hope every personal agent could have a real-time, self-evolving persona, so I won't face tedious text to do brief everyday.' This is the first pass at turning that into a buildable thing.",
+  "meta": [
+    "status: v1 draft",
+    "author: night-builder",
+    "last reviewed 2026-04-22",
+    "decision needed: prototype scope"
+  ],
+  "updated": "2026-04-22",
+  "blocks": [
+    {
+      "type": "callout",
+      "label": "The one-line thesis",
+      "text": "A personal agent that can tell me who I am *today* — without me re-explaining — is more valuable than one that can do one more tool call. Persona is the compounding moat of a personal AI."
+    },
+    {
+      "type": "prose",
+      "markdown": "## The problem Wenxuan stated\n\n> 'I hope every personal agent could have a real-time persona, self-evolving, so I won't face tedious text to do brief every day.'\n\nUnpacked:\n\n1. **Real-time** — persona reflects the last hour, not the last quarter. When Wenxuan ships a PR, the persona should know *in the next conversation* that he just shipped a PR.\n2. **Self-evolving** — no manual prompt editing; the agent updates its own persona from observed signals.\n3. **No tedious briefing** — the user should never have to restate context that the agent should already have learned.\n\n## What this is NOT\n\n- Not a chatbot that pretends to be a personality (role-play personas)\n- Not a static system prompt that gets written once\n- Not a RAG-over-chat-history — retrieval-on-demand isn't the same as an evolving self-model"
+    },
+    {
+      "type": "prose",
+      "markdown": "## Prior art — what exists in 2026\n\n### Research I found (arxiv 2026-04)\n\n| Paper | Takeaway |\n|---|---|\n| **FileGram** (2604.04901) | Grounds agent personalization in *file-system behavioral traces* — the files you touch, when, and how, are a high-signal personalization substrate. No explicit user input needed. Directly relevant. |\n| **EvolvR** (self-evolving pairwise reasoning) | Multi-persona self-synthesis for judge training. Peripheral, but confirms 'self-evolving' is a live research direction in 2026. |\n| **MemGPT / Letta** (2023, still the reference arch) | Agent with tiered memory (context window = RAM, archival = disk) and self-paging. First production system to separate 'working persona' from 'long-term observations'. |\n| **Generative Agents** (Park et al., 2023) | Observation → reflection → memory stream. The *reflection* step is where persona condensation happens. |\n| **Voyager** (Wang et al., 2023) | Lifelong learning via skill library, not persona — but the 'append & self-edit' pattern generalizes. |\n\n### Industry state (2026-Q1/Q2)\n\n- **ChatGPT Memory** (OpenAI) — opaque, user-invisible, no write API. Feels like the MVP of what Wenxuan is asking for, but you can't inspect or edit it.\n- **Claude Projects** (Anthropic) — project-level instructions but no auto-evolution.\n- **Cursor Rules / `AGENTS.md`** (2025) — static per-repo prompts, explicitly manual.\n- **Hermes (this stack)** — already has `memory`, `user`, `skills` partitions. Closest to the target architecture, but the evolution step is still agent-initiated (I add a memory when I notice something), not continuous."
+    },
+    {
+      "type": "prose",
+      "markdown": "## The design gap I see\n\nMost 'memory' systems store **events**. A persona needs to store **identity hypotheses**.\n\n| Event memory | Persona memory |\n|---|---|\n| 'User merged PR #1 in BedRock at 14:22' | 'User ships end-to-end features when solo, prefers draft PRs + diff review when collaborative.' |\n| 'User paused 3 times in conversation' | 'User's decision style: asks clarifying questions when the option space is >3.' |\n| 'User switches CN/EN depending on topic' | 'User thinks in CN for product strategy, EN for engineering. Responds faster when matched.' |\n\nEvent memory is **episodic** (facts, timestamped). Persona memory is **semantic** (claims about the self).\n\nThe evolution step = periodically distill episodic observations into updated semantic claims, with provenance and decay."
+    },
+    {
+      "type": "prose",
+      "markdown": "## Proposed architecture — 'Persona Core'\n\n```\n┌─────────────────────────────────────────────────────────┐\n│                     OBSERVATION LAYER                    │\n│  Chat transcripts · Commits · Calendar · Files touched   │\n│  Feishu messages · Schedule adherence · Decision timings │\n└──────────────────────┬──────────────────────────────────┘\n                       │  (always-on signal ingestion)\n                       ▼\n┌─────────────────────────────────────────────────────────┐\n│                   EPISODIC STORE                         │\n│  JSONL: {ts, source, type, payload, salience_score}     │\n│  Never rewritten. Source of truth for the evolution.    │\n└──────────────────────┬──────────────────────────────────┘\n                       │  (hourly / daily distillation)\n                       ▼\n┌─────────────────────────────────────────────────────────┐\n│                 PERSONA CORE (semantic)                  │\n│  Claims: {id, text, support_count, last_evidence_ts,    │\n│           confidence, contradicts_ids[]}                 │\n│  - Preferences                                           │\n│  - Working style                                         │\n│  - Current projects & priorities                         │\n│  - Skills & knowledge state                              │\n│  - Recent state (what happened this week)                │\n└──────────────────────┬──────────────────────────────────┘\n                       │  (injected every turn, 500-800 tokens)\n                       ▼\n                  [SYSTEM PROMPT]\n```\n\n### The 3 evolution rules\n\n1. **Support accumulates.** Every new observation that matches an existing claim bumps its `support_count` and `last_evidence_ts`.\n2. **Contradictions fork, not overwrite.** New evidence that contradicts a claim creates a sibling claim; confidence on the original decays. Both stay visible until one wins on support.\n3. **Claims expire on silence.** If `last_evidence_ts > 30d`, confidence decays. Low-confidence claims get moved to cold storage, not deleted.\n\n### The distillation loop (the 'self-evolving' bit)\n\nRuns on a schedule (every N minutes / on event boundary). Prompt:\n\n> Given these new observations since T_last and the current persona core, propose:\n> (a) new claims, (b) claims to strengthen, (c) claims to contradict. Return as a diff.\n\nLLM produces a structured diff → apply → write back. Agent's next turn reads the updated core."
+    },
+    {
+      "type": "prose",
+      "markdown": "## Wenxuan's stack already has most of this\n\n- **`memory` store** — the episodic substrate. Already capped, already append-only-ish.\n- **`user` store** — the *start* of a persona core, but it's hand-edited and not auto-evolving.\n- **`session_search`** — the bridge from episodic to semantic; the agent already uses this.\n- **`skill_manage`** — procedural memory. Separate axis (not persona), already working.\n\n**What's missing:**\n\n1. An **observation ingestor** that writes structured events to a durable episodic log (not just chat transcripts).\n2. A **distillation cron** that runs hourly and updates `user` from episodic → semantic.\n3. A **persona viewer** (dashboard inner page) so Wenxuan can read what the agent thinks of him, correct it, and watch it evolve.\n\n## Prototype scope (v0 — buildable this week)\n\n| Component | Where | Effort |\n|---|---|---|\n| Event log | `~/.hermes/persona/episodic.jsonl` | 1 h |\n| Ingestor hooks | Existing agent lifecycle + `data/agent-journal.jsonl` feed | 2 h |\n| Nightly distillation cron | Reuses `wenxuan-overnight-workflow` skill, runs at 23:50 | 2 h |\n| Persona viewer | `/persona` inner page on the morning brief dashboard, reads `~/.hermes/persona/claims.json` | 3 h |\n| Correction UI | One-click 'this claim is wrong' on the viewer; writes a refutation event | 2 h |\n| Inject into system prompt | Via `memory` tool at session start | 0 h (free, already done) |\n\n**Total: ~10 hours. Achievable in a single weekend.**"
+    },
+    {
+      "type": "prose",
+      "markdown": "## Risks & open questions\n\n### Privacy\nEvery signal the ingestor captures is a personal datapoint. File-system traces (à la FileGram) are the highest-signal, highest-risk source. **Decision needed:** what sources are in-scope for v0? (Safe default: chat + commits + morning-brief decisions only.)\n\n### Drift\nLLM distillation will hallucinate claims. Mitigations: keep provenance (cite the 3+ observations that support each claim), allow user refutation, cap core size at ~50 claims.\n\n### The 'horror' failure mode\nImagine the agent proposes: 'User is easily frustrated when...' — and it's right, but seeing it written out is upsetting. **Rule:** persona claims should be framed in terms of *preferences and working styles*, not character judgments. This is a prompt-engineering problem, solvable with rubric.\n\n### Who owns the core?\nIf persona lives in `~/.hermes/persona/`, it's local. If we sync to cloud, it becomes portable across devices but needs encryption. v0 = local-only.\n\n### Does this actually reduce 'tedious briefing'?\nOnly if the persona core is *actually injected* every turn and is *actually relevant* to the task. Metric: count of '(I already told you this)' corrections per week. Target: trend to zero over 30 days."
+    },
+    {
+      "type": "callout",
+      "label": "Decision I need from Wenxuan",
+      "text": "Do we prototype this? If yes: (a) ship a minimal v0 this weekend, (b) scope it to chat+commits+journal only for privacy, (c) expose via /persona page for live inspection. If no: I'll keep this as a design doc and revisit when the dashboard work stabilizes."
+    },
+    {
+      "type": "checklist",
+      "id": "persona-v0-followup",
+      "items": [
+        "Get Wenxuan's go/no-go on prototype scope",
+        "Draft the distillation prompt + eval cases (dogfood on own chat history first)",
+        "Decide: 50-claim cap, or unbounded with decay?",
+        "Design the /persona inner page — read-only vs. editable-with-provenance",
+        "How does this interact with the existing 'user' memory partition? Replace? Augment?",
+        "Write the initial observations schema (event types, salience scoring)"
+      ]
+    }
+  ]
+}
