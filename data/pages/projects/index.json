@@ -2,11 +2,22 @@
   "kind": "projects",
   "items": [
     {
+      "slug": "crumbs-ux-audit-2026-04-22",
+      "date": "2026-04-22",
+      "title": "Crumbs landing \u2014 UX audit & polish backlog",
+      "subtitle": "Vision audit found 3 high-leverage conversion fixes (contrast, value prop, CTA copy). Ready to draft a 90-min PR.",
+      "icon": "\ud83c\udf5e",
+      "stats": [
+        "8 backlog items",
+        "3 ready for PR"
+      ]
+    },
+    {
       "slug": "crumbs-v2",
       "date": "2026-04-22",
-      "title": "Crumbs v2 · identity card",
-      "subtitle": "PR #1 merged ✓ — social meta + OG image live after Railway redeploy.",
-      "icon": "🍞",
+      "title": "Crumbs v2 \u00b7 identity card",
+      "subtitle": "PR #1 merged \u2713 \u2014 social meta + OG image live after Railway redeploy.",
+      "icon": "\ud83c\udf5e",
       "stats": [
         "82% done",
         "PR #1 merged",
@@ -18,7 +29,7 @@
       "date": "2026-04-22",
       "title": "Personal website (BedRock)",
       "subtitle": "Astro site bolted onto BedRock. PR #1 draft. Awaiting review + Vercel setup.",
-      "icon": "🌐",
+      "icon": "\ud83c\udf10",
       "stats": [
         "55% done",
         "PR #1 draft",
@@ -30,7 +41,7 @@
       "date": "2026-04-22",
       "title": "Gestgo",
       "subtitle": "Food + discovery companion app. Concept phase, no code yet.",
-      "icon": "🍜",
+      "icon": "\ud83c\udf5c",
       "stats": [
         "10% done",
         "concept"

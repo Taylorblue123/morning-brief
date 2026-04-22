@@ -1,0 +1,49 @@
+{
+  "kind": "projects",
+  "slug": "crumbs-ux-audit-2026-04-22",
+  "eyebrow": "Crumbs · UX audit",
+  "title": "Crumbs landing page — UX audit & polish backlog",
+  "subtitle": "Vision-assisted audit of crumbs-production.up.railway.app as of 2026-04-22. Ranked by conversion impact.",
+  "meta": [
+    "status: audit v1",
+    "source: live site + vision pass",
+    "last reviewed 2026-04-22",
+    "next: PR with fixes 1-3"
+  ],
+  "updated": "2026-04-22",
+  "blocks": [
+    {
+      "type": "callout",
+      "label": "One-line verdict",
+      "text": "The page has voice and vibe. It does not yet have a clear value prop for first-timers, and the hero text is fighting the background illustration for legibility. Fix contrast first, then sell the thing."
+    },
+    {
+      "type": "prose",
+      "markdown": "## What a first-timer sees (verbatim from vision pass)\n\n- Biggest text on the page: **'ENFP'** — which only means something to MBTI-fluent visitors\n- Background illustration competes with body copy for luminance\n- Social-proof line reads '✦ 3,442 crumbs dropped today' — 'crumb' is undefined jargon to anyone not already in the app\n- CTA: **'I WANT MY ROAST'** — punchy, but no hint of what happens next (cost? signup? time?)\n\n## The first-timer's implicit objections\n\n1. *'What does this actually do?'* — not answered above the fold\n2. *'Is it free? Does it want my email?'* — no reassurance near the CTA\n3. *'How long will this take?'* — no indication\n4. *'Will the result be any good?'* — no sample shown"
+    },
+    {
+      "type": "prose",
+      "markdown": "## Backlog — ranked by conversion leverage\n\n| # | Fix | Leverage | Effort |\n|---|---|---|---|\n| 1 | **Contrast fix** — dark overlay behind hero copy (`linear-gradient(rgba(13,14,40,0.85), rgba(13,14,40,0.95))`) OR confine illustration to top 30% | 🔥🔥🔥 | 20 min |\n| 2 | **Value-prop H1** — 'Get roasted based on your personality type.' with sub 'Take a 60-second quiz. We'll tell you who you really are — then drag you for it.' Demote 'ENFP' to a rotating sample card | 🔥🔥🔥 | 30 min |\n| 3 | **CTA specificity** — 'Roast me (takes 60 seconds) →' with tiny grey line below: 'Free · No signup · 16 personality types' | 🔥🔥 | 15 min |\n| 4 | **'How it works' 3-step strip** — '1. Answer 10 questions → 2. Get your type → 3. Receive your roast' above or below the CTA | 🔥🔥 | 40 min |\n| 5 | **Social proof rewording** — 'crumbs dropped' → '3,442 people roasted today' or add one attributed testimonial | 🔥 | 10 min |\n| 6 | **Mobile CTA shorten** — 'Roast me →' at <400px viewport to avoid wrap | 🔥 | 5 min |\n| 7 | **Sample output teaser** — blurred/teased real roast above CTA so skeptics can preview | 🔥🔥 | 1 h |\n| 8 | **Footer** — 'Privacy · Terms · Contact' one-line | 🔥 | 15 min |"
+    },
+    {
+      "type": "prose",
+      "markdown": "## Proposed PR scope — 'Landing polish v1'\n\nShip fixes **#1 + #2 + #3** as one PR, plus the mobile CTA tweak (#6). These are the highest-leverage changes and they compose into a single coherent above-the-fold rewrite. Total ~90 min.\n\n**PR title draft:** `polish(landing): readable hero + clear value prop + specific CTA`\n\n**Commit message:**\n```\nLanding page v1 polish — fix the three biggest conversion objections\nvisible to a first-time visitor.\n\n1. Add gradient overlay behind hero so body text hits WCAG AA contrast\n2. Replace 'ENFP' as H1 with plain-language value prop; move ENFP to\n   a rotating sample card below\n3. CTA copy: 'Roast me (60 sec) →' + reassurance line\n   'Free · No signup · 16 personality types'\n4. Shorten CTA to 'Roast me →' on <400px viewport\n\nDeferred to v2: 'how it works' strip, social-proof rewording, sample\noutput teaser, footer.\n```\n\n## Risks\n\n- **Voice dilution.** Crumbs' voice *is* part of the moat — replacing 'I WANT MY ROAST' with 'Roast me (60 sec) →' loses a sliver of attitude. Consider A/B if the option exists; otherwise, keep caps-lock energy in the sub-label.\n- **'ENFP' as hero is intentional for MBTI-native audience.** If the current audience is already MBTI-literate (e.g., coming from TikTok), the value-prop rewrite might *reduce* resonance for the power user to help the first-timer. Metric to watch: bounce rate on the hero vs. CTA click-through.\n\n## Dependencies / context\n\n- Repo: `Taylorblue123/crumbs`, branch `v2-identity-card`\n- Last successful deploy: Railway, via PR #1 (merged earlier today)\n- Locally cloned at `~/crumbs`"
+    },
+    {
+      "type": "callout",
+      "label": "Decision gate",
+      "text": "I can draft the PR (fixes 1-3 + #6, ~90 min) as the next side-project task and open it as a draft for your review. Surfacing this as R008 in /feedback — approve and I'll build it."
+    },
+    {
+      "type": "checklist",
+      "id": "crumbs-audit-next",
+      "items": [
+        "Capture current landing HTML/CSS into research dir for diff preview",
+        "Measure current text contrast ratio (expect <2:1 based on vision)",
+        "Sketch the 3 variants in a local HTML file before touching the repo",
+        "Draft PR with small, atomic commits so you can accept/revert per fix",
+        "Post-merge: instrument CTA click-through if not already tracked"
+      ]
+    }
+  ]
+}

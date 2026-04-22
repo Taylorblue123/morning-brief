@@ -5,24 +5,21 @@
       "topic": "bedrock-vercel-deploy",
       "question": "Deploy BedRock Astro site to Vercel?",
       "context": "PR #1 merged; site/ scaffold is ready. Vercel CLI needs auth — either (a) share vercel login email + OTP via device flow, (b) give me a token from https://vercel.com/account/tokens, or (c) you deploy yourself: `cd ~/BedRock && npx vercel --prod`. No domain decision required for first deploy — will land at auto-assigned vercel.app URL and we can add a custom domain later.",
-      "options": [
-        "a — share email, I'll handle OTP",
-        "b — I'll paste a Vercel token",
-        "c — I'll run vercel myself",
-        "skip, keep on surge.sh for now"
-      ]
+      "options": ["a — share email, I'll handle OTP", "b — I'll paste a Vercel token", "c — I'll run vercel myself", "skip, keep on surge.sh for now"]
     },
     {
       "id": "R007",
       "topic": "self-evolving-persona-v0",
       "question": "Prototype the self-evolving persona system (v0, ~10h)?",
-      "context": "Full research brief + architecture + buildable scope at https://taylorblue123.github.io/morning-brief/page.html?path=experiments/self-evolving-persona — summary: episodic event log → nightly distillation cron → persona core (semantic claims with provenance) → /persona viewer page. Answers your 'tedious briefing' pain directly. v0 = local-only, chat + commits + journal sources only (no file-system traces for privacy).",
-      "options": [
-        "yes, build v0 this weekend",
-        "yes, but narrower scope",
-        "design doc only, revisit later",
-        "not worth it"
-      ]
+      "context": "Full research brief at /page.html?path=experiments/self-evolving-persona — episodic event log → nightly distillation cron → persona core (semantic claims with provenance) → /persona viewer page. Answers your 'tedious briefing' pain directly. v0 = local-only, chat + commits + journal sources only.",
+      "options": ["yes, build v0 this weekend", "yes, but narrower scope", "design doc only, revisit later", "not worth it"]
+    },
+    {
+      "id": "R008",
+      "topic": "crumbs-landing-polish-pr",
+      "question": "Draft a Crumbs landing-page polish PR (~90 min, 4 fixes)?",
+      "context": "Full audit at /page.html?path=projects/crumbs-ux-audit-2026-04-22 — top 3 high-leverage fixes: (1) gradient overlay to fix hero contrast, (2) plain-language value prop replacing 'ENFP' as H1, (3) specific CTA copy 'Roast me (60 sec) →' with reassurance line + mobile shorten. Would open as a draft PR on Taylorblue123/crumbs @ v2-identity-card for your review before merge.",
+      "options": ["yes, draft the PR", "yes but only fix #1 (contrast)", "wait, discuss first", "skip, not a priority"]
     }
   ]
 }
