@@ -1,9 +1,9 @@
 {
-  "status": "shipped",
-  "headline": "MAE evaluators knowledge-map page published",
-  "detail": "Full 29-evaluator inventory (17 rule + 10 judge + 2 infra) at /section.html?kind=learning with rubrics, coverage matrix, and open questions.",
-  "started_at": "2026-04-22T23:49:06Z",
-  "updated_at": "2026-04-22T23:49:06Z",
+  "status": "building",
+  "headline": "Deploying BedRock Astro site to Vercel",
+  "detail": "CLI deploy from ~/BedRock/site \u2014 no domain change, just getting preview URL wired so merged PR #1 produces a live artifact.",
+  "started_at": "2026-04-22T23:49:25Z",
+  "updated_at": "2026-04-22T23:49:25Z",
   "task_id": "live-status-panel",
   "context": {
     "repo": "morning-brief",
