@@ -192,10 +192,17 @@
       ]
     },
     {
+      "type": "markdown",
+      "icon": "🧭",
+      "title": "Reflection & plan — v3",
+      "meta": "reviewable summary",
+      "text": "**What I heard:** Apple-style + minimalist. Important content deserves inner pages (blog/code/interactive viz). Agent should work during the day too, build side projects when idle, and the feedback loop should compound.\n\n**Three redesigns, one direction:**\n\n1. **Dashboard v3 — Apple shell + drill-downs.** Swap Linear dark for Apple tokens (alternating black / `#f5f5f7`, SF Pro, single blue accent, pill CTAs). Hub stays minimal — cards link to inner pages like `/papers/<slug>` where the agent pours depth (markdown + code + p5.js viz + arXiv embed).\n\n2. **24/7 agent — 4 cron modes.** 🌅 Morning brief (07:00) · ☀️ Daytime learning (every 2h, 09–17 weekdays — reads MAE docs + evaluators, builds a knowledge map at `/learning/*`) · 🌙 Night builder (22:00 — drafts PRs on side projects, stops at review checkpoints) · 🔔 On-demand review. All write to a shared `agent-journal.jsonl` + `pending-review.json`.\n\n3. **Compounding feedback.** `decisions.json` is the ADR log (seeded today with D001–D003). `/feedback` page surfaces pending questions as one-tap chips. Every answer becomes a typed decision — I never re-ask.\n\n**Full doc:** [PROPOSAL-v3.md](https://github.com/Taylorblue123/morning-brief/blob/main/PROPOSAL-v3.md) — rollout plan D+0 through D+7, safety rails, migration path, token budgets.\n\n**Decisions I need from you → next section.**"
+    },
+    {
       "type": "overnight-log",
       "icon": "🌙",
       "title": "Overnight iteration log — dashboard",
-      "meta": "v1 → v2.1",
+      "meta": "v1 → v2.2",
       "items": [
         {
           "time": "09:49",
@@ -236,42 +243,97 @@
               "url": "https://github.com/Taylorblue123/morning-brief/blob/main/SCHEMA.md"
             }
           ]
+        },
+        {
+          "time": "18:35",
+          "status": "shipped",
+          "title": "v2.2 — decisions.json seeded (D001–D003)",
+          "detail": "Your feedback now lives in code, not memory. Paper = **mix 1 of each** (new + fit-to-MAE). Trends = **HN + Reddit + Product Hunt**. Review-points = **cap 3, min 1**. Agent loads this at every run — never re-asks.",
+          "links": [
+            {
+              "label": "decisions.json",
+              "url": "https://github.com/Taylorblue123/morning-brief/blob/main/data/decisions.json"
+            }
+          ]
+        },
+        {
+          "time": "18:45",
+          "status": "in-progress",
+          "title": "v3 PROPOSAL drafted",
+          "detail": "Apple-minimal redesign + multi-page drill-downs (`/papers/*`, `/learning/*`, `/projects/*`, `/experiments/*`, `/feedback`) + 24/7 agent workflow (4 modes via cron) + compounding feedback loop. See proposal doc below.",
+          "links": [
+            {
+              "label": "PROPOSAL-v3.md",
+              "url": "https://github.com/Taylorblue123/morning-brief/blob/main/PROPOSAL-v3.md"
+            }
+          ]
         }
       ]
     },
     {
       "type": "review-points",
       "icon": "🔍",
-      "title": "3 points I need you to review",
-      "meta": "please reply",
+      "title": "6 decisions before I build v3",
+      "meta": "reply e.g. Q1a Q2abc Q3a Q4b Q5a Q6=200k",
       "items": [
         {
-          "question": "Paper picker — right signal?",
-          "context": "I searched arXiv with `LLM judge multi-agent evaluation benchmark` and picked the Orogat et al. (2026-02) paper because it maps onto MAE's architecture. Should I bias toward newer/less-cited papers, or prioritize depth-of-fit to your current work?",
+          "question": "Q1. Dashboard v3 default theme?",
+          "context": "Apple system has two moods — cinematic black for hero content, off-white `#f5f5f7` for informational. Which should open by default?",
           "options": [
-            "bias newer (≤7 days)",
-            "bias fit-to-MAE",
-            "mix — 1 of each",
-            "let me pick from top-5"
+            "a) Apple dark",
+            "b) Apple light (off-white)",
+            "c) auto-follow OS",
+            "d) toggle in header"
           ]
         },
         {
-          "question": "Trends sourcing — HN only, or expand?",
-          "context": "Today's 3 trends came from Hacker News top stories. Do you want me to also scan r/LocalLLaMA, r/singularity, Product Hunt, or major Chinese sources (Weibo / 小红书 / 36kr)? More sources = wider lens but more noise.",
+          "question": "Q2. Which inner pages ship first?",
+          "context": "Each inner page is one JSON type + one renderer. I can ship 3 in week 1. Pick up to 3 — rest come week 2.",
           "options": [
-            "HN only (fast)",
-            "HN + Reddit",
-            "+ Product Hunt",
-            "+ Chinese sources"
+            "a) /papers/* deep-dives w/ code+viz",
+            "b) /learning/* MAE knowledge map",
+            "c) /projects/* side-project dashboards",
+            "d) /experiments/* overnight results",
+            "e) /feedback page"
           ]
         },
         {
-          "question": "Review-points cadence — daily or when material?",
-          "context": "A dedicated 'things I need your input on' section forces a feedback loop so the brief self-evolves. But if it runs empty, it becomes noise. Should I force 3 every day, or only include when I have real open questions?",
+          "question": "Q3. Daytime learning cadence?",
+          "context": "Agent reads ONE MAE doc or ONE evaluator per run, emits a knowledge-map note. More runs = faster onboarding but more token burn.",
           "options": [
-            "force 3 daily",
-            "only when real",
-            "cap at 3, min 1"
+            "a) every 2h, 09–17 weekdays (default)",
+            "b) twice a day (12:00 + 17:00)",
+            "c) hourly, only when laptop awake",
+            "d) no daytime — overnight only"
+          ]
+        },
+        {
+          "question": "Q4. Night builder — how autonomous?",
+          "context": "When idle, agent picks a side-project task (Crumbs / personal site / Gestgo) and works on it. Safer options draft; bolder options push.",
+          "options": [
+            "a) draft PRs freely, ask before merge",
+            "b) propose commits, wait for my push",
+            "c) simulate locally, show diff at next brief",
+            "d) skip for now"
+          ]
+        },
+        {
+          "question": "Q5. Where do crons run?",
+          "context": "Laptop-local is simplest but only runs when Mac is awake. Cloud (GitHub Actions) is always-on but needs secrets management.",
+          "options": [
+            "a) laptop only",
+            "b) move to cloud (GitHub Actions)",
+            "c) start laptop-local, decide later"
+          ]
+        },
+        {
+          "question": "Q6. Daily token/cost budget?",
+          "context": "Proposed default: 200k tokens/day across all modes. Morning brief flags at 80%, modes auto-pause at 100%. Reply with a preset or a number.",
+          "options": [
+            "default (200k)",
+            "conservative (100k)",
+            "aggressive (500k)",
+            "no cap, trust me"
           ]
         }
       ]
