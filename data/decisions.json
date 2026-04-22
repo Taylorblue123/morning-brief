@@ -81,6 +81,15 @@
       "choice": "no-hard-cap-for-now",
       "detail": "No fixed daily cap. On rate-limit hit, pause the mode and surface in next brief as review-point. Log tokens per run in agent-journal.jsonl for visibility.",
       "source": "Wenxuan Q6"
+    },
+    {
+      "id": "D010",
+      "date": "2026-04-22",
+      "topic": "crumbs-pr-1-merged",
+      "question": "Merge Crumbs PR #1 (social meta + OG image)?",
+      "choice": "merge as-is (squash)",
+      "detail": "User approved 2026-04-22. Merged via `gh pr merge --squash --delete-branch`. Merge commit 66ccce6. v2-identity-card now contains the OG improvements.",
+      "source": "Wenxuan approval 2026-04-22"
     }
   ],
   "pending_review": []

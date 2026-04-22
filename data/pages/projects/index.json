@@ -5,12 +5,12 @@
       "slug": "crumbs-v2",
       "date": "2026-04-22",
       "title": "Crumbs v2 · identity card",
-      "subtitle": "Draft PR #1 adds social meta tags + OG image. Awaiting your review.",
+      "subtitle": "PR #1 merged ✓ — social meta + OG image live after Railway redeploy.",
       "icon": "🍞",
       "stats": [
-        "78% done",
-        "PR #1 draft",
-        "awaiting review"
+        "82% done",
+        "PR #1 merged",
+        "awaiting Railway deploy"
       ]
     },
     {

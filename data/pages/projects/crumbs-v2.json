@@ -7,8 +7,8 @@
   "meta": [
     "Railway",
     "Next.js",
-    "branch: polish/social-meta-tags",
-    "PR #1 draft"
+    "v2-identity-card",
+    "PR #1 merged ✓"
   ],
   "updated": "2026-04-22",
   "blocks": [
@@ -19,8 +19,8 @@
     },
     {
       "type": "callout",
-      "label": "Draft PR open",
-      "text": "**[#1 polish: social meta tags](https://github.com/Taylorblue123/crumbs/pull/1)** · branch `polish/social-meta-tags`. Build green. Adds OG + Twitter + WeChat meta + a 1200×630 OG image. Awaiting your review before merge."
+      "label": "✅ PR #1 merged",
+      "text": "**[#1 polish: social meta tags](https://github.com/Taylorblue123/crumbs/pull/1)** merged 2026-04-22 (squash, commit `66ccce6`). Railway will redeploy `v2-identity-card` shortly — link unfurls in Feishu/Twitter/WeChat should now show the branded OG card."
     },
     {
       "type": "prose",

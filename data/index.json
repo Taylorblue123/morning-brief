@@ -15,8 +15,8 @@
     {
       "date": "2026-04-22",
       "date_display": "Wednesday · Apr 22, 2026",
-      "tldr": "**Night-builder: 1 PR shipped, 1 task paused.** [Crumbs PR #1](https://github.com/Taylorblue123/crumbs/pull/1) (social meta + OG) is green and awaiting your merge call. Personal-site work **paused** — the BedRock repo isn't a website, I need your call on scaffold before writing code. Two items in [/feedback](./feedback.html).",
-      "tldr_short": "Crumbs PR #1 ready for review. Personal-site blocked on scaffold decision."
+      "tldr": "**Crumbs PR #1 merged ✓** — social meta + OG image now on `v2-identity-card` (commit `66ccce6`). Railway redeploys within a minute. [Validate the unfurl →](https://www.opengraph.xyz/url/https%3A%2F%2Fcrumbs-production.up.railway.app%2F) once it's live. One open question remains: personal-site scaffold (R002).",
+      "tldr_short": "Crumbs PR #1 merged. Railway redeploying. Personal-site scaffold still blocked on R002."
     }
   ]
 }
