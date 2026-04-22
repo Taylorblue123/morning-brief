@@ -1,9 +1,9 @@
 {
-  "status": "working",
-  "headline": "Refreshed dashboard hero to reflect today's real shipped work",
-  "detail": "KPI strip + focus cards now show 7 shipped today, 3 decisions waiting. Ready for next task.",
-  "started_at": "2026-04-22T23:55:52Z",
-  "updated_at": "2026-04-22T23:55:52Z",
+  "status": "researching",
+  "headline": "Skimming arxiv for LLM-judge variance papers",
+  "detail": "Target: 2-3 recent papers directly applicable to MAE's 10 LLM-judge evaluators. Will add to /learning/papers.",
+  "started_at": "2026-04-22T23:56:06Z",
+  "updated_at": "2026-04-22T23:56:06Z",
   "task_id": "live-status-panel",
   "context": {
     "repo": "morning-brief",
