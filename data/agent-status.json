@@ -1,9 +1,9 @@
 {
-  "status": "researching",
-  "headline": "Auditing Crumbs UX for polish items",
-  "detail": "Browsing crumbs-production.up.railway.app with vision to capture concrete UX improvements for a future PR.",
-  "started_at": "2026-04-22T23:52:07Z",
-  "updated_at": "2026-04-22T23:52:07Z",
+  "status": "shipped",
+  "headline": "Crumbs UX audit + polish backlog published",
+  "detail": "Vision-assisted audit of landing page, 8 ranked fixes, 3 ready for a ~90-min PR. R008 filed in /feedback for go/no-go.",
+  "started_at": "2026-04-22T23:53:54Z",
+  "updated_at": "2026-04-22T23:53:54Z",
   "task_id": "live-status-panel",
   "context": {
     "repo": "morning-brief",
