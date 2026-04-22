@@ -1,0 +1,54 @@
+{
+  "kind": "learning",
+  "slug": "mae-evaluators-map",
+  "eyebrow": "MAE onboarding · evaluators",
+  "title": "The 29 MAE Evaluators — full map",
+  "subtitle": "Every registered evaluator, grouped by class and responsibility. Built from the eval wiki (DCSmdhgRIozoTRxFD31uFIDIsXb) §5.3 + lib/evaluation/evaluators/ as source-of-truth.",
+  "meta": [
+    "status: v1 — full inventory",
+    "last reviewed 2026-04-22",
+    "source: research/mae-feishu-full.md §5.3",
+    "next: deep-dive each row"
+  ],
+  "updated": "2026-04-22",
+  "blocks": [
+    {
+      "type": "callout",
+      "label": "Why this page exists",
+      "text": "Jun's onboarding task for week 1: 'make a spreadsheet of all 29 evaluators + what each one actually checks.' This is that spreadsheet, live on the dashboard so every morning brief can link into it."
+    },
+    {
+      "type": "prose",
+      "markdown": "## The taxonomy in one line\n\n**29 registered evaluators** = **17 rule-based** (hard pass/fail on structure) + **10 LLM-judge** (soft 1–5 quality scoring) + **2 infrastructure** (`pairwise_llm_judge` WIP, `noop`).\n\nSource of truth: `lib/evaluation/evaluators/` + the `@register_evaluator` decorator. The wiki table is a projection — **when in doubt, grep the codebase**.\n\n## The 5 dimensions they cover (from wiki §5)\n\n| Dimension | Scope | Owner | Evaluator families |\n|---|---|---|---|\n| **效果 / Output quality** | Final video: aesthetics, completeness, style consistency, voice, music, text | PM | `video_llm_judge` (8-dim), `creative_direction_judge`, `instruction_alignment_judge` |\n| **Agent 行为 / Agent behavior** | Are agent I/O, tools, skills reasonable? | RD + PM | `skill_selection`, `skill_quality_judge`, `content_understanding_judge`, `description_similarity` |\n| **Benchmark / System health** | Anomalies (infinite loops, wasted rounds, token explosion) + latency | RD | `performance`, `pipeline_completeness_rule`, `assembly_results`, `timeline_structure_rule` + diagnostics module |\n| **成本 / Cost** | Per-video + per-subagent token cost (split by caller × model) | RD | `cost_tracker` |\n| **安全合规 / Safety** | Text/image compliance | RD | *TODO — not yet implemented* |"
+    },
+    {
+      "type": "prose",
+      "markdown": "## Rule-based evaluators (17)\n\nDeterministic, low-variance, cheap to run. Fail loudly on structural violations.\n\n| # | Evaluator | What it checks | Notes |\n|---|---|---|---|\n| 1 | `pipeline_completeness_rule` | All expected pipeline stages ran | Highest-level smoke test |\n| 2 | `skill_selection` | Agent chose an appropriate skill for the task | Often first to regress on new intents |\n| 3 | `timeline_structure_rule` | Timeline has valid structure (no overlaps, gaps, negative durations) | Paired with `asset_time_range` |\n| 4 | `narration_plan_rule` | Narration plan is well-formed | Upstream of TTS |\n| 5 | `text_generation_rule` | Generated text meets length / content constraints | |\n| 6 | `effect_application_rule` | Effects applied to the correct segments | |\n| 7 | `asset_utilization` | User-provided assets actually appear in the final | Catches \"hallucinated\" edits |\n| 8 | `performance` | End-to-end latency within SLO | |\n| 9 | `cost_tracker` | Token / compute cost within budget | Breaks by caller × model |\n| 10 | `assembly_results` | Final assembly step produced valid output | |\n| 11 | `music_selection_rule` | Music selection metadata is valid | Paired with `music_*_judge` |\n| 12 | `asset_time_range` | Asset time ranges respect source asset bounds | |\n| 13 | `api_sla_check` | Upstream API responses within SLA | |\n| 14 | `api_progress_check` | Progress API emits expected milestones | |\n| 15 | `api_status_code_check` | Expected HTTP status codes throughout | |\n| 16 | `api_error_check` | No unexpected API errors surfaced | |\n| 17 | `…+1` | *(Wiki truncated at 16; confirm 17th from `lib/evaluation/evaluators/` registry when repo access lands)* | **open question for Jun** |\n\n**Pitfall:** rule evaluators can mask bugs if poorly scoped. The TextAgent 56→100% case (2026-03-01) landed a `max_validate_retries=3` rule as a backstop after the validate-loop death-spiral bug — it catches the symptom but the root cause fix was in the agent, not the rule."
+    },
+    {
+      "type": "prose",
+      "markdown": "## LLM-judge evaluators (10)\n\nSubjective, higher variance, more expensive. Inherit `BaseLLMJudgeEvaluator`.\n\n| # | Evaluator | Scores | Rubric |\n|---|---|---|---|\n| 1 | `video_llm_judge` ⭐ | Final video quality | **8 dimensions**: theme fit · segment rendering · narrative · visual · audio · editing/pacing · technical · overall. H1 target: **Kappa ≥ 0.7** vs ground truth |\n| 2 | `skill_quality_judge` | Was the selected skill executed well? | |\n| 3 | `creative_direction_judge` | Does the output match the intended creative direction? | Often paired with `instruction_alignment_judge` |\n| 4 | `instruction_alignment_judge` | Did the agent follow the user's instructions? | |\n| 5 | `content_understanding_judge` | Did the agent correctly understand the source content? | Upstream of most quality regressions |\n| 6 | `custom_llm_judge` | Generic rubric — task-parameterized | Escape hatch for one-off judges |\n| 7 | `description_similarity` | Agent's description of content vs ground-truth description | |\n| 8 | `music_search_vibe` | Did the selected music match the requested vibe? | Music-specific |\n| 9 | `music_audio_match` | Does the music audio match the intended mood? | |\n| 10 | `music_video_audio_match` | Does the music track the video's emotional arc? | Hardest of the music trio |\n\n**Infrastructure:** `pairwise_llm_judge` (WIP — comparative A/B rather than absolute score), `noop` (test harness).\n\n**Open question for Jun:** are the rubrics shared across the 10 judges (one template) or is each hand-tuned? If hand-tuned, what's the review cadence?"
+    },
+    {
+      "type": "prose",
+      "markdown": "## Coverage matrix (what's actually in CI vs. manual)\n\n| Level | What it means | Current state |\n|---|---|---|\n| **L1 — Availability** | Pipeline runs end-to-end without crashing | ✅ In CI |\n| **L2 — Correctness** | Rule evaluators pass | ✅ In CI |\n| **L3 — Quality** | LLM-judge scores above threshold | ⚠️ Not yet in CI — PR-triggered mini eval only |\n| **L4 — User satisfaction** | Real-user feedback signal | ❌ Not wired |\n\n**Leverage target for Wenxuan (per overnight onboarding plan):** own the L2 → L3 CI integration for `video_llm_judge`. Directly maps to Jerry's Q2 O3 OKR (自动化效果评估建设)."
+    },
+    {
+      "type": "checklist",
+      "id": "evaluators-deepening-queue",
+      "items": [
+        "Confirm the 17th rule evaluator name from the registry (wiki is truncated)",
+        "For each LLM-judge, capture the exact rubric prompt",
+        "Build a per-evaluator flappiness score (pass-rate stddev over last 30 days) — needs DB access",
+        "Find which rule evaluators have ever been 'masked' by a backstop rule like `max_validate_retries`",
+        "Walk through one end-to-end eval case and annotate which of the 29 fire in what order",
+        "Propose the CI gate threshold for each LLM-judge (draft for Jun's review)"
+      ]
+    },
+    {
+      "type": "callout",
+      "label": "Next daytime-learning run will",
+      "text": "Pick the first rule-based evaluator that has real cases in the failure log, and create /learning/evaluator-<name> with its spec + 2–3 concrete fail examples. Rolling plan: 1 evaluator/day × 29 days ≈ full coverage by mid-May."
+    }
+  ]
+}

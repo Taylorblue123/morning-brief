@@ -92,10 +92,10 @@
           "href": "./section.html?kind=learning",
           "icon": "\u2600\ufe0f",
           "title": "Learning \u00b7 MAE",
-          "subtitle": "Knowledge map of the eval paradigm + 29 evaluators. Daytime agent fills this in.",
+          "subtitle": "Full map of the 29 MAE evaluators + eval-driven dev paradigm notes.",
           "stats": [
-            "1 note",
-            "8/29 evaluators"
+            "2 pages",
+            "29 evaluators mapped"
           ],
           "cta": "Open knowledge map \u2192"
         },

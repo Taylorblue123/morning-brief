@@ -2,14 +2,25 @@
   "kind": "learning",
   "items": [
     {
+      "slug": "mae-evaluators-map",
+      "date": "2026-04-22",
+      "title": "The 29 MAE Evaluators \u2014 full map",
+      "subtitle": "All 17 rule + 10 LLM-judge evaluators with what-they-check, source refs, and open questions for Jun.",
+      "icon": "\ud83e\udded",
+      "stats": [
+        "17 rule \u00b7 10 judge \u00b7 2 infra",
+        "v1 complete"
+      ]
+    },
+    {
       "slug": "mae-eval-paradigm",
       "date": "2026-04-22",
-      "title": "MAE Evaluation Paradigm — overview",
+      "title": "MAE Evaluation Paradigm \u2014 overview",
       "subtitle": "Jun's eval-driven development philosophy + the 29 evaluators in two classes.",
-      "icon": "☀️",
+      "icon": "\u2600\ufe0f",
       "stats": [
-        "status: stub",
-        "evaluators: 8/29 understood"
+        "status: v1 \u2192 updated",
+        "paired with evaluators map"
       ]
     }
   ]
