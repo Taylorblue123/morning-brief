@@ -90,6 +90,24 @@
       "choice": "merge as-is (squash)",
       "detail": "User approved 2026-04-22. Merged via `gh pr merge --squash --delete-branch`. Merge commit 66ccce6. v2-identity-card now contains the OG improvements.",
       "source": "Wenxuan approval 2026-04-22"
+    },
+    {
+      "id": "D011",
+      "date": "2026-04-22",
+      "topic": "personal-site-scaffold",
+      "question": "How to bootstrap personal site?",
+      "choice": "bolt Astro onto BedRock",
+      "detail": "One repo for self-discovery (private docs) + self-presentation (public site). site/ dir, Astro static, Vercel deploy, .vercelignore protects private dirs.",
+      "source": "Wenxuan R002 reply 2026-04-22"
+    },
+    {
+      "id": "D012",
+      "date": "2026-04-22",
+      "topic": "truth-rule-cvpr",
+      "question": "Can the agent cite the CVPR 2026 / Confined Vibe / first-author claim?",
+      "choice": "NEVER (fake claim, scrub everywhere public)",
+      "detail": "Wenxuan flagged the claim as fake. Agent removed it from BedRock/site. Stale sources still contain it: wenxuan.surge.sh (live portfolio), portfolio/portfolio-content.md, ONBOARDING.md, INSTRUCTIONS.md, context/my-background.md, context/jd-2-*.md, fact-sheets/research-3d-scene.md. Memory entry updated with permanent TRUTH RULE.",
+      "source": "Wenxuan correction 2026-04-22"
     }
   ],
   "pending_review": []

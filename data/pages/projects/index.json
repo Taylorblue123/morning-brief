@@ -17,12 +17,12 @@
       "slug": "personal-site",
       "date": "2026-04-22",
       "title": "Personal website (BedRock)",
-      "subtitle": "Blocked — needs your call on scaffold (new repo vs. BedRock vs. defer).",
+      "subtitle": "Astro site bolted onto BedRock. PR #1 draft. Awaiting review + Vercel setup.",
       "icon": "🌐",
       "stats": [
-        "blocked",
-        "0% code",
-        "awaiting decision"
+        "55% done",
+        "PR #1 draft",
+        "awaiting review"
       ]
     },
     {

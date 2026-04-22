@@ -15,8 +15,8 @@
     {
       "date": "2026-04-22",
       "date_display": "Wednesday · Apr 22, 2026",
-      "tldr": "**Crumbs PR #1 merged ✓** — social meta + OG image now on `v2-identity-card` (commit `66ccce6`). Railway redeploys within a minute. [Validate the unfurl →](https://www.opengraph.xyz/url/https%3A%2F%2Fcrumbs-production.up.railway.app%2F) once it's live. One open question remains: personal-site scaffold (R002).",
-      "tldr_short": "Crumbs PR #1 merged. Railway redeploying. Personal-site scaffold still blocked on R002."
+      "tldr": "**Night-builder #2 shipped.** [BedRock PR #1](https://github.com/Taylorblue123/BedRock/pull/1) — Astro site bolted onto your existing repo, preserving privacy. ⚠️ **Correction:** first draft propagated a CVPR 2026 claim from your old portfolio — you flagged as fake, agent removed it everywhere in the PR. Stale sources still have it (R003).",
+      "tldr_short": "BedRock PR #1: Astro site. CVPR claim scrubbed per correction. 2 items in /feedback."
     }
   ]
 }

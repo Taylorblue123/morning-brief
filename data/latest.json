@@ -1,11 +1,11 @@
 {
   "date": "2026-04-22",
   "date_display": "Wednesday · Apr 22, 2026",
-  "version": "morning-brief v3.3",
-  "generated_at": "2026-04-22T12:24:43-07:00",
+  "version": "morning-brief v3.4",
+  "generated_at": "2026-04-22T13:04:26-07:00",
   "greeting": "Good morning, Wenxuan.",
-  "tldr": "**Crumbs PR #1 merged ✓** — social meta + OG image now on `v2-identity-card` (commit `66ccce6`). Railway redeploys within a minute. [Validate the unfurl →](https://www.opengraph.xyz/url/https%3A%2F%2Fcrumbs-production.up.railway.app%2F) once it's live. One open question remains: personal-site scaffold (R002).",
-  "tldr_short": "Crumbs PR #1 merged. Railway redeploying. Personal-site scaffold still blocked on R002.",
+  "tldr": "**Night-builder #2 shipped.** [BedRock PR #1](https://github.com/Taylorblue123/BedRock/pull/1) — Astro site bolted onto your existing repo, preserving privacy. ⚠️ **Correction:** first draft propagated a CVPR 2026 claim from your old portfolio — you flagged as fake, agent removed it everywhere in the PR. Stale sources still have it (R003).",
+  "tldr_short": "BedRock PR #1: Astro site. CVPR claim scrubbed per correction. 2 items in /feedback.",
   "sections": [
     {
       "type": "focus-cards",
@@ -497,6 +497,36 @@
               "url": "https://cards-dev.twitter.com/validator"
             }
           ]
+        },
+        {
+          "time": "22:30",
+          "status": "shipped",
+          "title": "BedRock PR #1 opened — Astro site bolted on",
+          "detail": "`site/astro-bolt-on` → `main`. Home + /now + /projects on Crumbs palette. `.vercelignore` + Astro scoped reads = double privacy layer. Build green. Privacy grep clean.",
+          "links": [
+            {
+              "label": "PR #1",
+              "url": "https://github.com/Taylorblue123/BedRock/pull/1"
+            }
+          ]
+        },
+        {
+          "time": "22:40",
+          "status": "blocked",
+          "title": "⚠️ Truth correction — CVPR 2026 claim flagged as fake",
+          "detail": "First draft pulled hero copy from `ONBOARDING.md`/`portfolio-content.md` asserting a CVPR 2026 first-author paper. You corrected: **the claim is fake**. Agent scrubbed every mention from the PR (home, projects, /now, OG description, description tag). Stale sources still contain it — **R003** proposes a scrub PR.",
+          "links": [
+            {
+              "label": "R003 in /feedback",
+              "url": "./feedback.html"
+            }
+          ]
+        },
+        {
+          "time": "22:45",
+          "status": "info",
+          "title": "TRUTH RULE stored in memory",
+          "detail": "Permanent rule: never cite CVPR 2026, Confined Vibe Optimization, first-author, Ming C. Lin / Matthias Zwicker, VLM-guided differentiable rendering in public content. D012 logged."
         }
       ]
     },
@@ -504,15 +534,25 @@
       "type": "review-points",
       "icon": "🔍",
       "title": "Awaiting your call",
-      "meta": "1 item · R001 resolved",
+      "meta": "2 items · night-builder output",
       "items": [
         {
-          "question": "Personal-site — how should I bootstrap it?",
-          "context": "BedRock repo is docs/context only. No web scaffold anywhere. Pick one and I'll ship the first PR next run.",
+          "question": "Review: BedRock PR #1 — Astro site bolted on",
+          "context": "Adds site/ with home, /now, /projects. CVPR claim scrubbed. Build green. Privacy grep clean. No icon/favicon.",
           "options": [
-            "new repo wenxuan.dev (Astro+Vercel)",
-            "bolt Astro onto BedRock",
-            "skip until after Crumbs launch"
+            "merge to main",
+            "request changes",
+            "close — redo differently"
+          ]
+        },
+        {
+          "question": "R003 — scrub the fake CVPR claim from stale sources?",
+          "context": "Still present in portfolio-site/ (live wenxuan.surge.sh), portfolio-content.md, ONBOARDING.md, INSTRUCTIONS.md, context/*, fact-sheets/research-3d-scene.md. Want me to open a follow-up PR?",
+          "options": [
+            "yes, open a scrub PR",
+            "scrub live site only",
+            "I'll do it myself",
+            "skip for now"
           ]
         }
       ]
