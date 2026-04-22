@@ -24,13 +24,13 @@ DATA = ROOT / "data"
 
 REQUIRED = ["date", "greeting", "sections"]
 
-def load_brief(path: str | None) -> dict:
+def load_brief(path):
     if path:
         with open(path, "r") as f:
             return json.load(f)
     return json.load(sys.stdin)
 
-def validate(b: dict) -> None:
+def validate(b):
     for k in REQUIRED:
         if k not in b:
             raise SystemExit(f"[schema] missing required key: {k}")
@@ -41,13 +41,13 @@ def validate(b: dict) -> None:
     b.setdefault("generated_at", datetime.datetime.now().astimezone().isoformat(timespec="seconds"))
     b.setdefault("version", "morning-brief v1")
 
-def write_brief(b: dict) -> pathlib.Path:
+def write_brief(b):
     out = DATA / f"{b['date']}.json"
     out.write_text(json.dumps(b, indent=2, ensure_ascii=False))
     (DATA / "latest.json").write_text(json.dumps(b, indent=2, ensure_ascii=False))
     return out
 
-def rebuild_index() -> None:
+def rebuild_index():
     briefs = []
     for p in sorted(DATA.glob("*.json")):
         if p.name in ("latest.json", "index.json"):
@@ -65,13 +65,13 @@ def rebuild_index() -> None:
     briefs.sort(key=lambda x: x["date"], reverse=True)
     (DATA / "index.json").write_text(json.dumps({"briefs": briefs}, indent=2, ensure_ascii=False))
 
-def git(*args, check=True) -> str:
+def git(*args, check=True):
     r = subprocess.run(["git", *args], cwd=ROOT, capture_output=True, text=True)
     if check and r.returncode != 0:
         raise SystemExit(f"git {' '.join(args)} failed:\n{r.stderr}")
     return r.stdout.strip()
 
-def commit_and_push(date: str, push: bool) -> None:
+def commit_and_push(date, push):
     git("add", "data/")
     status = git("status", "--porcelain")
     if not status:
@@ -82,7 +82,7 @@ def commit_and_push(date: str, push: bool) -> None:
         git("push", "origin", "main")
         print("[git] pushed to origin/main")
 
-def main() -> None:
+def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--from", dest="src", help="Brief JSON file (defaults to stdin)")
     ap.add_argument("--commit", action="store_true")

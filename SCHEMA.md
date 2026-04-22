@@ -28,6 +28,54 @@ renderer function — no template rewrite needed.
   "items": [ { "title": "...", "desc": "...", "tag": "work · MAE" } ] }
 ```
 
+### `paper-brief` — academic paper of the day
+```json
+{ "type": "paper-brief", "icon": "📄", "title": "Paper of the day",
+  "paper": {
+    "title": "...", "authors": "A. Author, B. Author et al.",
+    "arxiv_id": "2602.03128", "published": "2026-02-03",
+    "venue": "cs.AI · arXiv",
+    "url": "https://arxiv.org/abs/2602.03128",
+    "pdf_url": "https://arxiv.org/pdf/2602.03128",
+    "tldr": "One-sentence summary.",
+    "why": "Why it matters to Wenxuan (2 sentences max).",
+    "key_findings": ["bullet 1", "bullet 2", "bullet 3"]
+  } }
+```
+
+### `trends` — 3-up industry pulse cards (HN, Reddit, Product Hunt, etc.)
+```json
+{ "type": "trends", "icon": "📈", "title": "Industry pulse", "meta": "last 48h",
+  "items": [ {
+    "title": "...", "source": "HN · 273▲", "score": 273,
+    "url": "https://news.ycombinator.com/item?id=...",
+    "summary": "1 sentence.",
+    "why": "So what for Wenxuan (1 sentence)."
+  } ] }
+```
+
+### `review-points` — questions requiring Wenxuan's input
+```json
+{ "type": "review-points", "icon": "🔍", "title": "Please review",
+  "items": [ {
+    "question": "Short question?",
+    "context": "Why I'm asking.",
+    "options": ["choice A", "choice B", "other"]
+  } ] }
+```
+
+### `overnight-log` — iteration timeline
+```json
+{ "type": "overnight-log", "icon": "🌙", "title": "Overnight",
+  "items": [ {
+    "time": "14:20",
+    "status": "shipped",      /* shipped | in-progress | blocked | info */
+    "title": "What happened",
+    "detail": "Optional deeper detail with `code`/**bold**/[links](url).",
+    "links": [{ "label": "PR", "url": "https://..." }]
+  } ] }
+```
+
 ### `pulse-grid` — metric/info cards with optional progress bars
 ```json
 { "type": "pulse-grid", "icon": "💼", "title": "Work pulse", "meta": "eval team",

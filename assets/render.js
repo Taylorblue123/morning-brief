@@ -116,6 +116,100 @@ const RENDERERS = {
       </div>
       ${s.html || ""}
     </div>`,
+
+  "paper-brief": (s) => {
+    const p = s.paper || {};
+    return `
+    <div class="section">
+      <div class="section-head">
+        <span class="section-icon">${s.icon || "📄"}</span>
+        <span class="section-title">${esc(s.title || "Paper of the day")}</span>
+        ${s.meta ? `<span class="section-meta">${esc(s.meta)}</span>` : ""}
+      </div>
+      <div class="paper-card">
+        <div class="paper-meta-row">
+          ${p.venue ? `<span class="paper-pill">${esc(p.venue)}</span>` : ""}
+          ${p.arxiv_id ? `<span class="paper-pill mono">arXiv:${esc(p.arxiv_id)}</span>` : ""}
+          ${p.published ? `<span class="paper-pill mono">${esc(p.published)}</span>` : ""}
+          ${p.citations != null ? `<span class="paper-pill">⭐ ${esc(p.citations)} cites</span>` : ""}
+        </div>
+        <div class="paper-title">${p.url ? `<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.title)}</a>` : esc(p.title)}</div>
+        ${p.authors ? `<div class="paper-authors">${esc(p.authors)}</div>` : ""}
+        ${p.tldr ? `<div class="paper-tldr"><span class="paper-label">TL;DR</span>${renderInline(p.tldr)}</div>` : ""}
+        ${p.why ? `<div class="paper-why"><span class="paper-label">WHY IT MATTERS</span>${renderInline(p.why)}</div>` : ""}
+        ${p.key_findings && p.key_findings.length ? `
+          <ul class="paper-findings">
+            ${p.key_findings.map(f => `<li>${renderInline(f)}</li>`).join("")}
+          </ul>` : ""}
+        ${p.url ? `<div class="paper-actions"><a class="paper-link" href="${esc(p.url)}" target="_blank" rel="noopener">📖 Read paper →</a>${p.pdf_url ? `<a class="paper-link" href="${esc(p.pdf_url)}" target="_blank" rel="noopener">PDF</a>` : ""}</div>` : ""}
+      </div>
+    </div>`;
+  },
+
+  "trends": (s) => `
+    <div class="section">
+      <div class="section-head">
+        <span class="section-icon">${s.icon || "📈"}</span>
+        <span class="section-title">${esc(s.title || "Industry pulse")}</span>
+        ${s.meta ? `<span class="section-meta">${esc(s.meta)}</span>` : ""}
+      </div>
+      <div class="trends-grid">
+        ${(s.items || []).map((t, i) => `
+          <div class="trend-card">
+            <div class="trend-num">${String(i+1).padStart(2,"0")}</div>
+            <div class="trend-source">
+              ${t.source ? `<span class="trend-pill">${esc(t.source)}</span>` : ""}
+              ${t.score != null ? `<span class="trend-pill mono">▲ ${esc(t.score)}</span>` : ""}
+            </div>
+            <div class="trend-title">${t.url ? `<a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.title)}</a>` : esc(t.title)}</div>
+            ${t.summary ? `<div class="trend-summary">${renderInline(t.summary)}</div>` : ""}
+            ${t.why ? `<div class="trend-why"><span class="trend-label">SO WHAT</span>${renderInline(t.why)}</div>` : ""}
+          </div>
+        `).join("")}
+      </div>
+    </div>`,
+
+  "review-points": (s) => `
+    <div class="section">
+      <div class="section-head">
+        <span class="section-icon">${s.icon || "🔍"}</span>
+        <span class="section-title">${esc(s.title || "Review & feedback")}</span>
+        ${s.meta ? `<span class="section-meta">${esc(s.meta)}</span>` : ""}
+      </div>
+      <div class="review-card">
+        ${(s.items || []).map((it, i) => `
+          <div class="review-item">
+            <div class="review-num">${String(i+1).padStart(2,"0")}</div>
+            <div class="review-body">
+              <div class="review-q">${renderInline(it.question || it.title)}</div>
+              ${it.context ? `<div class="review-ctx">${renderInline(it.context)}</div>` : ""}
+              ${it.options && it.options.length ? `<div class="review-opts">${it.options.map(o => `<span class="review-opt">${esc(o)}</span>`).join("")}</div>` : ""}
+            </div>
+          </div>
+        `).join("")}
+      </div>
+    </div>`,
+
+  "overnight-log": (s) => `
+    <div class="section">
+      <div class="section-head">
+        <span class="section-icon">${s.icon || "🌙"}</span>
+        <span class="section-title">${esc(s.title || "Overnight iteration log")}</span>
+        ${s.meta ? `<span class="section-meta">${esc(s.meta)}</span>` : ""}
+      </div>
+      <div class="log-card">
+        ${(s.items || []).map(it => `
+          <div class="log-item">
+            <div class="log-time mono">${esc(it.time || "")}</div>
+            <div class="log-body">
+              <div class="log-title">${it.status ? `<span class="log-status log-${esc(it.status)}">${esc(it.status)}</span>` : ""}${renderInline(it.title)}</div>
+              ${it.detail ? `<div class="log-detail">${renderInline(it.detail)}</div>` : ""}
+              ${it.links && it.links.length ? `<div class="log-links">${it.links.map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join(" · ")}</div>` : ""}
+            </div>
+          </div>
+        `).join("")}
+      </div>
+    </div>`,
 };
 
 async function fetchWithRetry(url, attempts = 3) {
