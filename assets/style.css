@@ -405,3 +405,265 @@ h1 {
   .archive-item { grid-template-columns: 1fr; gap: 4px; }
   .log-item { grid-template-columns: 56px 1fr; gap: 8px; }
 }
+
+/* ============================================================
+   v4 — visual-first additions (KPI strip, hero focus,
+   collapsible log, project thumbs)
+   ============================================================ */
+
+/* ---------- Hero stats / KPI strip ---------- */
+.hero-stats-section { margin-top: -8px; }
+.kpi-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+.kpi-tile {
+  background: var(--panel);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+  padding: 16px 18px;
+  display: flex; flex-direction: column; gap: 4px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.kpi-tile:hover { transform: translateY(-1px); box-shadow: var(--shadow-card); }
+.kpi-value {
+  font-family: var(--font-display);
+  font-size: 30px; font-weight: 600;
+  color: var(--text); letter-spacing: -0.025em;
+  line-height: 1.05;
+}
+.kpi-unit { font-size: 14px; font-weight: 500; color: var(--text-3); margin-left: 4px; letter-spacing: 0; }
+.kpi-label {
+  font-size: 11px; font-weight: 600;
+  color: var(--text-3);
+  text-transform: uppercase; letter-spacing: 0.05em;
+  margin-top: 2px;
+}
+.kpi-delta {
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 600;
+  margin-top: 4px;
+}
+.kpi-delta.up   { color: var(--green); }
+.kpi-delta.down { color: var(--rose); }
+.kpi-delta.neutral { color: var(--text-4); }
+.kpi-sub { font-size: 11px; color: var(--text-4); margin-top: 2px; }
+
+.kpi-tile.tone-accent  { border-left: 3px solid var(--accent); }
+.kpi-tile.tone-green   { border-left: 3px solid var(--green); }
+.kpi-tile.tone-amber   { border-left: 3px solid var(--amber); }
+.kpi-tile.tone-rose    { border-left: 3px solid var(--rose); }
+
+/* ---------- Hero focus card (first one in priority list) ---------- */
+.focus-grid.has-hero {
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto;
+}
+.focus-card.is-hero {
+  grid-row: span 2;
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--accent) 6%, var(--panel)),
+    var(--panel));
+  border: 1px solid color-mix(in srgb, var(--accent) 25%, var(--border));
+  box-shadow: var(--shadow-card);
+  position: relative;
+}
+.focus-card.is-hero::before {
+  content: "TOP PRIORITY";
+  position: absolute; top: 14px; right: 16px;
+  font-family: var(--font-mono); font-size: 9.5px; font-weight: 700;
+  color: var(--accent); letter-spacing: 0.08em;
+  background: var(--accent-soft);
+  padding: 3px 8px; border-radius: var(--radius-pill);
+}
+.focus-card.is-hero .focus-num { color: var(--accent); font-size: 18px; }
+.focus-card.is-hero .focus-title { font-size: 22px; line-height: 1.25; }
+.focus-card.is-hero .focus-desc { font-size: 14px; }
+.focus-eta {
+  display: inline-block; margin-top: 8px;
+  font-family: var(--font-mono); font-size: 11px; color: var(--text-3);
+  background: var(--surface); padding: 3px 9px; border-radius: var(--radius-pill);
+}
+
+@media (max-width: 720px) {
+  .focus-grid.has-hero { grid-template-columns: 1fr; }
+  .focus-card.is-hero { grid-row: auto; }
+}
+
+/* ---------- Collapsible overnight log ---------- */
+.log-collapsed { margin-top: 4px; padding: 0 0 8px; }
+.log-collapsed[open] .log-collapse-summary { color: var(--text-2); }
+.log-collapse-summary {
+  cursor: pointer;
+  font-size: 12px; color: var(--text-4);
+  font-family: var(--font-mono); letter-spacing: 0.02em;
+  padding: 12px 0 4px;
+  list-style: none;
+  user-select: none;
+  transition: color 0.12s;
+}
+.log-collapse-summary:hover { color: var(--text-2); }
+.log-collapse-summary::-webkit-details-marker { display: none; }
+.log-collapse-summary::before {
+  content: "▸ "; display: inline-block;
+  transition: transform 0.15s ease; transform-origin: center;
+}
+.log-collapsed[open] .log-collapse-summary::before { content: "▾ "; }
+.log-item.log-muted { opacity: 0.55; padding: 10px 0; }
+.log-item.log-muted .log-title { font-size: 13px; }
+
+/* ---------- Project tiles (v4: thumb + activity + repo links) ---------- */
+.proj-thumb {
+  margin: -16px -18px 10px;
+  height: 120px; overflow: hidden;
+  border-radius: var(--radius-card) var(--radius-card) 0 0;
+  background: var(--surface-hi);
+  display: flex; align-items: center; justify-content: center;
+}
+.proj-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.proj-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 8px; margin-bottom: 4px;
+}
+.proj-activity {
+  font-family: var(--font-mono); font-size: 10.5px;
+  color: var(--green);
+  background: color-mix(in srgb, var(--green) 12%, transparent);
+  padding: 2px 7px; border-radius: var(--radius-pill);
+  letter-spacing: 0.02em;
+}
+.proj-links {
+  margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px;
+}
+.proj-links a {
+  font-size: 11px; color: var(--accent);
+  text-decoration: none; padding: 3px 9px;
+  border: 1px solid color-mix(in srgb, var(--accent) 25%, var(--border));
+  border-radius: var(--radius-pill);
+  transition: all 0.12s;
+}
+.proj-links a:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* ---------- v4.1: louder KPI + bigger hero ---------- */
+
+/* Lift the KPI strip visually */
+.hero-stats-section { 
+  margin-top: 4px;
+  padding: 18px 16px;
+  background: linear-gradient(180deg,
+    color-mix(in srgb, var(--accent) 3%, var(--bg-alt)),
+    var(--bg-alt));
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+}
+.kpi-tile { background: var(--panel); padding: 18px 20px 16px; }
+.kpi-value { font-size: 42px; font-weight: 600; line-height: 1; letter-spacing: -0.03em; }
+.kpi-unit  { font-size: 18px; }
+.kpi-label { font-size: 10.5px; margin-top: 8px; }
+.kpi-delta { margin-top: 6px; }
+
+/* True hero card — full-width-ish, demoted siblings */
+.focus-grid.has-hero {
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+.focus-card.is-hero {
+  padding: 28px 30px 24px;
+  border-left: 4px solid var(--accent);
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--accent) 8%, var(--panel)),
+    var(--panel) 60%);
+}
+.focus-card.is-hero::before {
+  font-size: 11px;
+  padding: 4px 11px;
+  background: var(--accent);
+  color: #fff;
+}
+.focus-card.is-hero .focus-num { display: none; }
+.focus-card.is-hero .focus-title { font-size: 26px; line-height: 1.2; max-width: 80%; margin-top: 6px; }
+.focus-card.is-hero .focus-desc { font-size: 14.5px; max-width: 78ch; margin-top: 10px; }
+
+/* Demote cards #2 and #3 into a side-by-side row beneath */
+.focus-grid.has-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "hero hero" "two three";
+}
+.focus-grid.has-hero > .focus-card:nth-child(1) { grid-area: hero; }
+.focus-grid.has-hero > .focus-card:nth-child(2) { grid-area: two; }
+.focus-grid.has-hero > .focus-card:nth-child(3) { grid-area: three; }
+.focus-grid.has-hero > .focus-card:not(.is-hero) {
+  padding: 16px 18px;
+  background: var(--bg-alt);
+}
+.focus-grid.has-hero > .focus-card:not(.is-hero) .focus-title { font-size: 15.5px; }
+.focus-grid.has-hero > .focus-card:not(.is-hero) .focus-desc  { font-size: 13px; }
+
+@media (max-width: 720px) {
+  .focus-grid.has-hero { grid-template-columns: 1fr; grid-template-areas: "hero" "two" "three"; }
+  .kpi-value { font-size: 32px; }
+}
+
+/* ---------- v4.2: commit harder to hierarchy ---------- */
+
+/* KPI strip: make it a true bold band */
+.hero-stats-section {
+  margin: 4px 0 28px;
+  padding: 24px;
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--accent) 8%, var(--bg-alt)) 0%,
+    color-mix(in srgb, var(--accent) 3%, var(--bg-alt)) 100%);
+  border: 1px solid color-mix(in srgb, var(--accent) 18%, var(--border));
+  border-radius: 18px;
+}
+.kpi-strip { gap: 14px; }
+.kpi-tile {
+  background: var(--panel);
+  padding: 22px 22px 18px;
+  border: 1px solid var(--border-subtle);
+}
+.kpi-value {
+  font-size: 56px; font-weight: 700;
+  letter-spacing: -0.035em;
+  background: linear-gradient(180deg, var(--text), color-mix(in srgb, var(--text) 75%, var(--accent)));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.kpi-unit { font-size: 22px; font-weight: 600; color: var(--text-3); -webkit-text-fill-color: var(--text-3); }
+.kpi-label {
+  font-size: 11px; font-weight: 700;
+  margin-top: 10px;
+  color: var(--text-2);
+}
+.kpi-delta { font-size: 11.5px; font-weight: 700; }
+.kpi-sub   { font-size: 11px; margin-top: 3px; }
+
+/* Step down #2 and #3 visibly so the hero truly leads */
+.focus-grid.has-hero > .focus-card:not(.is-hero) {
+  padding: 14px 16px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border-subtle);
+  opacity: 0.92;
+}
+.focus-grid.has-hero > .focus-card:not(.is-hero) .focus-num {
+  font-size: 11px; color: var(--text-4);
+}
+.focus-grid.has-hero > .focus-card:not(.is-hero) .focus-title { font-size: 14.5px; }
+.focus-grid.has-hero > .focus-card:not(.is-hero) .focus-desc {
+  font-size: 12.5px; color: var(--text-3);
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Hero card pop */
+.focus-card.is-hero {
+  padding: 30px 32px 26px;
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--accent) 10%, var(--panel)),
+    var(--panel) 70%);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 12px 40px color-mix(in srgb, var(--accent) 12%, transparent);
+}
+.focus-card.is-hero .focus-title { font-size: 28px; font-weight: 600; }
+.focus-card.is-hero .focus-desc  { font-size: 15px; color: var(--text-2); }

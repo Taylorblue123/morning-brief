@@ -41,13 +41,33 @@ const RENDERERS = {
         <span class="section-title">${esc(s.title || "Top for today")}</span>
         ${s.meta ? `<span class="section-meta">${esc(s.meta)}</span>` : ""}
       </div>
-      <div class="focus-grid">
+      <div class="focus-grid${s.items && s.items[0] && s.items[0].priority === "hero" ? " has-hero" : ""}">
         ${(s.items || []).map((it, i) => `
-          <div class="focus-card">
+          <div class="focus-card${it.priority === "hero" ? " is-hero" : ""}">
             <div class="focus-num">${String(i+1).padStart(2,"0")}</div>
             <div class="focus-title">${esc(it.title)}</div>
             <div class="focus-desc">${renderInline(it.desc)}</div>
             ${it.tag ? `<div class="focus-tag">${esc(it.tag)}</div>` : ""}
+            ${it.eta ? `<div class="focus-eta">⏱ ${esc(it.eta)}</div>` : ""}
+          </div>
+        `).join("")}
+      </div>
+    </div>`,
+
+  "hero-stats": (s) => `
+    <div class="section hero-stats-section">
+      ${s.title ? `<div class="section-head">
+        <span class="section-icon">${s.icon || "📊"}</span>
+        <span class="section-title">${esc(s.title)}</span>
+        ${s.meta ? `<span class="section-meta">${esc(s.meta)}</span>` : ""}
+      </div>` : ""}
+      <div class="kpi-strip">
+        ${(s.stats || []).map(k => `
+          <div class="kpi-tile${k.tone ? " tone-" + esc(k.tone) : ""}">
+            <div class="kpi-value">${esc(k.value)}${k.unit ? `<span class="kpi-unit">${esc(k.unit)}</span>` : ""}</div>
+            <div class="kpi-label">${esc(k.label)}</div>
+            ${k.delta ? `<div class="kpi-delta ${esc(k.deltaTone || "neutral")}">${esc(k.delta)}</div>` : ""}
+            ${k.sub ? `<div class="kpi-sub">${esc(k.sub)}</div>` : ""}
           </div>
         `).join("")}
       </div>
@@ -88,10 +108,15 @@ const RENDERERS = {
       <div class="proj-grid">
         ${(s.items || []).map(p => `
           <div class="proj-tile">
-            <div class="proj-name">${esc(p.name)}</div>
+            ${p.thumb ? `<div class="proj-thumb"><img src="${esc(p.thumb)}" alt="${esc(p.name)} preview" loading="lazy"></div>` : ""}
+            <div class="proj-head">
+              <div class="proj-name">${esc(p.name)}</div>
+              ${p.activity != null ? `<span class="proj-activity" title="recent commits">●${esc(p.activity)}</span>` : ""}
+            </div>
             <div class="proj-status">${p.dot ? `<span class="dot ${esc(p.dot)}"></span>` : ""}${esc(p.status || "")}</div>
             <div class="proj-bar"><div class="proj-bar-fill" style="width:${Math.max(0, Math.min(100, p.progress ?? 0))}%"></div></div>
             ${p.next ? `<div class="proj-next"><span class="proj-next-label">NEXT</span>${esc(p.next)}</div>` : ""}
+            ${p.links && p.links.length ? `<div class="proj-links">${p.links.map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join("")}</div>` : ""}
           </div>
         `).join("")}
       </div>
@@ -208,7 +233,12 @@ const RENDERERS = {
       </div>
     </div>`,
 
-  "overnight-log": (s) => `
+  "overnight-log": (s) => {
+    const items = s.items || [];
+    const lowValue = it => it.status === "skipped" || it.status === "info";
+    const headline = items.filter(it => !lowValue(it));
+    const muted    = items.filter(it => lowValue(it));
+    return `
     <div class="section">
       <div class="section-head">
         <span class="section-icon">${s.icon || "🌙"}</span>
@@ -216,7 +246,7 @@ const RENDERERS = {
         ${s.meta ? `<span class="section-meta">${esc(s.meta)}</span>` : ""}
       </div>
       <div class="log-card">
-        ${(s.items || []).map(it => `
+        ${headline.map(it => `
           <div class="log-item">
             <div class="log-time mono">${esc(it.time || "")}</div>
             <div class="log-body">
@@ -226,8 +256,23 @@ const RENDERERS = {
             </div>
           </div>
         `).join("")}
+        ${muted.length ? `
+          <details class="log-collapsed">
+            <summary class="log-collapse-summary">+ ${muted.length} skipped/info entries</summary>
+            ${muted.map(it => `
+              <div class="log-item log-muted">
+                <div class="log-time mono">${esc(it.time || "")}</div>
+                <div class="log-body">
+                  <div class="log-title">${it.status ? `<span class="log-status log-${esc(it.status)}">${esc(it.status)}</span>` : ""}${renderInline(it.title)}</div>
+                  ${it.detail ? `<div class="log-detail">${renderInline(it.detail)}</div>` : ""}
+                </div>
+              </div>
+            `).join("")}
+          </details>
+        ` : ""}
       </div>
-    </div>`,
+    </div>`;
+  },
 
   "drilldown-cards": (s) => `
     <div class="section">
