@@ -4,3 +4,4 @@
 {"ts": "2026-04-22T12:14:46-07:00", "mode": "night-builder", "event": "paused", "reason": "personal-site scaffolding is critical-scope; no repo code exists, only BedRock docs. Surfacing as review question R002."}
 {"ts": "2026-04-22T12:24:43-07:00", "mode": "user-approved-merge", "event": "pr_merged", "project": "crumbs", "pr": 1, "merge_sha": "66ccce6", "strategy": "squash", "branch_deleted": true}
 {"ts": "2026-04-22T13:04:26-07:00", "mode": "night-builder", "event": "pr_opened", "project": "bedrock-site", "pr": "https://github.com/Taylorblue123/BedRock/pull/1", "branch": "site/astro-bolt-on", "base": "main", "correction": "removed CVPR 2026 / Confined Vibe / first-author claims (flagged as fake by user)", "build": "green", "needs_review": true}
+{"ts":"2026-04-22T21:20:00Z","event":"resolved","items":["R003 scrub-cvpr (reframed to under-submission)","R004 bedrock-pr-1 (merged a3aa669)","R005 surge-redeploy (deployed)"]}
