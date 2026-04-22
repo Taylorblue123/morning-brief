@@ -3,21 +3,21 @@
   "slug": "personal-site",
   "eyebrow": "Side project · idle",
   "title": "Personal website",
-  "subtitle": "Marketing-free personal site hosted in BedRock.",
+  "subtitle": "No site code exists yet. BedRock repo is a personal docs/context store, not a website scaffold.",
   "meta": [
-    "BedRock",
-    "Astro?",
-    "idle since 2026-03"
+    "Taylorblue123/BedRock (docs only)",
+    "no site repo",
+    "needs stack decision"
   ],
   "blocks": [
     {
       "type": "callout",
       "label": "Status",
-      "text": "Idle. Needs a `/now` page as the minimum next step. Everything else is speculative."
+      "text": "Blocked — agent needs a scaffold decision before writing code. BedRock repo contains `ONBOARDING.md`, `fact-sheets/`, `portfolio/`, `logs/` — not a website. No other repo looks like a personal site."
     },
     {
       "type": "prose",
-      "markdown": "## Minimum-viable-me page\n\n- `/` → 3-line intro + photo\n- `/now` → current focus, updated weekly\n- `/projects` → links to Crumbs, Gestgo, morning-brief\n- `/writing` → empty for now\n"
+      "markdown": "## Agent findings (2026-04-22)\n\nOpened `~/BedRock` expecting a marketing/personal site repo. Contents are:\n\n- `INSTRUCTIONS.md`, `ONBOARDING.md` — personal context\n- `context/`, `fact-sheets/`, `portfolio/` — unstructured personal docs\n- `logs/` — personal journaling\n\nNo `package.json`, no framework, no deployable surface. A `/now` page as defined in the earlier brief cannot be written *anywhere* right now — there's no site to put it on.\n\n## What I need from you (R002)\n\nThree choices scoped so an agent can move next run:\n\n1. **Bootstrap a new repo** — e.g. `Taylorblue123/wenxuan.dev`, Astro/Next static, deploy to Vercel. Agent can scaffold + `/now` stub + OG in one PR.\n2. **Treat BedRock itself as the site** — agent adds Astro/Next scaffold on top of existing docs, publishes portfolio/* and fact-sheets/* behind a minimal shell.\n3. **Skip for now** — we revisit when there's a real landing-page need (after Crumbs launch).\n\n## What I will NOT do without your call\n\n- Pick a framework, domain, or tone of voice on your behalf.\n- Commit HTML to a repo that isn't meant to host one.\n- Copy content from BedRock into a public site without your review."
     }
   ]
 }

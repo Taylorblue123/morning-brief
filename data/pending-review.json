@@ -10,6 +10,17 @@
         "request changes",
         "close — redo with different scope"
       ]
+    },
+    {
+      "id": "R002",
+      "topic": "personal-site-scaffold",
+      "question": "How should I bootstrap the personal site?",
+      "context": "BedRock repo is docs/context only, no web scaffold. Three paths — pick one and I'll ship the first draft tonight.",
+      "options": [
+        "new repo wenxuan.dev (Astro+Vercel)",
+        "bolt Astro onto BedRock",
+        "skip until after Crumbs launch"
+      ]
     }
   ]
 }

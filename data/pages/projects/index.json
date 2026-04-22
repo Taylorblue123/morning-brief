@@ -17,11 +17,12 @@
       "slug": "personal-site",
       "date": "2026-04-22",
       "title": "Personal website (BedRock)",
-      "subtitle": "Static site + /now page + project index.",
+      "subtitle": "Blocked — needs your call on scaffold (new repo vs. BedRock vs. defer).",
       "icon": "🌐",
       "stats": [
-        "35% done",
-        "idle"
+        "blocked",
+        "0% code",
+        "awaiting decision"
       ]
     },
     {
