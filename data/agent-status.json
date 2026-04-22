@@ -1,0 +1,50 @@
+{
+  "status": "shipped",
+  "headline": "Shipped live agent-status panel to v4.3",
+  "detail": "Next up: MAE evaluators knowledge-map inner page from `research/mae-feishu-full.md`. Following the never-idle rule.",
+  "started_at": "2026-04-22T23:46:38Z",
+  "updated_at": "2026-04-22T23:46:38Z",
+  "task_id": "live-status-panel",
+  "context": {
+    "repo": "morning-brief",
+    "branch": "main",
+    "files_touched": [
+      "assets/render.js",
+      "assets/style.css",
+      "data/agent-status.json",
+      "scripts/set_status.sh"
+    ]
+  },
+  "recent": [
+    {
+      "ts": "14:50",
+      "status": "shipped",
+      "title": "Live agent-status panel (v4.3)"
+    },
+    {
+      "ts": "13:15",
+      "status": "shipped",
+      "title": "v4 dashboard (KPI strip, hero card, collapsible log)"
+    },
+    {
+      "ts": "12:20",
+      "status": "shipped",
+      "title": "BedRock PR #1 merged + wenxuan.surge.sh redeployed"
+    },
+    {
+      "ts": "11:45",
+      "status": "shipped",
+      "title": "CVPR claim reframed to 'under submission' across 11 files"
+    }
+  ],
+  "queue": [
+    "MAE evaluators knowledge-map inner page (/learning/mae-evaluators)",
+    "Crumbs /projects inner page w/ UX audit",
+    "BedRock Vercel deploy",
+    "Self-evolving persona research brief",
+    "Gestgo one-pager draft",
+    "Dashboard visual polish from real feedback"
+  ],
+  "never_idle": true,
+  "heartbeat_seconds": 20
+}

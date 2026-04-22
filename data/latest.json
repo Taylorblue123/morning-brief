@@ -1,12 +1,17 @@
 {
   "date": "2026-04-22",
   "date_display": "Wednesday \u00b7 Apr 22, 2026",
-  "version": "morning-brief v4.0",
+  "version": "morning-brief v4.3",
   "generated_at": "2026-04-22T14:30:00-07:00",
   "greeting": "Good morning, Wenxuan.",
-  "tldr": "**Dashboard upgraded to v4** \u2014 new KPI strip at top (glanceable numbers), hero-style top-priority card, collapsible overnight log (skipped/info rows hidden by default), richer project tiles with repo activity + live links. Same data schema, additive renderers \u2014 your morning briefs will look like this from now on.",
-  "tldr_short": "v4 visual upgrade: KPI strip, hero card, collapsible log, richer projects.",
+  "tldr": "**Live status panel added** \u2014 the top card now shows real-time what the agent is doing, with a pulsing indicator, elapsed timer, recent shipped work, and queue. Auto-refreshes every 15 seconds; every task the agent starts updates it within 1\u20132 commits.",
+  "tldr_short": "v4.3: live agent-status panel at top of hero.",
   "sections": [
+    {
+      "type": "agent-status",
+      "src": "./data/agent-status.json",
+      "refresh": 15
+    },
     {
       "type": "hero-stats",
       "stats": [

@@ -293,6 +293,28 @@ const RENDERERS = {
         `).join("")}
       </div>
     </div>`,
+
+  "agent-status": (s) => `
+    <div class="section agent-status-section" id="agent-status-root" data-src="${esc(s.src || "./data/agent-status.json")}" data-refresh="${esc(s.refresh || 20)}">
+      <div class="agent-status-card">
+        <div class="ags-top">
+          <span class="ags-pulse"><span class="ags-pulse-dot"></span></span>
+          <span class="ags-badge" data-role="badge">loading…</span>
+          <span class="ags-elapsed mono" data-role="elapsed"></span>
+          <span class="ags-updated mono" data-role="updated"></span>
+        </div>
+        <div class="ags-headline" data-role="headline">Fetching current status…</div>
+        <div class="ags-detail" data-role="detail"></div>
+        <div class="ags-meta">
+          <span class="ags-meta-label">RECENT</span>
+          <div class="ags-recent" data-role="recent"></div>
+        </div>
+        <div class="ags-meta">
+          <span class="ags-meta-label">QUEUE</span>
+          <div class="ags-queue" data-role="queue"></div>
+        </div>
+      </div>
+    </div>`,
 };
 
 async function fetchWithRetry(url, attempts = 3) {
@@ -349,6 +371,8 @@ async function loadBrief() {
         ${generated ? ` · generated ${esc(generated)}` : ""}
       </div>`;
     document.title = `Morning Brief — ${b.date || ""}`;
+    // Hook up live agent-status panel if the section is present.
+    initAgentStatus();
   } catch (e) {
     root.innerHTML = `<div class="error">
       Could not load brief: ${esc(e.message || e)}.<br><br>
@@ -367,5 +391,121 @@ async function loadBrief() {
 
 // Auto-retry once on network hiccup when the page regains focus.
 window.addEventListener("online", () => location.reload());
+
+// ---- Live agent-status panel ----
+const STATUS_LABELS = {
+  idle: "IDLE",
+  researching: "RESEARCHING",
+  learning: "LEARNING",
+  working: "WORKING",
+  building: "BUILDING",
+  reviewing: "REVIEWING",
+  "waiting-review": "NEEDS REVIEW",
+  blocked: "BLOCKED",
+  shipped: "SHIPPED",
+};
+
+function fmtElapsed(fromISO) {
+  if (!fromISO) return "";
+  const t0 = new Date(fromISO).getTime();
+  if (isNaN(t0)) return "";
+  let s = Math.max(0, Math.floor((Date.now() - t0) / 1000));
+  const h = Math.floor(s / 3600); s -= h * 3600;
+  const m = Math.floor(s / 60);   s -= m * 60;
+  if (h) return `${h}h ${m}m`;
+  if (m) return `${m}m ${s}s`;
+  return `${s}s`;
+}
+
+function fmtSince(fromISO) {
+  if (!fromISO) return "";
+  const t0 = new Date(fromISO).getTime();
+  if (isNaN(t0)) return "";
+  const s = Math.max(0, Math.floor((Date.now() - t0) / 1000));
+  if (s < 15)    return "just now";
+  if (s < 60)    return `${s}s ago`;
+  if (s < 3600)  return `${Math.floor(s/60)}m ago`;
+  if (s < 86400) return `${Math.floor(s/3600)}h ago`;
+  return `${Math.floor(s/86400)}d ago`;
+}
+
+async function fetchStatus(url) {
+  try {
+    const bust = `${url.includes("?") ? "&" : "?"}t=${Date.now()}`;
+    const res = await fetch(url + bust, { cache: "no-store" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return await res.json();
+  } catch (e) {
+    return null;
+  }
+}
+
+function paintStatus(root, data) {
+  if (!data) {
+    root.querySelector('[data-role="badge"]').textContent = "OFFLINE";
+    root.setAttribute("data-status", "offline");
+    return;
+  }
+  const st = (data.status || "idle").toLowerCase();
+  root.setAttribute("data-status", st);
+  const badge = root.querySelector('[data-role="badge"]');
+  badge.textContent = STATUS_LABELS[st] || st.toUpperCase();
+
+  root.querySelector('[data-role="headline"]').textContent = data.headline || "";
+  root.querySelector('[data-role="detail"]').textContent   = data.detail   || "";
+  root.querySelector('[data-role="elapsed"]').textContent  = data.started_at ? `⏱ ${fmtElapsed(data.started_at)}` : "";
+  root.querySelector('[data-role="updated"]').textContent  = data.updated_at ? `· updated ${fmtSince(data.updated_at)}` : "";
+
+  const recent = root.querySelector('[data-role="recent"]');
+  recent.innerHTML = (data.recent || []).slice(0, 4).map(r => `
+    <div class="ags-recent-item">
+      <span class="ags-recent-dot ${esc((r.status || "info").toLowerCase())}"></span>
+      <span class="ags-recent-title">${esc(r.title || "")}</span>
+      <span class="ags-recent-time mono">${esc(r.ts || "")}</span>
+    </div>`).join("") || `<span class="ags-empty">no recent activity</span>`;
+
+  const queue = root.querySelector('[data-role="queue"]');
+  queue.innerHTML = (data.queue || []).slice(0, 5).map(q => `<span class="ags-queue-item">${esc(q)}</span>`).join("") || `<span class="ags-empty">queue empty</span>`;
+}
+
+function tickElapsed(root, data) {
+  if (!data || !data.started_at) return;
+  const el = root.querySelector('[data-role="elapsed"]');
+  if (el) el.textContent = `⏱ ${fmtElapsed(data.started_at)}`;
+  const upd = root.querySelector('[data-role="updated"]');
+  if (upd && data.updated_at) upd.textContent = `· updated ${fmtSince(data.updated_at)}`;
+}
+
+async function initAgentStatus() {
+  const root = document.getElementById("agent-status-root");
+  if (!root) return;
+  const src = root.getAttribute("data-src") || "./data/agent-status.json";
+  const refresh = Math.max(5, parseInt(root.getAttribute("data-refresh") || "20", 10)) * 1000;
+
+  let current = await fetchStatus(src);
+  paintStatus(root, current);
+
+  // Tick every second for the elapsed counter (local only — no network).
+  setInterval(() => tickElapsed(root, current), 1000);
+
+  // Re-fetch every refresh interval for the real status.
+  setInterval(async () => {
+    const fresh = await fetchStatus(src);
+    if (fresh) {
+      current = fresh;
+      paintStatus(root, current);
+    } else {
+      root.setAttribute("data-status", "offline");
+    }
+  }, refresh);
+
+  // Refetch on tab focus so mobile comes back fresh.
+  document.addEventListener("visibilitychange", async () => {
+    if (document.visibilityState === "visible") {
+      const fresh = await fetchStatus(src);
+      if (fresh) { current = fresh; paintStatus(root, current); }
+    }
+  });
+}
 
 loadBrief();
