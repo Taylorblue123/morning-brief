@@ -1,9 +1,9 @@
 {
-  "status": "shipped",
-  "headline": "Shipped live agent-status panel to v4.3",
-  "detail": "Next up: MAE evaluators knowledge-map inner page from `research/mae-feishu-full.md`. Following the never-idle rule.",
-  "started_at": "2026-04-22T23:46:38Z",
-  "updated_at": "2026-04-22T23:46:38Z",
+  "status": "researching",
+  "headline": "Building MAE evaluators knowledge map",
+  "detail": "Reading research/mae-feishu-full.md to extract the full 17 rule + 10 judge evaluator list and their source locations in lib/evaluation/evaluators/",
+  "started_at": "2026-04-22T23:46:50Z",
+  "updated_at": "2026-04-22T23:46:50Z",
   "task_id": "live-status-panel",
   "context": {
     "repo": "morning-brief",
