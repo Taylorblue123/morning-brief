@@ -1,9 +1,9 @@
 {
-  "status": "researching",
-  "headline": "BedRock Vercel deploy blocked on auth \u2014 moving on",
-  "detail": "Logged R006 in /feedback for when you're back. Pivoting to self-evolving persona research (your side idea).",
-  "started_at": "2026-04-22T23:49:40Z",
-  "updated_at": "2026-04-22T23:49:40Z",
+  "status": "shipped",
+  "headline": "Self-evolving persona spec published to /experiments",
+  "detail": "Research brief + architecture + 10h prototype scope. Open for Wenxuan's go/no-go on whether to build v0.",
+  "started_at": "2026-04-22T23:51:36Z",
+  "updated_at": "2026-04-22T23:51:36Z",
   "task_id": "live-status-panel",
   "context": {
     "repo": "morning-brief",
