@@ -9,8 +9,8 @@
     {
       "date": "2026-04-22",
       "date_display": "Wednesday · Apr 22, 2026",
-      "tldr": "Feedback locked in (**D001–D003** in decisions.json). Drafted **v3 proposal**: Apple-minimal redesign + multi-page drill-downs + 24/7 agent workflow (morning / daytime / night / on-demand) + compounding feedback loop. **6 decisions below** — reply with IDs and I'll ship in ~5 days.",
-      "tldr_short": "Preferences saved (D001–D003). v3 proposal: Apple-minimal + multi-page + 24/7 workflow. 6 decisions to make."
+      "tldr": "Proposals now live on the site — no GitHub login needed. [Read the **v3 proposal**](./proposal.html?doc=v3-apple-multipage-24-7) from your phone. Decisions D001–D003 saved. **6 decisions below** (Q1–Q6) to unlock the build.",
+      "tldr_short": "Proposals now deployed at /proposal.html — readable anywhere. v3 plan + 6 decisions pending."
     }
   ]
 }

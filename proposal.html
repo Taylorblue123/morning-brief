@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposal · Morning Brief</title>
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📄%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/style.css">
+<style>
+  .prose { max-width: 760px; margin: 0 auto; font-size: 16px; line-height: 1.65; color: var(--text-2); }
+  .prose h1 { font-size: 40px; font-weight: 510; letter-spacing: -0.8px; color: var(--text); margin: 8px 0 24px; line-height: 1.1; }
+  .prose h2 { font-size: 24px; font-weight: 590; color: var(--text); margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 1px solid var(--border-subtle); letter-spacing: -0.3px; }
+  .prose h3 { font-size: 18px; font-weight: 590; color: var(--text); margin: 28px 0 10px; letter-spacing: -0.18px; }
+  .prose h4 { font-size: 15px; font-weight: 590; color: var(--text-2); margin: 20px 0 8px; }
+  .prose p { margin: 10px 0; }
+  .prose strong { color: var(--text); font-weight: 590; }
+  .prose em { color: var(--text-2); }
+  .prose ul, .prose ol { margin: 10px 0 10px 22px; }
+  .prose li { margin: 6px 0; }
+  .prose a { color: var(--accent); text-decoration: none; }
+  .prose a:hover { text-decoration: underline; }
+  .prose blockquote { margin: 16px 0; padding: 10px 16px; border-left: 3px solid var(--accent); background: rgba(113,112,255,0.05); color: var(--text-2); border-radius: 4px; }
+  .prose code { background: rgba(255,255,255,0.06); border: 1px solid var(--border-subtle); padding: 1px 6px; border-radius: 4px; font-size: 13px; color: var(--text); }
+  .prose pre { background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 14px 16px; border-radius: 8px; overflow-x: auto; font-size: 13px; line-height: 1.55; margin: 14px 0; }
+  .prose pre code { background: none; border: none; padding: 0; font-size: 13px; }
+  .prose table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+  .prose th, .prose td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border-subtle); }
+  .prose th { color: var(--text); font-weight: 590; background: rgba(255,255,255,0.02); }
+  .prose td { color: var(--text-2); }
+  .prose hr { border: none; border-top: 1px solid var(--border-subtle); margin: 32px 0; }
+  .proposal-nav { max-width: 760px; margin: 0 auto 32px; padding-bottom: 16px; border-bottom: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-family: 'JetBrains Mono', monospace; color: var(--text-4); }
+  .proposal-nav a { color: var(--text-4); text-decoration: none; }
+  .proposal-nav a:hover { color: var(--accent); }
+  .proposal-index { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+  .proposal-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; text-decoration: none; color: var(--text-2); transition: background 0.15s, border-color 0.15s; }
+  .proposal-card:hover { background: rgba(113,112,255,0.05); border-color: rgba(113,112,255,0.25); }
+  .proposal-title { color: var(--text); font-size: 17px; font-weight: 590; margin-bottom: 4px; letter-spacing: -0.15px; }
+  .proposal-meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-4); }
+  .proposal-desc { font-size: 14px; color: var(--text-3); margin-top: 6px; line-height: 1.5; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="proposal-nav">
+    <a href="./index.html">← morning brief</a>
+    <a id="raw-link" target="_blank" rel="noopener">view raw ↗</a>
+  </div>
+  <div id="content"><div class="loading">loading proposal…</div></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
+<script>
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+
+async function fetchWithRetry(url, attempts = 3) {
+  let last;
+  for (let i = 0; i < attempts; i++) {
+    try {
+      const bust = `${url.includes("?") ? "&" : "?"}t=${Date.now()}`;
+      const ctrl = new AbortController();
+      const to = setTimeout(() => ctrl.abort(), 8000);
+      const res = await fetch(url + bust, { cache: "no-store", signal: ctrl.signal });
+      clearTimeout(to);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return await res.text();
+    } catch (e) { last = e; if (i < attempts - 1) await new Promise(r => setTimeout(r, 1500 * (i + 1))); }
+  }
+  throw last;
+}
+
+async function loadJSON(url) {
+  const t = await fetchWithRetry(url);
+  return JSON.parse(t);
+}
+
+async function main() {
+  const params = new URLSearchParams(location.search);
+  const slug = params.get("doc");
+  const root = document.getElementById("content");
+  const rawLink = document.getElementById("raw-link");
+
+  if (!slug) {
+    // Index view
+    rawLink.style.display = "none";
+    try {
+      const idx = await loadJSON("./data/proposals/index.json");
+      document.title = "Proposals · Morning Brief";
+      const list = (idx.proposals || []).sort((a,b) => b.date.localeCompare(a.date));
+      root.innerHTML = `
+        <div class="prose"><h1>Proposals</h1>
+        <p style="color:var(--text-3)">Every plan Hermes writes for you — viewable anywhere, no GitHub login required.</p></div>
+        <div class="proposal-index">
+          ${list.map(p => `
+            <a class="proposal-card" href="?doc=${esc(p.slug)}">
+              <div class="proposal-meta">${esc(p.date)} · ${esc(p.status || "draft")} · ${esc(p.version || "")}</div>
+              <div class="proposal-title">${esc(p.title)}</div>
+              ${p.summary ? `<div class="proposal-desc">${esc(p.summary)}</div>` : ""}
+            </a>`).join("")}
+        </div>`;
+    } catch (e) {
+      root.innerHTML = `<div class="error">Could not load proposals index: ${esc(e.message)}</div>`;
+    }
+    return;
+  }
+
+  // Single proposal view
+  const url = `./data/proposals/${slug}.md`;
+  rawLink.href = url;
+  try {
+    const md = await fetchWithRetry(url);
+    // Extract title from first H1 for document title
+    const m = md.match(/^#\s+(.+)$/m);
+    if (m) document.title = `${m[1]} · Morning Brief`;
+    marked.setOptions({ gfm: true, breaks: false });
+    root.innerHTML = `<div class="prose">${marked.parse(md)}</div>`;
+  } catch (e) {
+    root.innerHTML = `<div class="error">
+      Could not load proposal <code>${esc(slug)}</code>: ${esc(e.message)}.<br><br>
+      <a href="./proposal.html" style="color:var(--accent)">← back to proposals</a>
+    </div>`;
+  }
+}
+main();
+</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "proposals": [
+    {
+      "slug": "v3-apple-multipage-24-7",
+      "title": "Proposal — Morning Brief v3 + 24/7 Agent Workflow",
+      "date": "2026-04-22",
+      "summary": "**Author:** Hermes **Supersedes:** SKILL `wenxuan-morning-brief` v2.x (single-page daily brief)",
+      "status": "Draft for Wenxuan's review"
+    }
+  ]
+}

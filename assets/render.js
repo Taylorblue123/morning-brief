@@ -252,6 +252,7 @@ async function loadBrief() {
         <div class="date-line">${esc(b.date_display || b.date || "")}</div>
         <div class="stamp">
           ${esc(b.version || "morning-brief v1")}
+          <a href="./proposal.html">proposals</a>
           <a href="./archive.html">archive</a>
           <a href="https://github.com/Taylorblue123/morning-brief" target="_blank" rel="noopener">source</a>
         </div>
