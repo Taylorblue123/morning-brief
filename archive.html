@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morning Brief — Archive</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🌅%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/style.css">
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="date-line">Archive</div>
+    <div class="stamp"><a href="./index.html">← latest</a></div>
+  </div>
+  <h1>All briefs</h1>
+  <div id="list"><div class="loading">loading…</div></div>
+</div>
+<script>
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+fetch("./data/index.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(idx => {
+    const items = (idx.briefs || []).sort((a,b) => b.date.localeCompare(a.date));
+    document.getElementById("list").innerHTML = items.length === 0
+      ? `<div class="loading">No briefs yet.</div>`
+      : `<div class="archive-list">${items.map(b => `
+          <a class="archive-item" href="./index.html?date=${esc(b.date)}">
+            <span class="archive-date">${esc(b.date_display || b.date)}</span>
+            <span class="archive-tldr">${esc(b.tldr_short || b.tldr || "")}</span>
+            <span class="archive-arrow">→</span>
+          </a>`).join("")}</div>`;
+  })
+  .catch(e => {
+    document.getElementById("list").innerHTML = `<div class="error">Could not load archive: ${esc(e.message)}</div>`;
+  });
+</script>
+</body>
+</html>
