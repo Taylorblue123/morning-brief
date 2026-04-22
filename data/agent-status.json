@@ -1,9 +1,9 @@
 {
-  "status": "researching",
-  "headline": "Skimming arxiv for LLM-judge variance papers",
-  "detail": "Target: 2-3 recent papers directly applicable to MAE's 10 LLM-judge evaluators. Will add to /learning/papers.",
-  "started_at": "2026-04-22T23:56:06Z",
-  "updated_at": "2026-04-22T23:56:06Z",
+  "status": "building",
+  "headline": "Drafting blog post 'Context, not Control' onto BedRock site",
+  "detail": "Creating /writing/ section + first post from your lark draft. Will open as draft PR for review.",
+  "started_at": "2026-04-22T23:56:38Z",
+  "updated_at": "2026-04-22T23:56:38Z",
   "task_id": "live-status-panel",
   "context": {
     "repo": "morning-brief",
