@@ -1,9 +1,9 @@
 {
-  "status": "shipped",
-  "headline": "Self-evolving persona spec published to /experiments",
-  "detail": "Research brief + architecture + 10h prototype scope. Open for Wenxuan's go/no-go on whether to build v0.",
-  "started_at": "2026-04-22T23:51:36Z",
-  "updated_at": "2026-04-22T23:51:36Z",
+  "status": "researching",
+  "headline": "Auditing Crumbs UX for polish items",
+  "detail": "Browsing crumbs-production.up.railway.app with vision to capture concrete UX improvements for a future PR.",
+  "started_at": "2026-04-22T23:52:07Z",
+  "updated_at": "2026-04-22T23:52:07Z",
   "task_id": "live-status-panel",
   "context": {
     "repo": "morning-brief",
