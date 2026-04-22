@@ -1,9 +1,9 @@
 {
-  "status": "researching",
-  "headline": "Drafting Gestgo concept one-pager",
-  "detail": "Reading ~/Gusto-MVP onboarding docs + dump to build a tight positioning doc. Gusto is the 'what to eat in 90s' food discovery companion.",
-  "started_at": "2026-04-22T23:54:05Z",
-  "updated_at": "2026-04-22T23:54:05Z",
+  "status": "shipped",
+  "headline": "Gestgo concept one-pager drafted",
+  "detail": "Positioning doc distilled from Gusto-MVP docs: problem, insight, UX thesis, status, moat, open questions, next 6 weeks. Needs your red-pen review.",
+  "started_at": "2026-04-22T23:55:20Z",
+  "updated_at": "2026-04-22T23:55:20Z",
   "task_id": "live-status-panel",
   "context": {
     "repo": "morning-brief",
