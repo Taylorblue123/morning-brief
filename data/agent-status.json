@@ -1,9 +1,9 @@
 {
-  "status": "working",
-  "headline": "Dashboard polish pass \u2014 fixing stale data across sections",
-  "detail": "Updating work-pulse numbers (8/29\u219229/29 mapped), dropping stale v3 reflection + overnight-log sections, refreshing recent+queue to reflect actual state.",
-  "started_at": "2026-04-23T00:35:42Z",
-  "updated_at": "2026-04-23T00:35:42Z",
+  "status": "shipped",
+  "headline": "Dashboard polish v4.5 shipped",
+  "detail": "Stale sections removed, real today-log added, work-pulse synced.",
+  "started_at": "2026-04-23T00:36:10Z",
+  "updated_at": "2026-04-23T00:36:10Z",
   "task_id": "live-status-panel",
   "context": {
     "repo": "morning-brief",
