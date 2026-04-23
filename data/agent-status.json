@@ -1,9 +1,9 @@
 {
-  "status": "building",
-  "headline": "Drafting blog post 'Context, not Control' onto BedRock site",
-  "detail": "Creating /writing/ section + first post from your lark draft. Will open as draft PR for review.",
-  "started_at": "2026-04-22T23:56:38Z",
-  "updated_at": "2026-04-22T23:56:38Z",
+  "status": "shipped",
+  "headline": "Blog posted to Feishu wiki doc",
+  "detail": "Full 24-block post (4 headings, 15 paragraphs, 6 numbered thoughts, italic/bold/inline-code runs) landed in https://bytedance.larkoffice.com/wiki/KT4TwShFHieUNik8Y5Ocgmc9no8",
+  "started_at": "2026-04-23T00:07:14Z",
+  "updated_at": "2026-04-23T00:07:14Z",
   "task_id": "live-status-panel",
   "context": {
     "repo": "morning-brief",
