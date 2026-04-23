@@ -6,6 +6,13 @@
       "date": "2026-04-22",
       "summary": "**Author:** Hermes **Supersedes:** SKILL `wenxuan-morning-brief` v2.x (single-page daily brief)",
       "status": "Draft for Wenxuan's review"
+    },
+    {
+      "slug": "my-reading-of-eval-driven-dev",
+      "title": "My reading of Eval-Driven-Development",
+      "date": "",
+      "summary": "**Author:** Wenxuan (drafted by Hermes from Jun's doc, v2026-03-11) **Source doc:** [Feishu — Evaluation-Driven-Development](https://bytedance.larkoffice.com/docx/TztEdB3nNoijXZxYeJSuxW5TsOg)",
+      "status": "draft — for alignment with Jun before Week-2 standup"
     }
   ]
 }

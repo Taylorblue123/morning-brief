@@ -21,8 +21,8 @@
     {
       "date": "2026-04-23",
       "date_display": "Thursday, April 23, 2026",
-      "tldr": "MAE onboarding pack indexed with direct Feishu links + content summaries. Today: finish reading Jun's eval-driven-dev + MAE Eval doc, then get local frontend running (rush build + start_frontend.sh).",
-      "tldr_short": "MAE onboarding doc index shipped. Focus: Jun's eval-driven-dev + MAE Eval doc + local rush build."
+      "tldr": "MAE onboarding pack indexed + Eval-Driven-Dev 1-pager drafted for Jun. Side-project-of-the-day: morning-brief (indexing infra). Others frozen per new D009 single-focus rule.",
+      "tldr_short": "Day 2 MAE onboarding. Side-project-of-day: morning-brief. Eval-Driven-Dev 1-pager drafted."
     },
     {
       "date": "2026-04-22",

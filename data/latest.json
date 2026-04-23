@@ -2,8 +2,8 @@
   "date": "2026-04-23",
   "date_display": "Thursday, April 23, 2026",
   "greeting": "Good morning, Wenxuan — Day 2 of MAE onboarding",
-  "tldr": "MAE onboarding pack indexed with direct Feishu links + content summaries. Today: finish reading Jun's eval-driven-dev + MAE Eval doc, then get local frontend running (rush build + start_frontend.sh).",
-  "tldr_short": "MAE onboarding doc index shipped. Focus: Jun's eval-driven-dev + MAE Eval doc + local rush build.",
+  "tldr": "MAE onboarding pack indexed + Eval-Driven-Dev 1-pager drafted for Jun. Side-project-of-the-day: morning-brief (indexing infra). Others frozen per new D009 single-focus rule.",
+  "tldr_short": "Day 2 MAE onboarding. Side-project-of-day: morning-brief. Eval-Driven-Dev 1-pager drafted.",
   "sections": [
     {
       "type": "focus-cards",
@@ -27,9 +27,20 @@
       ]
     },
     {
+      "type": "markdown",
+      "title": "🎯 Today's single side-project focus (D009)",
+      "content": "**morning-brief** is today's side project. Crumbs, BedRock, and Gestgo are **frozen** until tomorrow — no PRs, no commits, no context switches. MAE (day job) runs in parallel, independent of this rule."
+    },
+    {
       "type": "drilldown-cards",
       "title": "📚 MAE Onboarding Docs — indexed with direct links",
       "items": [
+        {
+          "title": "📝 My reading of Eval-Driven-Dev (DRAFT for Jun)",
+          "desc": "8-section 1-pager drafted from Jun's doc. 5 Week-2 alignment questions for him. Review before sending.",
+          "tag": "proposal · draft",
+          "href": "./proposal.html?doc=my-reading-of-eval-driven-dev"
+        },
         {
           "title": "Jerry's OKR (manager)",
           "desc": "2026 Q2 O1: 95%+ stability, 80%+ expected-rate. O3 (Jun's line): automated eval for sub-agent / single-prompt AB diff. Scoring 0.6–0.7 = on-target.",
@@ -165,28 +176,28 @@
       "title": "Projects",
       "items": [
         {
-          "title": "MAE onboarding",
+          "title": "MAE onboarding (day job)",
           "status": "in-progress",
           "progress": 25,
-          "next": "Read Jun's eval-driven-dev doc + MAE Eval ch.3 (architecture) and ch.4 (diagnostics)"
+          "next": "Read Jun's eval-driven-dev → review 1-pager → send to Jun"
         },
         {
-          "title": "morning-brief",
-          "status": "shipped",
+          "title": "★ morning-brief (today's side focus)",
+          "status": "in-progress",
           "progress": 100,
-          "next": "Today's brief includes new drilldown-cards section for onboarding docs"
+          "next": "New drilldown-cards + proposal page live; single-focus rule encoded in skill v3.x"
         },
         {
           "title": "crumbs (v2-identity-card)",
-          "status": "in-progress",
+          "status": "frozen",
           "progress": 60,
-          "next": "Landing polish PR (R008) pending your call — 3 options in review-points"
+          "next": "Frozen today per D009. Revisit tomorrow."
         },
         {
           "title": "BedRock / site",
-          "status": "shipped",
+          "status": "frozen",
           "progress": 90,
-          "next": "Vercel deploy decision (R006) still pending"
+          "next": "Frozen today per D009. R006 (Vercel) still open."
         }
       ]
     },
@@ -225,13 +236,13 @@
       "title": "Needs your input",
       "items": [
         {
-          "id": "R010",
-          "question": "After you read Jun's eval-driven-dev doc today — want me to draft a 1-pager 'my reading of Eval-Driven-Dev' you can share with Jun for alignment?",
-          "context": "Jun mentioned Q2 O3 is his line: sub-agent / single-prompt AB diff + inference-cache-aware eval. A reading summary early in Week 1 tends to accelerate mentorship loops.",
+          "id": "R010 ✅",
+          "question": "RESOLVED: Eval-Driven-Dev 1-pager drafted",
+          "context": "Draft lives at ./proposal.html?doc=my-reading-of-eval-driven-dev — 8 sections incl. 5 questions for Jun. Review before sending.",
           "options": [
-            "yes, draft after I read",
-            "yes, draft now from what you already extracted",
-            "skip — I'll form my own view first"
+            "looks good, I'll send to Jun",
+            "iterate — I'll comment",
+            "rewrite tone/length"
           ]
         },
         {

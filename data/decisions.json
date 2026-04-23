@@ -7,7 +7,7 @@
       "topic": "paper-picker",
       "question": "How should the agent pick the paper of the day?",
       "choice": "mix-one-of-each",
-      "detail": "Serve 2 papers when possible: one newer (≤7 days) for freshness + one fit-to-MAE for depth. When only one slot, alternate day-by-day.",
+      "detail": "Serve 2 papers when possible: one newer (\u22647 days) for freshness + one fit-to-MAE for depth. When only one slot, alternate day-by-day.",
       "source": "Wenxuan feedback 2026-04-22"
     },
     {
@@ -108,6 +108,14 @@
       "choice": "NEVER (fake claim, scrub everywhere public)",
       "detail": "Wenxuan flagged the claim as fake. Agent removed it from BedRock/site. Stale sources still contain it: wenxuan.surge.sh (live portfolio), portfolio/portfolio-content.md, ONBOARDING.md, INSTRUCTIONS.md, context/my-background.md, context/jd-2-*.md, fact-sheets/research-3d-scene.md. Memory entry updated with permanent TRUTH RULE.",
       "source": "Wenxuan correction 2026-04-22"
+    },
+    {
+      "id": "D009",
+      "date": "2026-04-23",
+      "topic": "side-project-single-focus",
+      "decision": "Each day, pick exactly ONE side project to evolve. Morning brief names it (field: side_project_of_day). Night-builder only touches that repo. All others frozen until next day.",
+      "rationale": "Avoid context switching across Crumbs / BedRock / morning-brief / Gestgo. Day-job MAE is separate.",
+      "set_by": "Wenxuan"
     }
   ],
   "pending_review": []
