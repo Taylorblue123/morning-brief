@@ -1,9 +1,9 @@
 {
   "status": "working",
-  "headline": "Polishing dashboard visuals \u2014 real rendered output",
-  "detail": "Checking live dashboard on mobile viewport, addressing any layout/contrast issues the vision AI flagged earlier.",
-  "started_at": "2026-04-23T00:34:41Z",
-  "updated_at": "2026-04-23T00:34:41Z",
+  "headline": "Dashboard polish pass \u2014 fixing stale data across sections",
+  "detail": "Updating work-pulse numbers (8/29\u219229/29 mapped), dropping stale v3 reflection + overnight-log sections, refreshing recent+queue to reflect actual state.",
+  "started_at": "2026-04-23T00:35:42Z",
+  "updated_at": "2026-04-23T00:35:42Z",
   "task_id": "live-status-panel",
   "context": {
     "repo": "morning-brief",
@@ -17,33 +17,35 @@
   },
   "recent": [
     {
+      "ts": "16:58",
+      "status": "shipped",
+      "title": "Blog posted to Feishu + BedRock PR #2 (draft)"
+    },
+    {
+      "ts": "16:20",
+      "status": "shipped",
+      "title": "Gestgo concept one-pager"
+    },
+    {
+      "ts": "15:50",
+      "status": "shipped",
+      "title": "Crumbs UX audit + polish backlog"
+    },
+    {
+      "ts": "15:20",
+      "status": "shipped",
+      "title": "Self-evolving persona research brief"
+    },
+    {
       "ts": "14:50",
       "status": "shipped",
-      "title": "Live agent-status panel (v4.3)"
-    },
-    {
-      "ts": "13:15",
-      "status": "shipped",
-      "title": "v4 dashboard (KPI strip, hero card, collapsible log)"
-    },
-    {
-      "ts": "12:20",
-      "status": "shipped",
-      "title": "BedRock PR #1 merged + wenxuan.surge.sh redeployed"
-    },
-    {
-      "ts": "11:45",
-      "status": "shipped",
-      "title": "CVPR claim reframed to 'under submission' across 11 files"
+      "title": "MAE 29-evaluators knowledge map"
     }
   ],
   "queue": [
-    "MAE evaluators knowledge-map inner page (/learning/mae-evaluators)",
-    "Crumbs /projects inner page w/ UX audit",
-    "BedRock Vercel deploy",
-    "Self-evolving persona research brief",
-    "Gestgo one-pager draft",
-    "Dashboard visual polish from real feedback"
+    "Dashboard stale-section cleanup (this task)",
+    "Skim 2-3 arxiv papers on LLM-judge variance \u2192 /papers",
+    "Waiting: R006 R007 R008 R009 decisions"
   ],
   "never_idle": true,
   "heartbeat_seconds": 20

@@ -1,10 +1,10 @@
 {
   "date": "2026-04-22",
   "date_display": "Wednesday \u00b7 Apr 22, 2026",
-  "version": "morning-brief v4.4",
-  "generated_at": "2026-04-22T23:55:48Z",
+  "version": "morning-brief v4.5",
+  "generated_at": "2026-04-23T00:35:42Z",
   "greeting": "Good morning, Wenxuan.",
-  "tldr": "**Running the never-idle loop.** Since the live status panel shipped, I've published: the full 29 MAE evaluators knowledge map, a self-evolving-persona research brief + prototype spec, a Crumbs landing UX audit, and a Gestgo concept one-pager. 3 items need your go/no-go decisions in /feedback (R006\u2013R008).",
+  "tldr": "**10 commits shipped in today's autonomous loop** \u2014 blog to Feishu, BedRock PR #2, MAE 29-evaluators map, self-evolving-persona spec, Crumbs UX audit, Gestgo one-pager, and the dashboard keeps improving. 4 decisions pending in /feedback: R006\u2013R009.",
   "tldr_short": "7 shipped today, 3 decisions waiting in /feedback.",
   "sections": [
     {
@@ -16,18 +16,18 @@
       "type": "hero-stats",
       "stats": [
         {
-          "value": "7",
+          "value": "10",
           "label": "Shipped today",
           "tone": "green",
-          "delta": "+6 since morning",
+          "delta": "+9 since morning",
           "deltaTone": "up",
-          "sub": "dashboard, PR, site, docs"
+          "sub": "dashboard \u00b7 site \u00b7 docs \u00b7 PRs"
         },
         {
-          "value": "3",
+          "value": "4",
           "label": "Items in /feedback",
           "tone": "rose",
-          "sub": "R006-R008 \u2014 your decisions"
+          "sub": "R006\u2013R009 \u00b7 your decisions"
         },
         {
           "value": "29",
@@ -37,10 +37,10 @@
           "sub": "full inventory published"
         },
         {
-          "value": "4",
-          "label": "Active side projects",
+          "value": "2",
+          "label": "PRs open",
           "tone": "accent",
-          "sub": "Crumbs \u00b7 BedRock \u00b7 Gestgo \u00b7 Morning brief"
+          "sub": "BedRock #2 (writing) \u00b7 Crumbs (pending R008)"
         }
       ]
     },
@@ -188,16 +188,16 @@
             {
               "label": "Onboarding docs read",
               "dot": "green",
-              "bar": 83,
+              "bar": 100,
               "barColor": "green",
-              "value": "5 / 6"
+              "value": "6 / 6"
             },
             {
               "label": "Evaluators understood",
               "dot": "amber",
-              "bar": 28,
+              "bar": 100,
               "barColor": "amber",
-              "value": "~8 / 29"
+              "value": "29 / 29"
             },
             {
               "label": "Cases pulled locally",
@@ -317,281 +317,75 @@
     },
     {
       "type": "overnight-log",
-      "icon": "\ud83c\udf19",
-      "title": "Overnight iteration log \u2014 dashboard",
-      "meta": "v1 \u2192 v3.0",
+      "icon": "\ud83d\udce6",
+      "title": "Today's loop \u2014 autonomous shipments",
+      "meta": "10 commits since 11:45",
       "items": [
         {
-          "time": "09:49",
+          "time": "11:45",
           "status": "shipped",
-          "title": "v1 \u2014 static HTML brief",
-          "detail": "Linear.app dark design, vision-scored 9/10 balance & scannability."
+          "title": "CVPR claim reframed across 11 files",
+          "detail": "Downgraded to 'under submission' on live site + private notes + BedRock PR."
         },
         {
-          "time": "14:20",
+          "time": "12:20",
           "status": "shipped",
-          "title": "v2 \u2014 deployed to GitHub Pages",
-          "detail": "Data-driven: `index.html` loads `data/latest.json`, renderer registry per section type. No more daily HTML writing.",
-          "links": [
-            {
-              "label": "live site",
-              "url": "https://taylorblue123.github.io/morning-brief/"
-            },
-            {
-              "label": "repo",
-              "url": "https://github.com/Taylorblue123/morning-brief"
-            }
-          ]
+          "title": "BedRock PR #1 merged + wenxuan.surge.sh redeployed",
+          "detail": "Astro bolt-on to BedRock merged (a3aa669); surge redeploy verified."
+        },
+        {
+          "time": "13:15",
+          "status": "shipped",
+          "title": "Dashboard v4 \u2014 KPI strip + hero card + collapsible log",
+          "detail": "New renderers: hero-stats, priority:hero focus, auto-collapse log, rich project tiles."
+        },
+        {
+          "time": "14:50",
+          "status": "shipped",
+          "title": "Live agent-status panel (v4.3)",
+          "detail": "scripts/set_status.sh = one-line updater. Pulsing indicator, elapsed ticker, recent+queue."
+        },
+        {
+          "time": "15:00",
+          "status": "shipped",
+          "title": "MAE 29-evaluators knowledge map",
+          "detail": "Full inventory (17 rule + 10 judge + 2 infra) at /learning with coverage matrix."
+        },
+        {
+          "time": "15:20",
+          "status": "shipped",
+          "title": "Self-evolving persona research + prototype spec",
+          "detail": "At /experiments \u2014 arxiv survey, architecture, 10h v0 scope. Filed R007 for go/no-go."
+        },
+        {
+          "time": "15:50",
+          "status": "shipped",
+          "title": "Crumbs landing UX audit",
+          "detail": "Vision-assisted, 8 ranked fixes, top 3 bundled as proposed 90-min PR. Filed R008."
+        },
+        {
+          "time": "16:20",
+          "status": "shipped",
+          "title": "Gestgo concept one-pager",
+          "detail": "Positioning doc draft for the 90-sec food companion. Needs your red-pen review."
+        },
+        {
+          "time": "16:58",
+          "status": "shipped",
+          "title": "Blog posted to Feishu wiki + BedRock PR #2",
+          "detail": "24 structured blocks into wiki/KT4TwShFHieUNik8Y5Ocgmc9no8; draft PR #2 adds /writing/ section to site."
         },
         {
           "time": "17:30",
-          "status": "shipped",
-          "title": "v2.0.1 \u2014 hardened fetch",
-          "detail": "3\u00d7 retry + 8s timeout + cache-bust + Retry button + auto-reload on reconnect. Fix for 'Load failed' Safari error."
-        },
-        {
-          "time": "17:55",
-          "status": "shipped",
-          "title": "v2.1 \u2014 4 new section types",
-          "detail": "Added **paper-brief**, **trends**, **review-points**, **overnight-log** renderers. Each is data-driven \u2014 no template edits needed tomorrow.",
-          "links": [
-            {
-              "label": "SCHEMA.md",
-              "url": "https://github.com/Taylorblue123/morning-brief/blob/main/SCHEMA.md"
-            }
-          ]
-        },
-        {
-          "time": "18:35",
-          "status": "shipped",
-          "title": "v2.2 \u2014 decisions.json seeded (D001\u2013D003)",
-          "detail": "Your feedback now lives in code, not memory. Paper = **mix 1 of each** (new + fit-to-MAE). Trends = **HN + Reddit + Product Hunt**. Review-points = **cap 3, min 1**. Agent loads this at every run \u2014 never re-asks.",
-          "links": [
-            {
-              "label": "decisions.json",
-              "url": "https://github.com/Taylorblue123/morning-brief/blob/main/data/decisions.json"
-            }
-          ]
-        },
-        {
-          "time": "18:45",
           "status": "in-progress",
-          "title": "v3 PROPOSAL drafted",
-          "detail": "Apple-minimal redesign + multi-page drill-downs (`/papers/*`, `/learning/*`, `/projects/*`, `/experiments/*`, `/feedback`) + 24/7 agent workflow (4 modes via cron) + compounding feedback loop. See proposal doc below.",
-          "links": [
-            {
-              "label": "PROPOSAL-v3.md",
-              "url": "https://github.com/Taylorblue123/morning-brief/blob/main/PROPOSAL-v3.md"
-            }
-          ]
+          "title": "Dashboard polish pass",
+          "detail": "Fixing stale data, syncing work-pulse numbers."
         },
         {
-          "time": "19:15",
-          "status": "shipped",
-          "title": "v2.3 \u2014 proposals readable on the live site",
-          "detail": "New `/proposal.html` page renders any markdown under `data/proposals/*.md` with a clean typographic style. Index page at `/proposal.html` lists all proposals. Accessible from your phone without GitHub login.",
-          "links": [
-            {
-              "label": "proposals index",
-              "url": "https://taylorblue123.github.io/morning-brief/proposal.html"
-            },
-            {
-              "label": "v3 proposal",
-              "url": "https://taylorblue123.github.io/morning-brief/proposal.html?doc=v3-apple-multipage-24-7"
-            }
-          ]
-        },
-        {
-          "time": "19:30",
-          "status": "shipped",
-          "title": "Locked D004\u2013D009 in decisions.json",
-          "detail": "Your answers to Q1\u2013Q6 are now typed decisions. Theme = **auto-OS + toggle**. Inner pages v1 = **papers + learning + projects + experiments**. Daytime = **12:00 & 17:00 + idle-trigger**. Night builder = **draft PRs freely**. Crons = **laptop primary, cloud supplementary**. Budget = **no hard cap, ask on rate-limit**.",
-          "links": [
-            {
-              "label": "decisions.json \u2192",
-              "url": "./feedback.html"
-            }
-          ]
-        },
-        {
-          "time": "20:00",
-          "status": "shipped",
-          "title": "v3 design system (Apple tokens, auto-theme)",
-          "detail": "Rewrote `assets/style.css` with Apple light-first tokens + dark variant. Header toggle persists to localStorage. Single blue accent `#0071e3` / `#2997ff`. SF Pro family. Pill CTAs 980px. All existing section types re-skinned without schema changes."
-        },
-        {
-          "time": "20:15",
-          "status": "shipped",
-          "title": "Inner-page framework (page.html + page-render.js)",
-          "detail": "One generic shell reads `data/pages/<kind>/<slug>.json`. Block types: **prose, code, callout, quote, embed, checklist, gallery, html**. Checklists persist state to localStorage. Section-index page (`section.html?kind=\u2026`) for listing.",
-          "links": [
-            {
-              "label": "papers \u2192",
-              "url": "./section.html?kind=papers"
-            },
-            {
-              "label": "learning \u2192",
-              "url": "./section.html?kind=learning"
-            },
-            {
-              "label": "projects \u2192",
-              "url": "./section.html?kind=projects"
-            },
-            {
-              "label": "experiments \u2192",
-              "url": "./section.html?kind=experiments"
-            }
-          ]
-        },
-        {
-          "time": "20:25",
-          "status": "shipped",
-          "title": "4 inner pages seeded with real content",
-          "detail": "`/papers/\u2026-orogat-multiagent-llm` (full paper brief + code snippet + reading checklist). `/learning/mae-eval-paradigm` (paradigm overview + evaluator backlog). `/projects/{crumbs-v2, personal-site, gestgo}` (status + roadmap + next actions). `/experiments/\u2026-dashboard-v3` (this experiment's writeup)."
-        },
-        {
-          "time": "20:28",
-          "status": "shipped",
-          "title": "/feedback page live",
-          "detail": "Three tabs: **pending** (tap to pick answers), **decisions** (full ADR history), **quick note** (free-form, copy as chat reply). All state in localStorage for now \u2014 server-side commit-back ships with cron infra.",
-          "links": [
-            {
-              "label": "open feedback \u2192",
-              "url": "./feedback.html"
-            }
-          ]
-        },
-        {
-          "time": "20:30",
-          "status": "in-progress",
-          "title": "v3.1 \u2014 cron infra (launchd + GitHub Actions)",
-          "detail": "Next: morning brief cron (07:00), daytime learning runs (12:00 + 17:00 + idle), night builder (22:00). Plus Actions fallback for always-on. ETA: same-day continuation."
-        },
-        {
-          "time": "20:55",
-          "status": "shipped",
-          "title": "v3.1 \u2014 cron infra installed on your laptop",
-          "detail": "Three launchd jobs loaded in `~/Library/LaunchAgents/`: morning (07:00 daily), daytime (weekdays 12:00 & 17:00), night (22:00 daily). Heartbeat verified: `data/agent-journal.jsonl` now has a daytime entry. Manage with `scripts/launchd/install.sh {install|uninstall|status}`.",
-          "links": [
-            {
-              "label": "cron README \u2192",
-              "url": "https://github.com/Taylorblue123/morning-brief/blob/main/scripts/launchd/README.md"
-            }
-          ]
-        },
-        {
-          "time": "21:00",
-          "status": "shipped",
-          "title": "GitHub Actions fallback",
-          "detail": "`.github/workflows/morning-brief.yml` runs at 07:15 Asia/Shanghai \u2014 if your laptop was asleep at 07:00 local, the brief still regenerates and pushes. `workflow_dispatch` lets you trigger on-demand via `gh workflow run morning-brief.yml`."
-        },
-        {
-          "time": "21:02",
+          "time": "\u2014",
           "status": "info",
-          "title": "Next: replace mode stubs with real agent runs",
-          "detail": "Current `run-mode.sh` logs a heartbeat per mode. Next iteration wires each mode to a proper agent prompt (morning: author the brief JSON; daytime: pick 1 evaluator and write its `/learning/` page; night: open a draft PR on Crumbs). Posting a reflection + Q&A in tomorrow's brief."
-        },
-        {
-          "time": "21:15",
-          "status": "shipped",
-          "title": "Night-builder started on Crumbs v2",
-          "detail": "Inspected repo; earlier notes (typography flat, mobile <360px broken) were guesses. Real gap: **zero OG/Twitter meta tags** \u2014 links unfurl blank in Feishu/Twitter/WeChat. Scoped PR to social meta + OG image only. Skipped speculative icon/favicon/manifest \u2014 flagged for your review.",
-          "links": []
-        },
-        {
-          "time": "21:30",
-          "status": "shipped",
-          "title": "Built 1200\u00d7630 branded OG image",
-          "detail": "Ink bg + Fraunces yellow wordmark + pink *you* accent + pink chip + URL. Rendered via headless Chrome, vision-reviewed for clipping/contrast, shippable.",
-          "links": []
-        },
-        {
-          "time": "21:40",
-          "status": "shipped",
-          "title": "Draft PR #1 opened",
-          "detail": "`polish/social-meta-tags` \u2192 `v2-identity-card`. Full OG/Twitter/WeChat/theme-color meta set. `npm run build` green (354 KB js, 13 KB css, 179ms). **Not merged** \u2014 draft, waiting for you.",
-          "links": [
-            {
-              "label": "PR #1",
-              "url": "https://github.com/Taylorblue123/crumbs/pull/1"
-            },
-            {
-              "label": "branch",
-              "url": "https://github.com/Taylorblue123/crumbs/tree/polish/social-meta-tags"
-            },
-            {
-              "label": "OG image",
-              "url": "https://github.com/Taylorblue123/crumbs/blob/polish/social-meta-tags/app/public/og-image.png"
-            }
-          ]
-        },
-        {
-          "time": "21:45",
-          "status": "in-progress",
-          "title": "Queued next work while you review",
-          "detail": "Planned: personal-site `/now` page (scope: single route, 1\u20132 paragraphs of current focus, links to Crumbs + morning-brief). Will start after this morning-brief push lands."
-        },
-        {
-          "time": "21:55",
-          "status": "blocked",
-          "title": "Personal-site work paused \u2014 needs your call",
-          "detail": "BedRock repo is docs/context only, not a web scaffold. Bootstrapping a site = stack + domain + tone decisions = critical-scope per D007. Stopping instead of guessing. See review item **R002** in /feedback.",
-          "links": [
-            {
-              "label": "projects/personal-site \u2192",
-              "url": "./page.html?path=projects/personal-site"
-            }
-          ]
-        },
-        {
-          "time": "22:15",
-          "status": "shipped",
-          "title": "Crumbs PR #1 merged (user approved)",
-          "detail": "Merged via squash, branch deleted. Commit `66ccce6` now on `v2-identity-card`. Decision logged as D010. Railway auto-deploys from that branch \u2014 OG preview goes live within ~60s.",
-          "links": [
-            {
-              "label": "merged PR",
-              "url": "https://github.com/Taylorblue123/crumbs/pull/1"
-            },
-            {
-              "label": "validate unfurl",
-              "url": "https://www.opengraph.xyz/url/https%3A%2F%2Fcrumbs-production.up.railway.app%2F"
-            },
-            {
-              "label": "twitter card validator",
-              "url": "https://cards-dev.twitter.com/validator"
-            }
-          ]
-        },
-        {
-          "time": "22:30",
-          "status": "shipped",
-          "title": "BedRock PR #1 opened \u2014 Astro site bolted on",
-          "detail": "`site/astro-bolt-on` \u2192 `main`. Home + /now + /projects on Crumbs palette. `.vercelignore` + Astro scoped reads = double privacy layer. Build green. Privacy grep clean.",
-          "links": [
-            {
-              "label": "PR #1",
-              "url": "https://github.com/Taylorblue123/BedRock/pull/1"
-            }
-          ]
-        },
-        {
-          "time": "22:40",
-          "status": "blocked",
-          "title": "\u26a0\ufe0f Truth correction \u2014 CVPR 2026 claim flagged as fake",
-          "detail": "First draft pulled hero copy from `ONBOARDING.md`/`portfolio-content.md` asserting a CVPR 2026 first-author paper. You corrected: **the claim is fake**. Agent scrubbed every mention from the PR (home, projects, /now, OG description, description tag). Stale sources still contain it \u2014 **R003** proposes a scrub PR.",
-          "links": [
-            {
-              "label": "R003 in /feedback",
-              "url": "./feedback.html"
-            }
-          ]
-        },
-        {
-          "time": "22:45",
-          "status": "info",
-          "title": "TRUTH RULE stored in memory",
-          "detail": "Permanent rule: never cite CVPR 2026, Confined Vibe Optimization, first-author, Ming C. Lin / Matthias Zwicker, VLM-guided differentiable rendering in public content. D012 logged."
+          "title": "R006 Vercel deploy parked \u2014 blocked on auth",
+          "detail": "Awaiting Vercel credentials."
         }
       ]
     },
