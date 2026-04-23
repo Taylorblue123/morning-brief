@@ -7,3 +7,4 @@
 {"ts":"2026-04-22T21:20:00Z","event":"resolved","items":["R003 scrub-cvpr (reframed to under-submission)","R004 bedrock-pr-1 (merged a3aa669)","R005 surge-redeploy (deployed)"]}
 {"ts": "2026-04-22T17:00:05-07:00", "mode": "daytime", "event": "heartbeat"}
 {"ts": "2026-04-22T22:00:05-07:00", "mode": "night", "event": "heartbeat"}
+{"ts":"2026-04-23T11:20:00-07:00","mode":"user-triggered","event":"brief_published","date":"2026-04-23","sections":["focus-cards","drilldown-cards(MAE-onboarding)","paper-brief","trends","pulse-grid","project-tiles","overnight-log","review-points"]}
