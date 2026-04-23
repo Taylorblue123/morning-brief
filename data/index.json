@@ -13,6 +13,18 @@
       "tldr_short": ""
     },
     {
+      "date": "agent-status",
+      "date_display": "",
+      "tldr": "",
+      "tldr_short": ""
+    },
+    {
+      "date": "2026-04-23",
+      "date_display": "Thursday, April 23, 2026",
+      "tldr": "MAE onboarding pack indexed with direct Feishu links + content summaries. Today: finish reading Jun's eval-driven-dev + MAE Eval doc, then get local frontend running (rush build + start_frontend.sh).",
+      "tldr_short": "MAE onboarding doc index shipped. Focus: Jun's eval-driven-dev + MAE Eval doc + local rush build."
+    },
+    {
       "date": "2026-04-22",
       "date_display": "Wednesday · Apr 22, 2026",
       "tldr": "**Night-builder #2 shipped.** [BedRock PR #1](https://github.com/Taylorblue123/BedRock/pull/1) — Astro site bolted onto your existing repo, preserving privacy. ⚠️ **Correction:** first draft propagated a CVPR 2026 claim from your old portfolio — you flagged as fake, agent removed it everywhere in the PR. Stale sources still have it (R003).",
