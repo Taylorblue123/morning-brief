@@ -8,3 +8,5 @@
 {"ts": "2026-04-22T17:00:05-07:00", "mode": "daytime", "event": "heartbeat"}
 {"ts": "2026-04-22T22:00:05-07:00", "mode": "night", "event": "heartbeat"}
 {"ts":"2026-04-23T11:20:00-07:00","mode":"user-triggered","event":"brief_published","date":"2026-04-23","sections":["focus-cards","drilldown-cards(MAE-onboarding)","paper-brief","trends","pulse-grid","project-tiles","overnight-log","review-points"]}
+{"ts":"2026-04-23T11:35:00-07:00","mode":"user-decision","event":"decision_recorded","id":"D009","rule":"one-side-project-per-day","today_focus":"morning-brief"}
+{"ts":"2026-04-23T11:35:10-07:00","mode":"user-triggered","event":"proposal_drafted","id":"my-reading-of-eval-driven-dev","for":"Jun Li","status":"awaiting-wenxuan-review"}
