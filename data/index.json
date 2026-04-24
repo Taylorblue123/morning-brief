@@ -19,6 +19,12 @@
       "tldr_short": ""
     },
     {
+      "date": "2026-04-24",
+      "date_display": "Friday, April 24, 2026",
+      "tldr": "Day 3: MAE local stack is the hands-on priority; 4 pending-review decisions (R006–R009) are blocking side-project progress and need your call. Single side project of the day: morning-brief (drain the queue, then freeze).",
+      "tldr_short": "Day 3 MAE onboarding. R006–R009 need decisions. Side-project-of-day: morning-brief."
+    },
+    {
       "date": "2026-04-23",
       "date_display": "Thursday, April 23, 2026",
       "tldr": "MAE onboarding pack indexed + Eval-Driven-Dev 1-pager drafted for Jun. Side-project-of-the-day: morning-brief (indexing infra). Others frozen per new D009 single-focus rule.",
