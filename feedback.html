@@ -86,9 +86,10 @@
         <div class="decision-q">Any idea, correction, or feature ask. The agent will pick this up on the next run.</div>
         <textarea id="quick-note" class="quick-note" placeholder="e.g. prefer green bars over amber · add a weather block · Gestgo needs a landing page"></textarea>
         <div class="fb-submit-bar">
+          <button class="fb-btn" id="submit-gh">📮 Submit via GitHub (1-click, real)</button>
           <button class="fb-btn" id="copy-reply">Copy as chat reply</button>
           <button class="fb-btn ghost" id="clear-all">Clear all picks</button>
-          <span class="fb-hint">Paste in Feishu and send — no login/server needed.</span>
+          <span class="fb-hint">Submit opens a prefilled GitHub Issue — the agent picks it up within ~10 min and writes to decisions.json.</span>
         </div>
       </div>
     </div>
@@ -198,6 +199,26 @@ document.getElementById("clear-all").addEventListener("click", () => {
     document.getElementById("quick-note").value = "";
     renderPending();
   }
+});
+
+document.getElementById("submit-gh").addEventListener("click", () => {
+  const picks = loadPicks();
+  const note = document.getElementById("quick-note").value.trim();
+  const lines = [];
+  if (Object.keys(picks).length) {
+    lines.push("## Feedback picks");
+    lines.push("");
+    Object.entries(picks).forEach(([id, choice]) => lines.push(`- **${id}**: ${choice}`));
+  }
+  if (note) { lines.push(""); lines.push("## Note"); lines.push(""); lines.push(note); }
+  if (!lines.length) { alert("Pick some answers or write a note first."); return; }
+  lines.push("");
+  lines.push("---");
+  lines.push(`_Submitted from feedback page at ${new Date().toISOString()}_`);
+  const body = lines.join("\n");
+  const title = `feedback: ${Object.keys(picks).length} pick(s)${note ? " + note" : ""} — ${new Date().toISOString().slice(0,16).replace("T"," ")}`;
+  const url = `https://github.com/Taylorblue123/morning-brief/issues/new?labels=feedback&title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
+  window.open(url, "_blank", "noopener");
 });
 
 renderPending();
