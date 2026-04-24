@@ -218,6 +218,7 @@ h1 {
 .proj-tile:hover { transform: translateY(-1px); box-shadow: var(--shadow-card); }
 .proj-name { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 4px; letter-spacing: -0.01em; }
 .proj-status { font-size: 12px; color: var(--text-3); margin-bottom: 12px; }
+.proj-desc { font-size: 13px; color: var(--text-2); line-height: 1.55; margin-bottom: 12px; }
 .proj-bar { height: 5px; background: var(--surface-hi); border-radius: 3px; overflow: hidden; }
 .proj-bar-fill { height: 100%; background: var(--accent); border-radius: 3px; transition: width 0.3s ease; }
 .proj-next { font-size: 12px; color: var(--text-2); margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border-subtle); }

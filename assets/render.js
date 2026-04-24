@@ -73,30 +73,44 @@ const RENDERERS = {
       </div>
     </div>`,
 
-  "pulse-grid": (s) => `
+  "pulse-grid": (s) => {
+    // Accept BOTH shapes:
+    //   1) {cards: [{rows: [...]}, ...]}   (legacy / nested)
+    //   2) {rows: [...]}                   (flat — what the agent actually writes)
+    // Normalise to a single cards[] of length 1 if flat.
+    const cards = (s.cards && s.cards.length)
+      ? s.cards
+      : (s.rows ? [{ rows: s.rows }] : []);
+    return `
     <div class="section">
       <div class="section-head">
         <span class="section-icon">${s.icon || "💼"}</span>
         <span class="section-title">${esc(s.title || "Pulse")}</span>
         ${s.meta ? `<span class="section-meta">${esc(s.meta)}</span>` : ""}
       </div>
-      <div class="pulse-grid" style="${(s.cards || []).length === 1 ? 'grid-template-columns:1fr;' : ''}">
-        ${(s.cards || []).map(card => `
+      <div class="pulse-grid" style="${cards.length === 1 ? 'grid-template-columns:1fr;' : ''}">
+        ${cards.map(card => `
           <div class="pulse-card">
             ${(card.rows || []).map(r => {
-              const hasBar = r.bar != null;
+              // bar may be {ratio: 0..1}, a number 0..100, or null
+              let pct = null;
+              if (r.bar != null) {
+                if (typeof r.bar === "number") pct = r.bar > 1 ? r.bar : r.bar * 100;
+                else if (typeof r.bar === "object" && r.bar.ratio != null) pct = r.bar.ratio * 100;
+              }
               const dotCls = r.dot ? `<span class="dot ${esc(r.dot)}"></span>` : "";
               const barCls = r.barColor || "gray";
-              return `<div class="pulse-row ${hasBar ? "" : "simple"}">
+              return `<div class="pulse-row ${pct != null ? "" : "simple"}">
                 <span class="pulse-label">${dotCls}${esc(r.label)}</span>
-                ${hasBar ? `<span class="mini-bar"><span class="mini-bar-fill ${esc(barCls)}" style="width:${Math.max(0, Math.min(100, r.bar))}%"></span></span>` : ""}
+                ${pct != null ? `<span class="mini-bar"><span class="mini-bar-fill ${esc(barCls)}" style="width:${Math.max(0, Math.min(100, pct))}%"></span></span>` : ""}
                 <span class="pulse-value">${esc(r.value)}</span>
               </div>`;
             }).join("")}
           </div>
         `).join("")}
       </div>
-    </div>`,
+    </div>`;
+  },
 
   "project-tiles": (s) => `
     <div class="section">
@@ -106,19 +120,26 @@ const RENDERERS = {
         ${s.meta ? `<span class="section-meta">${esc(s.meta)}</span>` : ""}
       </div>
       <div class="proj-grid">
-        ${(s.items || []).map(p => `
+        ${(s.items || []).map(p => {
+          // Accept BOTH shapes: {name, blurb, ...} (legacy) and {title, desc, ...} (current)
+          const name = p.name || p.title || "";
+          const blurb = p.desc || p.blurb || "";
+          let pct = 0;
+          if (p.progress != null) pct = p.progress > 1 ? p.progress : p.progress * 100;
+          return `
           <div class="proj-tile">
-            ${p.thumb ? `<div class="proj-thumb"><img src="${esc(p.thumb)}" alt="${esc(p.name)} preview" loading="lazy"></div>` : ""}
+            ${p.thumb ? `<div class="proj-thumb"><img src="${esc(p.thumb)}" alt="${esc(name)} preview" loading="lazy"></div>` : ""}
             <div class="proj-head">
-              <div class="proj-name">${esc(p.name)}</div>
+              <div class="proj-name">${esc(name)}</div>
               ${p.activity != null ? `<span class="proj-activity" title="recent commits">●${esc(p.activity)}</span>` : ""}
             </div>
             <div class="proj-status">${p.dot ? `<span class="dot ${esc(p.dot)}"></span>` : ""}${esc(p.status || "")}</div>
-            <div class="proj-bar"><div class="proj-bar-fill" style="width:${Math.max(0, Math.min(100, p.progress ?? 0))}%"></div></div>
+            ${blurb ? `<div class="proj-desc">${renderInline(blurb)}</div>` : ""}
+            <div class="proj-bar"><div class="proj-bar-fill" style="width:${Math.max(0, Math.min(100, pct))}%"></div></div>
             ${p.next ? `<div class="proj-next"><span class="proj-next-label">NEXT</span>${esc(p.next)}</div>` : ""}
-            ${p.links && p.links.length ? `<div class="proj-links">${p.links.map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join("")}</div>` : ""}
-          </div>
-        `).join("")}
+            ${p.links && p.links.length ? `<div class="proj-links">${p.links.map(l => `<a href="${esc(l.url || l.href)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join("")}</div>` : ""}
+          </div>`;
+        }).join("")}
       </div>
     </div>`,
 
@@ -252,7 +273,7 @@ const RENDERERS = {
             <div class="log-body">
               <div class="log-title">${it.status ? `<span class="log-status log-${esc(it.status)}">${esc(it.status)}</span>` : ""}${renderInline(it.title)}</div>
               ${it.detail ? `<div class="log-detail">${renderInline(it.detail)}</div>` : ""}
-              ${it.links && it.links.length ? `<div class="log-links">${it.links.map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join("")}</div>` : ""}
+              ${it.links && it.links.length ? `<div class="log-links">${it.links.map(l => `<a href="${esc(l.url || l.href)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join("")}</div>` : ""}
             </div>
           </div>
         `).join("")}
