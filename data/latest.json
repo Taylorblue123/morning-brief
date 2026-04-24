@@ -29,12 +29,12 @@
     {
       "type": "markdown",
       "title": "🎯 Today's single side-project focus (D009)",
-      "content": "**morning-brief** — continue the indexing/review infra so the queue actually drains. **Crumbs, BedRock, Gestgo frozen** until a side-project decision flips tomorrow. MAE (day job) runs in parallel and is unaffected."
+      "text": "**morning-brief** — continue the indexing/review infra so the queue actually drains. **Crumbs, BedRock, Gestgo frozen** until a side-project decision flips tomorrow. MAE (day job) runs in parallel and is unaffected."
     },
     {
       "type": "paper-brief",
       "title": "📄 Paper of the day — LLM-as-judge overfits to its own feedback",
-      "item": {
+      "paper": {
         "title": "Exploiting LLM-as-a-Judge Disposition on Free Text Legal QA via Prompt Optimization",
         "authors": "Mohamed Hesham Elganayni, Runsheng Chen, Sebastian Nagl, Matthias Grabmair",
         "arxiv_id": "2604.20726",

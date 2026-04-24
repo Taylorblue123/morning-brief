@@ -13,3 +13,4 @@
 {"ts": "2026-04-23T12:00:05-07:00", "mode": "daytime", "event": "heartbeat"}
 {"ts": "2026-04-23T17:12:58-07:00", "mode": "daytime", "event": "heartbeat"}
 {"ts": "2026-04-23T22:01:31-07:00", "mode": "night", "event": "heartbeat"}
+{"ts":"2026-04-24T07:05:00-07:00","mode":"user-triggered","event":"brief_published","date":"2026-04-24","sections":["focus-cards","paper-brief","trends","pulse-grid","project-tiles","ideas","overnight-log","review-points"]}
