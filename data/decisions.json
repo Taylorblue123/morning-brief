@@ -116,25 +116,6 @@
       "decision": "Each day, pick exactly ONE side project to evolve. Morning brief names it (field: side_project_of_day). Night-builder only touches that repo. All others frozen until next day.",
       "rationale": "Avoid context switching across Crumbs / BedRock / morning-brief / Gestgo. Day-job MAE is separate.",
       "set_by": "Wenxuan"
-    },
-    {
-      "id": "D013",
-      "date": "2026-04-24",
-      "topic": "note-from-feedback-page",
-      "question": "Free-form note from Wenxuan",
-      "choice": "recorded",
-      "detail": "This is an automated end-to-end test of the feedback ingest pipeline. Safe to ignore; will be cleaned up.",
-      "source": "Wenxuan feedback page note → GitHub issue #2 2026-04-24"
-    },
-    {
-      "id": "D014",
-      "date": "2026-04-24",
-      "topic": "r999",
-      "question": "Response to R999",
-      "choice": "e2e-pick-parsing-verification",
-      "detail": "Answered via feedback page (issue #3).",
-      "source": "Wenxuan feedback page → GitHub issue #3 2026-04-24",
-      "linked_review_id": "R999"
     }
   ],
   "pending_review": []
