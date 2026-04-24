@@ -5,28 +5,48 @@
       "topic": "bedrock-vercel-deploy",
       "question": "Deploy BedRock Astro site to Vercel?",
       "context": "Vercel CLI needs auth. Options: (a) share vercel login email + OTP, (b) paste a token from https://vercel.com/account/tokens, (c) run yourself: `cd ~/BedRock && npx vercel --prod`.",
-      "options": ["a — share email, I'll handle OTP", "b — paste a token", "c — I'll run it myself", "skip, keep on surge"]
+      "options": [
+        "a — share email, I'll handle OTP",
+        "b — paste a token",
+        "c — I'll run it myself",
+        "skip, keep on surge"
+      ]
     },
     {
       "id": "R007",
       "topic": "self-evolving-persona-v0",
       "question": "Prototype the self-evolving persona system (v0, ~10h)?",
       "context": "Full spec: /page.html?path=experiments/self-evolving-persona — episodic event log → nightly distillation cron → persona core → /persona viewer. Local-only v0, chat+commits+journal sources only.",
-      "options": ["yes, build v0 this weekend", "yes, narrower scope", "design doc only", "not worth it"]
+      "options": [
+        "yes, build v0 this weekend",
+        "yes, narrower scope",
+        "design doc only",
+        "not worth it"
+      ]
     },
     {
       "id": "R008",
       "topic": "crumbs-landing-polish-pr",
       "question": "Draft a Crumbs landing-page polish PR (~90 min)?",
       "context": "Full audit: /page.html?path=projects/crumbs-ux-audit-2026-04-22 — top 3 high-leverage fixes: gradient overlay, value-prop H1, CTA copy rewrite.",
-      "options": ["yes, draft the PR", "yes but only #1 (contrast)", "wait, discuss first", "skip"]
+      "options": [
+        "yes, draft the PR",
+        "yes but only #1 (contrast)",
+        "wait, discuss first",
+        "skip"
+      ]
     },
     {
       "id": "R009",
       "topic": "writing-context-not-control",
       "question": "Review the 'Context, not Control' essay — published to Feishu + drafted on site",
       "context": "Your lark draft was posted into the canonical wiki doc (KT4TwShFHieUNik8Y5Ocgmc9no8) as 24 structured blocks, AND a draft PR is open on BedRock PR #2 adding /writing/ section with the same post. Open questions: (a) CJK line-height polish on site, (b) H1 line-break, (c) publish-or-keep-draft decision.",
-      "options": ["merge PR as-is + publish", "iterate typography first", "keep feishu only for now", "rewrite / more edits"]
+      "options": [
+        "merge PR as-is + publish",
+        "iterate typography first",
+        "keep feishu only for now",
+        "rewrite / more edits"
+      ]
     }
   ]
 }

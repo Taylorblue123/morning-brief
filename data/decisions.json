@@ -7,7 +7,7 @@
       "topic": "paper-picker",
       "question": "How should the agent pick the paper of the day?",
       "choice": "mix-one-of-each",
-      "detail": "Serve 2 papers when possible: one newer (\u22647 days) for freshness + one fit-to-MAE for depth. When only one slot, alternate day-by-day.",
+      "detail": "Serve 2 papers when possible: one newer (≤7 days) for freshness + one fit-to-MAE for depth. When only one slot, alternate day-by-day.",
       "source": "Wenxuan feedback 2026-04-22"
     },
     {
@@ -116,6 +116,15 @@
       "decision": "Each day, pick exactly ONE side project to evolve. Morning brief names it (field: side_project_of_day). Night-builder only touches that repo. All others frozen until next day.",
       "rationale": "Avoid context switching across Crumbs / BedRock / morning-brief / Gestgo. Day-job MAE is separate.",
       "set_by": "Wenxuan"
+    },
+    {
+      "id": "D013",
+      "date": "2026-04-24",
+      "topic": "note-from-feedback-page",
+      "question": "Free-form note from Wenxuan",
+      "choice": "recorded",
+      "detail": "This is an automated end-to-end test of the feedback ingest pipeline. Safe to ignore; will be cleaned up.",
+      "source": "Wenxuan feedback page note → GitHub issue #2 2026-04-24"
     }
   ],
   "pending_review": []
