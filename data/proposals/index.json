@@ -1,6 +1,13 @@
 {
   "proposals": [
     {
+      "slug": "decision-reflect-joining-mae",
+      "title": "Decision Reflect: Joining MAE — through Kahneman's Lens",
+      "date": "2026-04-23",
+      "summary": "**Author:** Wenxuan (drafted with Hermes) **Date:** 2026-04-23, Day 2 of onboarding **Framework:** *Thinking, Fast and Slow* — System 1 (gut/fast/associative) vs. System 2 (deliberate/slow/analytical) **Purpose:** Audit a still-fresh decision *before* outcome bias kicks in. Surface which reasons wer",
+      "status": "draft"
+    },
+    {
       "slug": "v3-apple-multipage-24-7",
       "title": "Proposal — Morning Brief v3 + 24/7 Agent Workflow",
       "date": "2026-04-22",
