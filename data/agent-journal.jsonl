@@ -17,3 +17,5 @@
 {"ts": "2026-04-24T12:00:05-07:00", "mode": "daytime", "event": "heartbeat"}
 {"ts": "2026-04-24T17:00:05-07:00", "mode": "daytime", "event": "heartbeat"}
 {"ts": "2026-04-24T22:00:05-07:00", "mode": "night", "event": "heartbeat"}
+{"ts":"2026-04-25T07:05:00-07:00","mode":"user-triggered","event":"brief_published","date":"2026-04-25","sections":["focus-cards","paper-brief","trends","pulse-grid","project-tiles","ideas","overnight-log","review-points"]}
+{"ts": "2026-04-25T22:00:05-07:00", "mode": "night", "event": "heartbeat"}

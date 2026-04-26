@@ -19,6 +19,12 @@
       "tldr_short": ""
     },
     {
+      "date": "2026-04-26",
+      "date_display": "Sunday, April 26, 2026",
+      "tldr": "R006–R009 are now 4 days old and still blocking three side-project repos and the night-builder. Drain at least one today, then claim the last weekend block to get MAE to localhost:3000 before Monday standup. Side project of the day: morning-brief (per D009).",
+      "tldr_short": "Day 5. R006–R009 now 4 days old — drain ≥1. Last weekend window for MAE local stack. Side project: morning-brief."
+    },
+    {
       "date": "2026-04-25",
       "date_display": "Saturday, April 25, 2026",
       "tldr": "Weekend opening: R006–R009 have been sitting 3 days and are blocking every side project. Spend 10 min draining them, then claim a hands-on MAE block before the laptop cools. Side project of the day: morning-brief (drain the queue, freeze others per D009).",
