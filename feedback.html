@@ -49,6 +49,25 @@
   .fb-btn.ghost { background: transparent; color: var(--accent); }
   .fb-btn.ghost:hover { background: var(--accent); color: #fff; }
   .fb-hint { font-size: 12px; color: var(--text-3); }
+
+  /* Sticky submit bar */
+  .sticky-submit {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+    background: var(--bg); border-top: 2px solid var(--accent);
+    padding: 14px 20px; display: none; align-items: center; justify-content: center; gap: 14px;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.12);
+    animation: slideUp 0.25s ease-out;
+  }
+  .sticky-submit.visible { display: flex; }
+  .sticky-submit .pick-count { font-size: 14px; font-weight: 600; color: var(--text); }
+  .sticky-submit .pick-count span { color: var(--accent); }
+  .sticky-submit .fb-btn { font-size: 15px; padding: 10px 28px; }
+  .sticky-submit .fb-btn.primary { background: var(--rose); border-color: var(--rose); }
+  .sticky-submit .fb-btn.primary:hover { filter: brightness(1.1); }
+  .sticky-submit .status-msg { font-size: 13px; color: var(--text-3); }
+  @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+  /* Pad bottom so sticky bar doesn't cover content */
+  .fb-body { padding-bottom: 80px; }
 </style>
 </head>
 <body>
@@ -96,12 +115,44 @@
   </div>
 </div>
 
+<!-- Sticky submit bar -->
+<div class="sticky-submit" id="sticky-bar">
+  <div class="pick-count"><span id="pick-num">0</span> pick(s) selected</div>
+  <button class="fb-btn primary" id="sticky-submit-gh">📮 Submit via GitHub Issue</button>
+  <button class="fb-btn" id="sticky-copy">📋 Copy for Feishu</button>
+  <button class="fb-btn ghost" id="sticky-clear">✕ Clear</button>
+  <div class="status-msg" id="sticky-status"></div>
+</div>
+
 <script>
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
 const PICKS_KEY = "morningbrief.picks";
 
 function loadPicks() { try { return JSON.parse(localStorage.getItem(PICKS_KEY) || "{}"); } catch(e) { return {}; } }
-function savePicks(p) { localStorage.setItem(PICKS_KEY, JSON.stringify(p)); }
+function savePicks(p) { localStorage.setItem(PICKS_KEY, JSON.stringify(p)); updateStickyBar(); }
+
+function updateStickyBar() {
+  const picks = loadPicks();
+  const note = document.getElementById("quick-note")?.value?.trim() || "";
+  const count = Object.keys(picks).length + (note ? 1 : 0);
+  const bar = document.getElementById("sticky-bar");
+  const num = document.getElementById("pick-num");
+  num.textContent = Object.keys(picks).length;
+  bar.classList.toggle("visible", count > 0);
+}
+
+function buildFeedbackText(markdown) {
+  const picks = loadPicks();
+  const note = document.getElementById("quick-note")?.value?.trim() || "";
+  const lines = [];
+  if (Object.keys(picks).length) {
+    lines.push(markdown ? "## Feedback picks" : "Feedback:");
+    lines.push("");
+    Object.entries(picks).forEach(([id, choice]) => lines.push(markdown ? `- **${id}**: ${choice}` : `- ${id}: ${choice}`));
+  }
+  if (note) { lines.push(""); lines.push(markdown ? "## Note" : "Note:"); lines.push(""); lines.push(note); }
+  return lines;
+}
 
 async function fetchJSON(url) {
   const r = await fetch(url + `?t=${Date.now()}`, { cache: "no-store" });
@@ -179,14 +230,7 @@ document.querySelectorAll(".fb-tab").forEach(t => {
 
 // Copy reply button
 document.getElementById("copy-reply").addEventListener("click", async () => {
-  const picks = loadPicks();
-  const note = document.getElementById("quick-note").value.trim();
-  const lines = [];
-  if (Object.keys(picks).length) {
-    lines.push("Feedback:");
-    Object.entries(picks).forEach(([id, choice]) => lines.push(`- ${id}: ${choice}`));
-  }
-  if (note) { lines.push(""); lines.push("Note: " + note); }
+  const lines = buildFeedbackText(false);
   if (!lines.length) { alert("Pick some answers or write a note first."); return; }
   const text = lines.join("\n");
   try { await navigator.clipboard.writeText(text); alert("Copied — paste into Feishu"); }
@@ -198,31 +242,54 @@ document.getElementById("clear-all").addEventListener("click", () => {
     localStorage.removeItem(PICKS_KEY);
     document.getElementById("quick-note").value = "";
     renderPending();
+    updateStickyBar();
   }
 });
 
-document.getElementById("submit-gh").addEventListener("click", () => {
-  const picks = loadPicks();
-  const note = document.getElementById("quick-note").value.trim();
-  const lines = [];
-  if (Object.keys(picks).length) {
-    lines.push("## Feedback picks");
-    lines.push("");
-    Object.entries(picks).forEach(([id, choice]) => lines.push(`- **${id}**: ${choice}`));
-  }
-  if (note) { lines.push(""); lines.push("## Note"); lines.push(""); lines.push(note); }
+function openGitHubIssue() {
+  const lines = buildFeedbackText(true);
   if (!lines.length) { alert("Pick some answers or write a note first."); return; }
   lines.push("");
   lines.push("---");
   lines.push(`_Submitted from feedback page at ${new Date().toISOString()}_`);
   const body = lines.join("\n");
-  const title = `feedback: ${Object.keys(picks).length} pick(s)${note ? " + note" : ""} — ${new Date().toISOString().slice(0,16).replace("T"," ")}`;
+  const picks = loadPicks();
+  const title = `feedback: ${Object.keys(picks).length} pick(s)${document.getElementById("quick-note")?.value?.trim() ? " + note" : ""} — ${new Date().toISOString().slice(0,16).replace("T"," ")}`;
   const url = `https://github.com/Taylorblue123/morning-brief/issues/new?labels=feedback&title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
   window.open(url, "_blank", "noopener");
+}
+
+document.getElementById("submit-gh").addEventListener("click", openGitHubIssue);
+
+// Sticky bar buttons
+document.getElementById("sticky-submit-gh").addEventListener("click", openGitHubIssue);
+
+document.getElementById("sticky-copy").addEventListener("click", async () => {
+  const lines = buildFeedbackText(false);
+  if (!lines.length) return;
+  const text = lines.join("\n");
+  try {
+    await navigator.clipboard.writeText(text);
+    document.getElementById("sticky-status").textContent = "✅ Copied to clipboard!";
+    setTimeout(() => { document.getElementById("sticky-status").textContent = ""; }, 2000);
+  } catch (e) { prompt("Copy this manually:", text); }
 });
+
+document.getElementById("sticky-clear").addEventListener("click", () => {
+  if (confirm("Clear all picks and note?")) {
+    localStorage.removeItem(PICKS_KEY);
+    document.getElementById("quick-note").value = "";
+    renderPending();
+    updateStickyBar();
+  }
+});
+
+// Watch quick-note changes for sticky bar
+document.getElementById("quick-note")?.addEventListener("input", updateStickyBar);
 
 renderPending();
 renderDecisions();
+updateStickyBar();
 </script>
 </body>
 </html>
