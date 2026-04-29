@@ -13,7 +13,7 @@ DECISIONS = REPO_DIR / "data" / "decisions.json"
 PENDING = REPO_DIR / "data" / "pending-review.json"
 JOURNAL = REPO_DIR / "data" / "agent-journal.jsonl"
 
-PICK_RE = re.compile(r"^\s*[-*]\s*\*\*(?P<id>[A-Z]\d{3,4}[a-z]?)\*\*\s*:\s*(?P<choice>.+?)\s*$")
+PICK_RE = re.compile(r"^\s*[-*]\s*\*\*(?P<id>[A-Za-z0-9_-]+)\*\*\s*:\s*(?P<choice>.+?)\s*$")
 NOTE_HDR_RE = re.compile(r"^##\s+Note\s*$", re.I)
 
 

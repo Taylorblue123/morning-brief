@@ -152,16 +152,6 @@
       "choice": "merge PR as-is + publish",
       "detail": "Merge BedRock PR #2 and publish the writing section.",
       "source": "feedback-page-issue-4"
-    },
-    {
-      "id": "D013",
-      "date": "2026-04-29",
-      "topic": "test001",
-      "question": "Response to TEST001",
-      "choice": "option-alpha",
-      "detail": "Answered via feedback page (issue #5).",
-      "source": "Wenxuan feedback page → GitHub issue #5 2026-04-29",
-      "linked_review_id": "TEST001"
     }
   ],
   "pending_review": []
