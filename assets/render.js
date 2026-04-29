@@ -380,6 +380,7 @@ async function loadBrief() {
           ${esc(b.version || "morning-brief v1")}
           <a href="./proposal.html">proposals</a>
           <a href="./feedback.html">feedback</a>
+          <a href="./persona.html">persona</a>
           <a href="./archive.html">archive</a>
           <button class="theme-toggle" onclick="window.__toggleTheme()">◑ theme</button>
         </div>

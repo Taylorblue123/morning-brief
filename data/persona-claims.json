@@ -1,0 +1,197 @@
+{
+  "version": "0.1.0",
+  "last_distilled": "2026-04-29T20:17:45.974804Z",
+  "claims": [
+    {
+      "id": "C001",
+      "text": "Actively develops multiple projects in parallel: crumbs (social meta tags polish), bedrock-site (Astro bolt-on with corrections), and others",
+      "category": "project",
+      "support_count": 3,
+      "last_evidence_ts": "2026-04-22T20:04:26.000000Z",
+      "confidence": 0.85,
+      "evidence_ids": [
+        "2026-04-22T19:13:39.000000Z",
+        "2026-04-22T19:24:43.000000Z",
+        "2026-04-22T20:04:26.000000Z"
+      ]
+    },
+    {
+      "id": "C002",
+      "text": "Prefers squash merge strategy for PRs and actively manages branch cleanup",
+      "category": "preference",
+      "support_count": 1,
+      "last_evidence_ts": "2026-04-22T19:24:43.000000Z",
+      "confidence": 0.65,
+      "evidence_ids": [
+        "2026-04-22T19:24:43.000000Z"
+      ]
+    },
+    {
+      "id": "C003",
+      "text": "Values accuracy and integrity: corrected false CVPR 2026 and first-author claims in BedRock project",
+      "category": "preference",
+      "support_count": 1,
+      "last_evidence_ts": "2026-04-22T20:04:26.000000Z",
+      "confidence": 0.75,
+      "evidence_ids": [
+        "2026-04-22T20:04:26.000000Z"
+      ]
+    },
+    {
+      "id": "C004",
+      "text": "Operates on a day/night cycle with active work during daytime hours and night-building mode for development",
+      "category": "working-style",
+      "support_count": 15,
+      "last_evidence_ts": "2026-04-29T19:00:05.000000Z",
+      "confidence": 0.9,
+      "evidence_ids": [
+        "2026-04-22T18:55:27.000000Z",
+        "2026-04-22T19:00:05.000000Z",
+        "2026-04-23T00:00:05.000000Z",
+        "2026-04-23T05:00:05.000000Z",
+        "2026-04-23T19:00:05.000000Z",
+        "2026-04-24T00:12:58.000000Z",
+        "2026-04-24T05:01:31.000000Z",
+        "2026-04-24T19:00:05.000000Z",
+        "2026-04-25T00:00:05.000000Z",
+        "2026-04-25T05:00:05.000000Z",
+        "2026-04-29T00:00:05.000000Z",
+        "2026-04-29T05:00:05.000000Z",
+        "2026-04-29T19:00:05.000000Z"
+      ]
+    },
+    {
+      "id": "C005",
+      "text": "Uses daily brief publications as a structured tool to review focus, papers, trends, projects, and overnight logs",
+      "category": "working-style",
+      "support_count": 5,
+      "last_evidence_ts": "2026-04-29T14:05:00.000000Z",
+      "confidence": 0.88,
+      "evidence_ids": [
+        "2026-04-23T18:20:00.000000Z",
+        "2026-04-24T14:05:00.000000Z",
+        "2026-04-25T14:05:00.000000Z",
+        "2026-04-28T14:08:00.000000Z",
+        "2026-04-29T14:05:00.000000Z"
+      ]
+    },
+    {
+      "id": "C006",
+      "text": "Practices time-boxed focus: enforces one-side-project per day with deliberate decision-making",
+      "category": "working-style",
+      "support_count": 1,
+      "last_evidence_ts": "2026-04-23T18:35:00.000000Z",
+      "confidence": 0.7,
+      "evidence_ids": [
+        "2026-04-23T18:35:00.000000Z"
+      ]
+    },
+    {
+      "id": "C007",
+      "text": "Collaborates with colleagues on strategic proposals (e.g., Jun Li on eval-driven development)",
+      "category": "project",
+      "support_count": 1,
+      "last_evidence_ts": "2026-04-23T18:35:10.000000Z",
+      "confidence": 0.68,
+      "evidence_ids": [
+        "2026-04-23T18:35:10.000000Z"
+      ]
+    },
+    {
+      "id": "C008",
+      "text": "Interested in desktop context tracking: wants always-on monitoring of desktop Context plugin to understand daily activities and receive suggestions",
+      "category": "preference",
+      "support_count": 1,
+      "last_evidence_ts": "2026-04-28T01:10:53.896703Z",
+      "confidence": 0.8,
+      "evidence_ids": [
+        "2026-04-28T01:10:53.896703Z"
+      ]
+    },
+    {
+      "id": "C009",
+      "text": "Engages in decision-centric workflows: values persistent decision tracking and refuses re-asking on same topics",
+      "category": "working-style",
+      "support_count": 2,
+      "last_evidence_ts": "2026-04-29T12:26:23.145055Z",
+      "confidence": 0.82,
+      "evidence_ids": [
+        "2026-04-29T12:26:23.145055Z",
+        "2026-04-29T19:38:20.828053Z"
+      ]
+    },
+    {
+      "id": "C010",
+      "text": "Active in feedback-driven iteration: submits choices via numbered review items (e.g., TEST001/option-alpha) and compiles decisions to persistent records",
+      "category": "working-style",
+      "support_count": 3,
+      "last_evidence_ts": "2026-04-29T19:37:47.315109Z",
+      "confidence": 0.78,
+      "evidence_ids": [
+        "2026-04-29T19:37:14.570808Z",
+        "2026-04-29T19:37:47.315109Z",
+        "2026-04-29T19:38:20.828053Z"
+      ]
+    },
+    {
+      "id": "C011",
+      "text": "Manages infrastructure and deployment: handles Vercel deployments, personal access tokens, and infrastructure decisions for projects",
+      "category": "knowledge",
+      "support_count": 2,
+      "last_evidence_ts": "2026-04-28T18:39:21.270249Z",
+      "confidence": 0.72,
+      "evidence_ids": [
+        "2026-04-28T18:39:21.270249Z",
+        "2026-04-29T12:38:20.800533Z"
+      ]
+    },
+    {
+      "id": "C012",
+      "text": "Maintains active knowledge of open review items (R-series): tracks blockers and decision points from past sessions",
+      "category": "working-style",
+      "support_count": 2,
+      "last_evidence_ts": "2026-04-28T18:39:21.270249Z",
+      "confidence": 0.75,
+      "evidence_ids": [
+        "2026-04-22T19:14:46.000000Z",
+        "2026-04-28T18:39:21.270249Z"
+      ]
+    },
+    {
+      "id": "C013",
+      "text": "Prioritizes critical-scope items and uses blocking questions (review items) to pause work and surface ambiguities",
+      "category": "working-style",
+      "support_count": 1,
+      "last_evidence_ts": "2026-04-22T19:14:46.000000Z",
+      "confidence": 0.7,
+      "evidence_ids": [
+        "2026-04-22T19:14:46.000000Z"
+      ]
+    },
+    {
+      "id": "C014",
+      "text": "Uses Chinese (Mandarin) for communication with Hermes agent in certain contexts",
+      "category": "preference",
+      "support_count": 1,
+      "last_evidence_ts": "2026-04-28T01:10:53.896703Z",
+      "confidence": 0.65,
+      "evidence_ids": [
+        "2026-04-28T01:10:53.896703Z"
+      ]
+    },
+    {
+      "id": "C015",
+      "text": "Recent state: engaged in multi-project iteration with focus on crumbs polish, bedrock-site setup, and infrastructure decisions as of late April 2026",
+      "category": "recent-state",
+      "support_count": 4,
+      "last_evidence_ts": "2026-04-29T19:38:20.828053Z",
+      "confidence": 0.85,
+      "evidence_ids": [
+        "2026-04-22T19:13:39.000000Z",
+        "2026-04-22T20:04:26.000000Z",
+        "2026-04-28T14:08:00.000000Z",
+        "2026-04-29T19:38:20.828053Z"
+      ]
+    }
+  ]
+}
