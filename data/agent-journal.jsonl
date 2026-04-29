@@ -23,3 +23,7 @@
 {"ts": "2026-04-27T12:06:00-07:00", "mode": "daytime", "event": "heartbeat"}
 {"ts": "2026-04-27T17:11:00-07:00", "mode": "daytime", "event": "heartbeat"}
 {"ts": "2026-04-27T22:03:24-07:00", "mode": "night", "event": "heartbeat"}
+{"ts":"2026-04-28T07:08:00-07:00","mode":"user-triggered","event":"brief_published","date":"2026-04-28","sections":["focus-cards","paper-brief","trends","pulse-grid","project-tiles","ideas","overnight-log","review-points"]}
+{"ts": "2026-04-28T12:00:05-07:00", "mode": "daytime", "event": "heartbeat"}
+{"ts": "2026-04-28T17:00:05-07:00", "mode": "daytime", "event": "heartbeat"}
+{"ts": "2026-04-28T22:00:05-07:00", "mode": "night", "event": "heartbeat"}

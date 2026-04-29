@@ -19,6 +19,12 @@
       "tldr_short": ""
     },
     {
+      "date": "2026-04-29",
+      "date_display": "Wednesday, April 29, 2026",
+      "tldr": "Day 8 (Week 2) of MAE onboarding. **R006–R009 are now 7 days stale** — unblocking even one lets the night-builder resume. Side project today: **morning-brief**.",
+      "tldr_short": "MAE Week 2 Day 8. R006–R009 7 days stale — unblock one to restart night-builder. Side project: morning-brief."
+    },
+    {
       "date": "2026-04-28",
       "date_display": "Tuesday, April 28, 2026",
       "tldr": "R006–R009 are now 6 days old — pick ANY one and reply with a single line so night-builder has a target. Today's lever is week-2 standup credibility: get MAE running locally and bring one quotable insight from the paper of the day. Side project of the day: morning-brief (per D009).",
