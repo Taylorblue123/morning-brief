@@ -7,7 +7,7 @@
       "topic": "paper-picker",
       "question": "How should the agent pick the paper of the day?",
       "choice": "mix-one-of-each",
-      "detail": "Serve 2 papers when possible: one newer (≤7 days) for freshness + one fit-to-MAE for depth. When only one slot, alternate day-by-day.",
+      "detail": "Serve 2 papers when possible: one newer (\u22647 days) for freshness + one fit-to-MAE for depth. When only one slot, alternate day-by-day.",
       "source": "Wenxuan feedback 2026-04-22"
     },
     {
@@ -116,6 +116,42 @@
       "decision": "Each day, pick exactly ONE side project to evolve. Morning brief names it (field: side_project_of_day). Night-builder only touches that repo. All others frozen until next day.",
       "rationale": "Avoid context switching across Crumbs / BedRock / morning-brief / Gestgo. Day-job MAE is separate.",
       "set_by": "Wenxuan"
+    },
+    {
+      "id": "R006",
+      "date": "2026-04-29",
+      "topic": "bedrock-vercel-deploy",
+      "question": "Deploy BedRock Astro site to Vercel?",
+      "choice": "b \u2014 paste a token",
+      "detail": "User will provide a Vercel token from vercel.com/account/tokens for deployment.",
+      "source": "feedback-page-issue-4"
+    },
+    {
+      "id": "R007",
+      "date": "2026-04-29",
+      "topic": "self-evolving-persona-v0",
+      "question": "Prototype the self-evolving persona system (v0, ~10h)?",
+      "choice": "yes, build v0 this weekend",
+      "detail": "Full v0 build: episodic event log \u2192 nightly distillation cron \u2192 persona core \u2192 /persona viewer.",
+      "source": "feedback-page-issue-4"
+    },
+    {
+      "id": "R008",
+      "date": "2026-04-29",
+      "topic": "crumbs-landing-polish-pr",
+      "question": "Draft a Crumbs landing-page polish PR (~90 min)?",
+      "choice": "yes, draft the PR",
+      "detail": "Gradient overlay, value-prop H1, CTA copy rewrite \u2014 full PR.",
+      "source": "feedback-page-issue-4"
+    },
+    {
+      "id": "R009",
+      "date": "2026-04-29",
+      "topic": "writing-context-not-control",
+      "question": "Review the 'Context, not Control' essay",
+      "choice": "merge PR as-is + publish",
+      "detail": "Merge BedRock PR #2 and publish the writing section.",
+      "source": "feedback-page-issue-4"
     }
   ],
   "pending_review": []

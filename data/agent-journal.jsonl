@@ -27,3 +27,5 @@
 {"ts": "2026-04-28T12:00:05-07:00", "mode": "daytime", "event": "heartbeat"}
 {"ts": "2026-04-28T17:00:05-07:00", "mode": "daytime", "event": "heartbeat"}
 {"ts": "2026-04-28T22:00:05-07:00", "mode": "night", "event": "heartbeat"}
+{"ts":"2026-04-29T07:05:00-07:00","mode":"morning","event":"brief_published","date":"2026-04-29","sections":["focus-cards","paper-brief","trends","pulse-grid","project-tiles","ideas","overnight-log","review-points"]}
+{"ts": "2026-04-29T12:00:05-07:00", "mode": "daytime", "event": "heartbeat"}
